@@ -122,9 +122,9 @@ public class Server {
             }
         }
 
-        private void logout(){
+        private void logout() throws IOException {
             Server.this.removeClient(this.sender);
-
+            this.stopctl = true;
         }
 
         private void msgReactor() throws IOException, ClassNotFoundException {
@@ -143,10 +143,8 @@ public class Server {
                     target.sendMsg(msg);
 
                 } else if (this.type == "LOGOUT"){
+                    this.logout();
 
-                    //TODO remove handler from clientTable
-                    //TODO refresh every client's online list
-                    //TODO close the thread
                 } else {
                     //TODO TBD
                 }
@@ -154,7 +152,13 @@ public class Server {
         }
 
         public void run() {
-
+            try {
+                msgReactor();
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
         }
 
     }
