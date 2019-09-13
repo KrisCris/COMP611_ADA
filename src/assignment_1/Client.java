@@ -4,8 +4,7 @@ import java.io.*;
 import java.net.InetAddress;
 import java.net.Socket;
 import java.net.UnknownHostException;
-import java.util.LinkedList;
-import java.util.Scanner;
+import java.util.*;
 
 public class Client {
     private static final String DOMAIN = "LOCALHOST";
@@ -14,93 +13,151 @@ public class Client {
     private String username;
     private InetAddress addr;
     private Socket socket;
-    private LinkedList<String> clientList;
+    private String[] clientList;
     private ObjectOutputStream objOut;
     private ObjectInputStream objIn;
 
-    //GUI should call this constructor when btn 'login' is clicked
-    public Client(String username){
-        this.username = username;
-        try {
-            this.addr = InetAddress.getByName(DOMAIN);
-            this.socket = new Socket(this.addr,PORT);
-            this.objOut = new ObjectOutputStream(new BufferedOutputStream(socket.getOutputStream()));
-//            this.objIn = new ObjectInputStream(new BufferedInputStream(socket.getInputStream()));
-            this.sendMsg("LOGIN","","");
-            wait(1);
-            this.objIn = new ObjectInputStream(new BufferedInputStream(socket.getInputStream()));
-            MessageHandler messageHandler = new MessageHandler(this.socket);
-            Thread thread = new Thread(messageHandler);
-            thread.start();
-        } catch (UnknownHostException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            System.err.println("Client could not make connection: " + e);
-            System.exit(-1);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+    //-1 offline
+    //0 logging
+    //1 online
+    private int status;
+    public static void main(String[] args) throws IOException {
+        Scanner in = new Scanner(System.in);
+        Client client = new Client();
+        System.out.println("enter your username:");
+        client.login(in.nextLine());
+        System.out.println("after login, choose a person to chat:");
+
+        String testMan = in.nextLine();
+        System.out.println("you choice: "+testMan);
+        while (true){
+            client.sendChatMsg(testMan,in.nextLine());
+            System.out.println("[CLI] sent");
         }
     }
+    //GUI should call this constructor when btn 'login' is clicked
+    public Client(){
+        this.status = -1;
+        this.clientList = new String[1];
+    }
 
-    //sending message
-    public void sendMsg(String type,String receiver,String content) throws IOException {
-        Message msg = new Message(type,this.username,receiver,content);
+    private void conn() throws IOException {
+        this.addr = InetAddress.getByName(DOMAIN);
+        this.socket = new Socket(this.addr,PORT);
+    }
+
+    private void initIOStream() throws IOException {
+        this.objIn = new ObjectInputStream(socket.getInputStream());
+        this.objOut = new ObjectOutputStream(socket.getOutputStream());
+    }
+
+    private void initMHThread(){
+        MessageHandler messageHandler = new MessageHandler(this.socket);
+        Thread thread = new Thread(messageHandler);
+        thread.start();
+    }
+
+    public void login(String username) throws IOException {
+        this.username = username;
+        this.conn();
+        this.initIOStream();
+        this.initMHThread();
+        this.sendMsg(new Message("LOGIN",this.username,"",""));
+    }
+
+    public void logout() throws IOException {
+        Message msg_logout = new Message("LOGOUT",this.username,"","");
+        this.sendMsg(msg_logout);
+        this.setStatus(-1);
+    }
+
+    public int getStatus(){
+        return this.status;
+    }
+
+    public void setStatus(int status){
+        this.status = status;
+    }
+    public void sendChatMsg(String receiver,String content) throws IOException {
+        Message chat = new Message("CHAT",this.username,receiver,content);
+        this.sendMsg(chat);
+    }
+    public void sendMsg(Message msg) throws IOException {
         objOut.writeObject(msg);
     }
 
-    //dealing with sockets sent to the client
-    private class MessageHandler implements Runnable{
+    public void setClientList(String clientList){
+        this.clientList = clientList.split("&");
+    }
+    private class MessageHandler implements Runnable {
         private Socket socket;
-//        private String username;
-        public MessageHandler(Socket socket){
+        private boolean stopctl;
+        private Message msg;
+        private String type;
+        private String sender;
+        private String receiver;
+        private String content;
+
+        public MessageHandler(Socket socket) {
             this.socket = socket;
-//            this.username = username;
+            this.stopctl = false;
         }
 
-        @Override
+        private void msgReactor() throws IOException, ClassNotFoundException {
+            do{
+                this.readMessage();
+                if(this.type.equals("INIT")){
+                    Client.this.setStatus(1);
+                    //test
+                    System.out.println("login successfully");
+
+                    System.out.println("now enter a name to start a chat");
+                    //
+                } else if(this.type.equals("CHAT")){
+                    System.out.println(this.sender+" : "+this.content);
+                } else if(this.type.equals("UPDATE")) {
+                    Client.this.setClientList(this.content);
+                    System.out.println("online list: ");
+                    for(String client: Client.this.clientList){
+                        System.out.println(client);
+                    }
+                    System.out.println("///////////");
+                } else if(this.type.equals("ERROR")) {
+                    Client.this.logout();
+                    this.stopctl = true;
+                    //TODO LOGOUT maybe
+                } else if(this.type.equals("KICKED")) {
+                    Client.this.logout();
+                    this.stopctl = true;
+                } else {
+                    //TODO TBD
+                    System.out.println("[MSG REACTOR][ELSE]:");
+                    System.out.println("TYPE: "+this.type);
+                    System.out.println("SENDER: "+this.sender);
+                    System.out.println("RECEIVER: "+this.receiver);
+                    System.out.println("CONTENT:" +this.content);
+                    System.out.println("[MSG REACTOR END]");
+                }
+            } while(!this.stopctl);
+        }
+
+        private void readMessage() throws IOException, ClassNotFoundException {
+            this.msg = (Message) Client.this.objIn.readObject();
+            this.type = this.msg.getType();
+            this.sender = msg.getSender();
+            this.receiver = msg.getReceiver();
+            this.content = msg.getContent();
+        }
+
         public void run() {
-            Message msg = null;
-            String type = "";
-            String sender = "";
-            String content = "";
             try {
-                msg = (Message)objIn.readObject();
-                type = msg.getType();
-                sender = msg.getSender();
-                content = msg.getContent();
+                this.msgReactor();
             } catch (IOException e) {
                 e.printStackTrace();
             } catch (ClassNotFoundException e) {
                 e.printStackTrace();
             }
-
-            do{
-                if(type == "CHAT"){
-                    //TODO output content
-                    System.out.println(sender+" send a message: "+content);
-                } else {
-                    //TODO TBD
-                    System.out.println("other than chat");
-                    System.out.println(type);
-                }
-            } while(true);
         }
     }
 
-    public static void main(String[] args) throws IOException {
-        System.out.println("input your username:");
-        Scanner input = new Scanner(System.in);
-        String username = input.nextLine();
-        Client client = new Client(username);
-
-        //simulating an event triggered msg-sending procedure
-        while(true){
-            //target user
-            System.out.println("please input a target username");
-            String target = input.nextLine();
-            System.out.println("please type a message");
-            String content = input.nextLine();
-            client.sendMsg("CHAT",target,content);
-        }
-    }
 }

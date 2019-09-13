@@ -22,8 +22,7 @@ public class Server {
     }
 
     public Server(){
-        this.serverSocket = null;
-        this.clientTable = null;
+        this.clientTable = new HashMap<>();
     }
 
     public void init() throws IOException {
@@ -57,6 +56,11 @@ public class Server {
 
     public synchronized ChatHandler removeClient(String username) throws IOException {
         ChatHandler removed =  this.clientTable.remove(username);
+        this.sendOnlineList();
+        return removed;
+    }
+
+    public synchronized void sendOnlineList() throws IOException {
         StringBuilder stringBuilder = new StringBuilder();
         for(String client : this.clientTable.keySet()){
             stringBuilder.append(client+"&");
@@ -66,27 +70,24 @@ public class Server {
         for(ChatHandler each : this.clientTable.values()){
             each.sendMsg(new Message("UPDATE",clientList));
         }
-        return removed;
     }
-
-
-
 
     private class ChatHandler implements Runnable{
         private Socket socket;
         private ObjectInputStream objIn;
         private ObjectOutputStream objOut;
 
-        private Message msg = null;
-        private String type = "";
-        private String sender = "";
-        private String receiver = "";
-        private String content = "";
+        private Message msg;
+        private String type;
+        private String sender;
+        private String receiver;
+        private String content;
 
-        private boolean stopctl = false;
+        private boolean stopctl;
 
         public ChatHandler(Socket socket){
             this.socket = socket;
+            this.stopctl = false;
         }
 
         private void initIOStream() throws IOException {
@@ -117,7 +118,7 @@ public class Server {
             } else {
                 Server.this.clientTable.put(sender,this);
                 Message passed = new Message("INIT",sender+"successfully logged in");
-                this.sendMsg(msg);
+                this.sendMsg(passed);
                 System.out.println("[SUCCEED] "+sender+" has login!");
             }
         }
@@ -133,16 +134,18 @@ public class Server {
             do{
                 //get message from IOStream
                 this.readMessage();
+                System.out.println(this.msg.toString());
                 //deal with different types of MESSAGE
-                if (this.type == "LOGIN"){
+                if (this.type.equals("LOGIN")){
                     this.login();
-
-                } else if (this.type == "CHAT"){
+                    Server.this.sendOnlineList();
+                    System.out.println(this.sender+" logged in");
+                } else if (this.type.equals("CHAT")){
                     //get target client's chatHandler by username
                     ChatHandler target = Server.this.getChatHandler(receiver);
                     target.sendMsg(msg);
 
-                } else if (this.type == "LOGOUT"){
+                } else if (this.type.equals("LOGOUT")){
                     this.logout();
 
                 } else {
