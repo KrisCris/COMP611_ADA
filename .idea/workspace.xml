@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="405e7274-26e8-421b-b0dc-d3959e155847" name="Default Changelist" comment="">
+    <list default="true" id="405e7274-26e8-421b-b0dc-d3959e155847" name="Default Changelist" comment="init gui">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assignment_1/gui/ChatRoom.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assignment_1/ChatClient.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assignment_1/ChatServer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assignment_1/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/assignment_1/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assignment_1/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/assignment_1/Server.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assignment_1/test.java" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -32,6 +29,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="FxmlFile" />
         <option value="Class" />
       </list>
     </option>
@@ -40,6 +38,9 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1QdJSHdYgfQ7UnZ51AQ7paFTy4w" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="PropertiesComponent">
     <property name="Downloaded.Files.Path.Enabled" value="false" />
     <property name="Repository.Attach.Annotations" value="false" />
@@ -58,7 +59,7 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="project.kotlinCompiler" />
+    <property name="settings.editor.selected.configurable" value="preferences.JavaFX" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -72,13 +73,13 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.Client">
-    <configuration name="Client" type="Application" factoryName="Application" singleton="false" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="assignment_1.Client" />
+  <component name="RunManager" selected="Application.ChatRoom">
+    <configuration name="ChatRoom" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="assignment_1.gui.ChatRoom" />
       <module name="ADA" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="assignment_1.*" />
+          <option name="PATTERN" value="assignment_1.gui.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -86,12 +87,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Message" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="assignment_1.Message" />
+    <configuration name="Client" type="Application" factoryName="Application" singleton="false" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="assignment_1.Client" />
       <module name="ADA" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="assignment_1.*" />
+          <option name="PATTERN" value="assignment_1.gui.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -104,7 +105,7 @@
       <module name="ADA" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="assignment_1.*" />
+          <option name="PATTERN" value="assignment_1.gui.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -117,7 +118,7 @@
       <module name="ADA" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="assignment_1.*" />
+          <option name="PATTERN" value="assignment_1.gui.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -130,7 +131,7 @@
       <module name="ADA" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="assignment_1.*" />
+          <option name="PATTERN" value="assignment_1.gui.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -140,18 +141,18 @@
     </configuration>
     <list>
       <item itemvalue="Application.Client" />
-      <item itemvalue="Application.Message" />
       <item itemvalue="Application.Server" />
       <item itemvalue="Application.test" />
       <item itemvalue="Application.test2" />
+      <item itemvalue="Application.ChatRoom" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.ChatRoom" />
         <item itemvalue="Application.Client" />
         <item itemvalue="Application.Server" />
         <item itemvalue="Application.test2" />
         <item itemvalue="Application.test" />
-        <item itemvalue="Application.Message" />
       </list>
     </recent_temporary>
   </component>
@@ -180,7 +181,9 @@
       <workItem from="1568336283379" duration="131000" />
       <workItem from="1568339718353" duration="195000" />
       <workItem from="1568340800147" duration="1663000" />
-      <workItem from="1568352861900" duration="459000" />
+      <workItem from="1568352861900" duration="1418000" />
+      <workItem from="1568355835407" duration="4939000" />
+      <workItem from="1568372812677" duration="17051000" />
     </task>
     <servers />
   </component>
@@ -190,6 +193,31 @@
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
+        <entry key="1">
+          <value>
+            <State>
+              <option name="SHOW_ONLY_AFFECTED_CHANGES" value="true" />
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="HEAD" />
+                      </list>
+                    </value>
+                  </entry>
+                  <entry key="structure">
+                    <value>
+                      <list>
+                        <option value="dir:/Users/pingchuan.huang/Documents/coding/Java/ADA/src/assignment_1" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
         <entry key="MAIN">
           <value>
             <State>
@@ -198,6 +226,11 @@
           </value>
         </entry>
       </map>
+    </option>
+    <option name="OPEN_TABS">
+      <set>
+        <option value="1" />
+      </set>
     </option>
   </component>
   <component name="XDebuggerManager">
