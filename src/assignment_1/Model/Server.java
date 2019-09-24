@@ -1,4 +1,4 @@
-package assignment_1;
+package assignment_1.Model;
 
 import java.io.IOException;
 import java.net.InetAddress;
@@ -111,7 +111,7 @@ public class Server {
         private void login() throws IOException {
             System.out.println("[NOTIFICATION] "+this.sender+"/"+this.socket.getInetAddress()+" tried to login");
             if(Server.this.ifUserDuplicated(this.sender)){
-                Message err_dup = new Message("ERROR","username already existed");
+                Message err_dup = new Message("DUPLICATED","username already existed");
                 this.sendMsg(err_dup);
                 this.stopctl = true;
                 System.out.println("[ERROR] "+this.sender+"/"+this.socket.getInetAddress()+" username conflicted");

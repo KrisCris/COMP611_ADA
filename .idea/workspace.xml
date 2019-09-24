@@ -2,9 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="405e7274-26e8-421b-b0dc-d3959e155847" name="Default Changelist" comment="init gui">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assignment_1/gui/ChatRoom.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assignment_1/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/assignment_1/Model/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assignment_1/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/assignment_1/Model/Message.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assignment_1/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/assignment_1/Model/Server.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assignment_1/gui/ChatRoom.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/assignment_1/View/ChatRoom.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assignment_1/gui/GBC.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/assignment_1/View/GBC.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -75,11 +78,11 @@
   </component>
   <component name="RunManager" selected="Application.ChatRoom">
     <configuration name="ChatRoom" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="assignment_1.gui.ChatRoom" />
+      <option name="MAIN_CLASS_NAME" value="assignment_1.View.ChatRoom" />
       <module name="ADA" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="assignment_1.gui.*" />
+          <option name="PATTERN" value="assignment_1.View.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -88,11 +91,11 @@
       </method>
     </configuration>
     <configuration name="Client" type="Application" factoryName="Application" singleton="false" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="assignment_1.Client" />
+      <option name="MAIN_CLASS_NAME" value="assignment_1.Model.Client" />
       <module name="ADA" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="assignment_1.gui.*" />
+          <option name="PATTERN" value="assignment_1.View.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -101,11 +104,11 @@
       </method>
     </configuration>
     <configuration name="Server" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="assignment_1.Server" />
+      <option name="MAIN_CLASS_NAME" value="assignment_1.Model.Server" />
       <module name="ADA" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="assignment_1.gui.*" />
+          <option name="PATTERN" value="assignment_1.View.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -118,7 +121,7 @@
       <module name="ADA" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="assignment_1.gui.*" />
+          <option name="PATTERN" value="assignment_1.View.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -131,7 +134,7 @@
       <module name="ADA" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="assignment_1.gui.*" />
+          <option name="PATTERN" value="assignment_1.View.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -184,6 +187,14 @@
       <workItem from="1568352861900" duration="1418000" />
       <workItem from="1568355835407" duration="4939000" />
       <workItem from="1568372812677" duration="17051000" />
+      <workItem from="1568430615758" duration="151000" />
+      <workItem from="1568430817197" duration="81000" />
+      <workItem from="1568432848805" duration="17597000" />
+      <workItem from="1568857343780" duration="2464000" />
+      <workItem from="1568898077709" duration="554000" />
+      <workItem from="1568903493245" duration="6000" />
+      <workItem from="1569142625035" duration="169000" />
+      <workItem from="1569224342779" duration="63000" />
     </task>
     <servers />
   </component>
@@ -232,36 +243,5 @@
         <option value="1" />
       </set>
     </option>
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/assignment_1/Server.java</url>
-          <line>111</line>
-          <option name="timeStamp" value="34" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/assignment_1/Server.java</url>
-          <line>131</line>
-          <option name="timeStamp" value="37" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/assignment_1/Client.java</url>
-          <line>107</line>
-          <option name="timeStamp" value="38" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/assignment_1/Client.java</url>
-          <line>64</line>
-          <option name="timeStamp" value="39" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/assignment_1/Server.java</url>
-          <line>119</line>
-          <option name="timeStamp" value="40" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

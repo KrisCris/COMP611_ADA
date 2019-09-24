@@ -1,4 +1,4 @@
-package assignment_1.gui;
+package assignment_1.View;
 
 import java.awt.*;
 
