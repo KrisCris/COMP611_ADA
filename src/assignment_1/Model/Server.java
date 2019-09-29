@@ -9,7 +9,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
 public class Server {
-    private static final int PORT = 9090;
+    private static final int PORT = 2333;
     private static final int BACKLOG = 100;
 
     private ServerSocket serverSocket;
@@ -132,16 +132,14 @@ public class Server {
             this.initIOStream();
             System.out.println("---Waiting for client request---");
             do{
-                //get message from IOStream
                 this.readMessage();
                 System.out.println(this.msg.toString());
-                //deal with different types of MESSAGE
                 if (this.type.equals("LOGIN")){
                     this.login();
                     Server.this.sendOnlineList();
                     System.out.println(this.sender+" logged in");
                 } else if (this.type.equals("CHAT")){
-                    //get target client's chatHandler by username
+                    System.out.println(this.sender+" sent msg to "+this.receiver+" : "+this.content);
                     ChatHandler target = Server.this.getChatHandler(receiver);
                     target.sendMsg(msg);
 

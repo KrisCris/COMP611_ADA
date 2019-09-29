@@ -1,12 +1,19 @@
 package assignment_1.View;
 
+import assignment_1.Controller.ClientController;
+import assignment_1.Model.Client;
 import assignment_1.Model.Message;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.ArrayList;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.util.LinkedList;
 
-public class ChatRoom extends JFrame{
+public class ChatRoom extends JFrame implements ActionListener,CommonFunc {
+    private ClientController controller;
+
     private static final int DEFAULT_WIDTH = 950;
     private static final int DEFAULT_HEIGHT = 700;
     private JPanel leftPanel;
@@ -20,7 +27,7 @@ public class ChatRoom extends JFrame{
     private JButton user;
     private JButton receiver;
     private JButton sendBtn;
-    private JButton you;
+//    private JButton you;
     private JPanel toolbar;
 
 
@@ -35,7 +42,7 @@ public class ChatRoom extends JFrame{
         this.chatInput = new JTextArea();
         this.user = new JButton("");
         this.receiver = new JButton("");
-        this.you = new JButton("");
+//        this.you = new JButton("");
         this.sendBtn = new JButton("SEND");
         this.toolbar = new JPanel();
 
@@ -47,8 +54,8 @@ public class ChatRoom extends JFrame{
         this.leftPanel.add(this.user, new GBC(0, 0, 1, 1).setFill(GBC.BOTH).setWeight(100, 0).setIpad(0, 25));
         this.leftPanel.add(this.userScrollPane, new GBC(0, 1, 1, 1).setFill(GBC.BOTH).setWeight(100, 100).setIpad(0, 675));
         this.rightPanel.setLayout(new GridBagLayout());
-        this.rightPanel.add(this.receiver, new GBC(0, 0, 1, 1).setFill(GBC.BOTH).setWeight(100, 0).setIpad(0, 25));
-        this.rightPanel.add(this.you, new GBC(1, 0, 1, 1).setFill(GBC.BOTH).setWeight(100, 0).setIpad(0, 25));
+        this.rightPanel.add(this.receiver, new GBC(0, 0, 2, 1).setFill(GBC.BOTH).setWeight(100, 0).setIpad(0, 25));
+//        this.rightPanel.add(this.you, new GBC(1, 0, 1, 1).setFill(GBC.BOTH).setWeight(100, 0).setIpad(0, 25));
         this.rightPanel.add(this.chatScrollPane, new GBC(0, 1, 2, 1).setFill(GBC.BOTH).setWeight(100, 100).setIpad(0, 325));
         this.rightPanel.add(this.inputScrollPane, new GBC(0, 2, 2, 1).setFill(GBC.BOTH).setWeight(100, 5).setIpad(0, 0));
         this.rightPanel.add(this.sendBtn, new GBC(2, 2, 1, 1).setFill(GBC.BOTH).setWeight(0, 100).setIpad(0, 0));
@@ -61,10 +68,14 @@ public class ChatRoom extends JFrame{
         this.chatInput.setLineWrap(true);
         this.chatInput.setWrapStyleWord(true);
 
-        this.you.setEnabled(false);
+//        this.you.setEnabled(false);
         this.receiver.setEnabled(false);
         this.sendBtn.setEnabled(false);
         this.chatInput.setEnabled(false);
+
+        this.sendBtn.addActionListener(this);
+        this.chatContents.setLayout(new GridBagLayout());
+
 //        for (int i = 0; i < 40; i++) {
 //            JButton t = new JButton("" + i);
 //            this.userList.add(t, new GBC(0, i, 1, 1).setWeight(100, 0).setFill(GBC.HORIZONTAL).setIpad(0, 25));
@@ -115,9 +126,21 @@ public class ChatRoom extends JFrame{
 //            scrollBar.setValue((scrollBar.getMaximum()));
 //        }
     }
+    public void enableChat(){
+        this.chatInput.setEnabled(true);
+        this.sendBtn.setEnabled(true);
+    }
+    public void setCurrentChatting(String target){
+        this.receiver.setText(target);
+    }
+    public String getCurrentChatting(){
+        return this.receiver.getText();
+    }
 
     public void addChatContent(String content,GBC gbc){
-        this.chatContents.add(new JButton(content),gbc);
+        JButton msg = new JButton(content);
+        msg.setEnabled(false);
+        this.chatContents.add(msg,gbc);
         JScrollBar scrollBar = chatScrollPane.getVerticalScrollBar();
         scrollBar.setValue((scrollBar.getMaximum()));
     }
@@ -128,15 +151,64 @@ public class ChatRoom extends JFrame{
     public void refreshChatContents(){
         this.chatContents.revalidate();
     }
+    public void switchChatTarget(){
 
+    }
+    public void refreshUserList(){
+        this.userList.revalidate();
+    }
+    public void clearUserList(){
+        this.userList.removeAll();
+        this.userList.repaint();
+    }
     public void addUser(String username,GBC gbc){
-        this.userList.add(new Button(username),gbc);
+        JButton user = new JButton(username);
+        this.userList.add(user,gbc);
+        /*
+         * By adding actionListener directly to userBtn,
+         * saves efforts finding which kind of btn it is.
+         */
+        user.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JButton userBtn = (JButton)e.getSource();
+                ChatRoom.this.controller.processSwitchChatTargetEvent(userBtn.getText());
+            }
+        });
     }
     public void userListFiller(GBC gbc){
         this.userList.add(new JLabel(""),gbc);
     }
 
 
+    public void init(String username){
+        //TODO there can be a value to control the online status, like online,busy,etc.
+        this.user.setText(username);
+    }
+
+    public void registerObserver(ClientController controller){
+        this.controller = controller;
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        Object source = e.getSource();
+        if(source == this.sendBtn){
+            String target = this.getCurrentChatting();
+            String content = this.chatInput.getText();
+            try {
+                this.controller.processSendChatMsgEvent(target,content);
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        }
+
+    }
+
+    @Override
+    public void alert(String alertMsg) {
+
+    }
 
     public static void main(String[] args) {
         EventQueue.invokeLater(()->{

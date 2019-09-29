@@ -2,12 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="405e7274-26e8-421b-b0dc-d3959e155847" name="Default Changelist" comment="init gui">
+      <change afterPath="$PROJECT_DIR$/src/assignment_1/Controller/ClientController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assignment_1/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/assignment_1/Model/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assignment_1/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/assignment_1/Model/Message.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assignment_1/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/assignment_1/Model/Server.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assignment_1/gui/ChatRoom.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/assignment_1/View/ChatRoom.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assignment_1/gui/GBC.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/assignment_1/View/GBC.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assignment_1/Controller/ChatRoomController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assignment_1/Model/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/assignment_1/Model/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assignment_1/Model/MessageListener.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assignment_1/Model/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/assignment_1/Model/Server.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assignment_1/Test/CharRoomDemo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assignment_1/View/ChatRoom.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/assignment_1/View/ChatRoom.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assignment_1/View/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/assignment_1/View/Login.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -34,6 +38,7 @@
       <list>
         <option value="FxmlFile" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -52,6 +57,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -62,7 +68,7 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="preferences.JavaFX" />
+    <property name="settings.editor.selected.configurable" value="preferences.general" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -76,7 +82,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.ChatRoom">
+  <component name="RunManager" selected="Application.ClientDemo">
     <configuration name="ChatRoom" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="assignment_1.View.ChatRoom" />
       <module name="ADA" />
@@ -90,8 +96,34 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Client" type="Application" factoryName="Application" singleton="false" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="assignment_1.Model.Client" />
+    <configuration name="ClientController" type="Application" factoryName="Application" singleton="false" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="assignment_1.Controller.ClientController" />
+      <module name="ADA" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="assignment_1.Controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ClientDemo" type="Application" factoryName="Application" singleton="false" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="assignment_1.Test.ClientDemo" />
+      <module name="ADA" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="assignment_1.Test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Login" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="assignment_1.View.Login" />
       <module name="ADA" />
       <extension name="coverage">
         <pattern>
@@ -103,7 +135,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Server" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+    <configuration name="Server" type="Application" factoryName="Application" singleton="false" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="assignment_1.Model.Server" />
       <module name="ADA" />
       <extension name="coverage">
@@ -116,46 +148,20 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="assignment_1.test" />
-      <module name="ADA" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="assignment_1.View.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="test2" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="assignment_1.test2" />
-      <module name="ADA" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="assignment_1.View.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <list>
-      <item itemvalue="Application.Client" />
       <item itemvalue="Application.Server" />
-      <item itemvalue="Application.test" />
-      <item itemvalue="Application.test2" />
       <item itemvalue="Application.ChatRoom" />
+      <item itemvalue="Application.ClientController" />
+      <item itemvalue="Application.Login" />
+      <item itemvalue="Application.ClientDemo" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.ChatRoom" />
-        <item itemvalue="Application.Client" />
+        <item itemvalue="Application.ClientDemo" />
         <item itemvalue="Application.Server" />
-        <item itemvalue="Application.test2" />
-        <item itemvalue="Application.test" />
+        <item itemvalue="Application.ChatRoom" />
+        <item itemvalue="Application.Login" />
+        <item itemvalue="Application.ClientController" />
       </list>
     </recent_temporary>
   </component>
@@ -195,6 +201,16 @@
       <workItem from="1568903493245" duration="6000" />
       <workItem from="1569142625035" duration="169000" />
       <workItem from="1569224342779" duration="63000" />
+      <workItem from="1569476184673" duration="394000" />
+      <workItem from="1569477663503" duration="24000" />
+      <workItem from="1569477727058" duration="5291000" />
+      <workItem from="1569484412922" duration="5202000" />
+      <workItem from="1569513114350" duration="198000" />
+      <workItem from="1569571623327" duration="230000" />
+      <workItem from="1569703209555" duration="2302000" />
+      <workItem from="1569705746874" duration="5014000" />
+      <workItem from="1569714516857" duration="1275000" />
+      <workItem from="1569763416269" duration="21031000" />
     </task>
     <servers />
   </component>
@@ -243,5 +259,21 @@
         <option value="1" />
       </set>
     </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/assignment_1/Model/Server.java</url>
+          <line>134</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/assignment_1/Model/Server.java</url>
+          <line>131</line>
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
