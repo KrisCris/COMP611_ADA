@@ -8,6 +8,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.io.IOException;
 import java.util.LinkedList;
 
@@ -77,6 +79,16 @@ public class ChatRoom extends JFrame implements ActionListener,CommonFunc {
 
         this.sendBtn.addActionListener(this);
         this.user.addActionListener(this);
+        this.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                try {
+                    ChatRoom.this.controller.processWindowCloseEvent();
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
 
 //        for (int i = 0; i < 40; i++) {
 //            JButton t = new JButton("" + i);

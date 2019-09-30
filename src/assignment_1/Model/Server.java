@@ -66,7 +66,9 @@ public class Server {
             stringBuilder.append(client+"&");
         }
         String clientList = stringBuilder.toString();
-        clientList = clientList.substring(0,clientList.length()-1);
+        if (clientList.length() > 0) {
+            clientList = clientList.substring(0,clientList.length()-1);
+        }
         for(ChatHandler each : this.clientTable.values()){
             each.sendMsg(new Message("UPDATE",clientList));
         }
@@ -125,7 +127,8 @@ public class Server {
 
         private void logout() throws IOException {
             Server.this.removeClient(this.sender);
-            Message msg = new Message("OFFLINE",this.sender+" are detached from server");
+            Message offlineMsg = new Message("OFFLINE",this.sender+" are detached from server");
+            this.sendMsg(offlineMsg);
             this.stopctl = true;
         }
 
@@ -144,7 +147,7 @@ public class Server {
                     ChatHandler target = Server.this.getChatHandler(receiver);
                     target.sendMsg(msg);
 
-                } else if (this.type.equals("LOGOUT")){
+                } else if (this.type.equals("OFFLINE")){
                     System.out.println(this.sender+" has logged out");
                     this.logout();
                 } else {

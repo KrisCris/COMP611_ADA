@@ -32,6 +32,10 @@ public class ClientController {
     }
 
     //Event listeners
+    public void processWindowCloseEvent() throws IOException {
+        this.switchState("Offline");
+    }
+
     public void processLoginEvent() throws IOException {
         JTextField nameField = this.login.getNameInput();
         String username = nameField.getText();
@@ -245,7 +249,7 @@ public class ClientController {
 
     public void switchState(String type) throws IOException {
         if(type.equals("Offline")){
-            this.sendRequestMsg("LOGOUT");
+            this.sendRequestMsg("OFFLINE");
         } else if (type.equals("Stealth")){
             //TODO switch to stealth mode, may change the ui.
         } else if (type.equals("Online")) {

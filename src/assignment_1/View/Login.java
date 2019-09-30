@@ -96,6 +96,7 @@ public class Login extends JFrame implements ActionListener,CommonFunc{
         } else{
             //TODO there might be some additional functionalities
         }
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
     }
 
     public static void main(String[] args) {
