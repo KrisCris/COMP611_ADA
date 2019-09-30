@@ -27,11 +27,11 @@ public class ChatRoom extends JFrame implements ActionListener,CommonFunc {
     private JButton user;
     private JButton receiver;
     private JButton sendBtn;
-//    private JButton you;
     private JPanel toolbar;
-
+    private Object[] statusSelection;
 
     public ChatRoom() {
+        this.statusSelection = new Object[]{"Online", "Stealth", "Offline"};
         this.leftPanel = new JPanel();
         this.rightPanel = new JPanel();
         this.userList = new JPanel();
@@ -73,8 +73,10 @@ public class ChatRoom extends JFrame implements ActionListener,CommonFunc {
         this.sendBtn.setEnabled(false);
         this.chatInput.setEnabled(false);
 
-        this.sendBtn.addActionListener(this);
         this.chatContents.setLayout(new GridBagLayout());
+
+        this.sendBtn.addActionListener(this);
+        this.user.addActionListener(this);
 
 //        for (int i = 0; i < 40; i++) {
 //            JButton t = new JButton("" + i);
@@ -201,6 +203,12 @@ public class ChatRoom extends JFrame implements ActionListener,CommonFunc {
             } catch (IOException ex) {
                 ex.printStackTrace();
             }
+        } else if(source == this.user){
+            try {
+                this.controller.processSwitchStatusEvent(this.statusSelection);
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
         }
 
     }
@@ -210,11 +218,11 @@ public class ChatRoom extends JFrame implements ActionListener,CommonFunc {
 
     }
 
-    public static void main(String[] args) {
-        EventQueue.invokeLater(()->{
-            ChatRoom chatRoom = new ChatRoom();
-            chatRoom.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            chatRoom.setVisible(true);
-        });
-    }
+//    public static void main(String[] args) {
+//        EventQueue.invokeLater(()->{
+//            ChatRoom chatRoom = new ChatRoom();
+//            chatRoom.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//            chatRoom.setVisible(true);
+//        });
+//    }
 }

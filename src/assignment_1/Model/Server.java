@@ -125,6 +125,7 @@ public class Server {
 
         private void logout() throws IOException {
             Server.this.removeClient(this.sender);
+            Message msg = new Message("OFFLINE",this.sender+" are detached from server");
             this.stopctl = true;
         }
 
@@ -144,8 +145,8 @@ public class Server {
                     target.sendMsg(msg);
 
                 } else if (this.type.equals("LOGOUT")){
+                    System.out.println(this.sender+" has logged out");
                     this.logout();
-
                 } else {
                     //TODO TBD
                 }

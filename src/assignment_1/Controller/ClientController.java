@@ -53,6 +53,22 @@ public class ClientController {
         this.sendChatMsg(target,content);
         this.updateChatMessage(target);
     }
+    
+    public void processSwitchStatusEvent(Object[] selection) throws IOException {
+        String status;
+        switch (this.client.getStatus()){
+            case 0: status = "Offline";break;
+            case 1: status = "Online";break;
+            case 2: status = "Stealth";break;
+            default:
+                status = "error";
+        }
+        String tips = "Change your status to: ";
+        String title = "Current status: "+status;
+        String op = (String)JOptionPane.showInputDialog(null,tips,title,JOptionPane.QUESTION_MESSAGE,null,selection,selection[2]);
+        System.out.println("selection:  "+op);
+        this.switchState(op);
+    }
 
 //    //control views
     public void showError(CommonFunc view,String alertMsg){
@@ -67,7 +83,7 @@ public class ClientController {
 
     public void updateChatMessage(String target){
         this.chatRoom.clearChatContents();
-        Map<GBC,String> messageList = this.processMessage(target);
+        Map<GBC,String> messageList = this.processMessage(this.getMessage(target));
         for(Map.Entry<GBC,String> each : messageList.entrySet()){
             this.chatRoom.addChatContent(each.getValue(),each.getKey());
         }
@@ -108,15 +124,16 @@ public class ClientController {
         }
     }
 
-    public Map<GBC,String> processMessage(String target){
+    //TODO some modifications are required to fix bugs with html
+    public Map<GBC,String> processMessage(ArrayList<Message> rawMsgList){
         Map<GBC,String> messageList = new LinkedHashMap<>();
-        if(!this.client.getMessageHistory().containsKey(target)){
-            this.client.getMessageHistory().put(target,new ArrayList<>());
-        }
-        ArrayList<Message> rawMsg = this.client.getMessageHistory().get(target);
+//        if(!this.client.getMessageHistory().containsKey(target)){
+//            this.client.getMessageHistory().put(target,new ArrayList<>());
+//        }
+//        ArrayList<Message> rawMsgList = this.client.getMessageHistory().get(target);
         String username = this.client.getUsername();
-        for(Message m: rawMsg) {
-            int index = rawMsg.indexOf(m);
+        for(Message m: rawMsgList) {
+            int index = rawMsgList.indexOf(m);
             int side = 0;
             if (m.getSender().equals(username)) {
                 side = 1;
@@ -165,13 +182,6 @@ public class ClientController {
         MessageHandler messageHandler = new MessageHandler(this.client.getSocket());
         Thread thread = new Thread(messageHandler);
         thread.start();
-    }
-
-
-    private void logout() throws IOException {
-        Message offlineMsg = new Message("LOGOUT",this.client.getUsername(),"","");
-        this.sendMsg(offlineMsg);
-        this.client.setStatus(0);
     }
 
     public void setClientList(String clientList){
@@ -228,8 +238,28 @@ public class ClientController {
         this.sendMsg(chat);
     }
 
-    public void stopClient(){
-        //TODO stop client thread and get offline
+    private void sendRequestMsg(String type) throws IOException {
+        Message request = new Message(type,this.client.getUsername(),"","");
+        this.sendMsg(request);
+    }
+
+    public void switchState(String type) throws IOException {
+        if(type.equals("Offline")){
+            this.sendRequestMsg("LOGOUT");
+        } else if (type.equals("Stealth")){
+            //TODO switch to stealth mode, may change the ui.
+        } else if (type.equals("Online")) {
+
+        } else {
+            System.out.println("[ switchState() ] : " + type);
+        }
+    }
+
+    public void reset(){
+        this.client = new Client();
+        this.chatRoom.setVisible(false);
+        this.login.reset();
+        this.login.setVisible(true);
     }
 
 
@@ -237,7 +267,7 @@ public class ClientController {
 
     private class MessageHandler implements Runnable {
         private Socket socket;
-        private boolean stopctl;
+        private boolean stopCtl;
         private Message msg;
         private String type;
         private String sender;
@@ -246,7 +276,7 @@ public class ClientController {
 
         public MessageHandler(Socket socket) {
             this.socket = socket;
-            this.stopctl = false;
+            this.stopCtl = false;
         }
 
         private void msgReactor() throws IOException, ClassNotFoundException {
@@ -272,15 +302,15 @@ public class ClientController {
                     }
 
                 } else if(this.type.equals("ERROR")) {
-                    ClientController.this.client.setStatus(4);
-                    ClientController.this.logout();
-                    this.stopctl = true;
+//                    ClientController.this.client.setStatus(4);
+//                    ClientController.this.logout();
+//                    this.stopctl = true;
                     //TODO LOGOUT maybe
 
-                } else if(this.type.equals("KICKED")) {
-                    ClientController.this.logout();
-                    this.stopctl = true;
-
+                } else if(this.type.equals("OFFLINE")) {
+                    ClientController.this.reset();
+                    this.stopCtl = true;
+                    
                 } else if(this.type.equals("DUPLICATED")) {
                     ClientController.this.showError(ClientController.this.login,"Username existed");
                     ClientController.this.login.setTitle("Try again");
@@ -294,7 +324,7 @@ public class ClientController {
                     System.out.println("[MSG REACTOR END]");
 
                 }
-            } while(!this.stopctl);
+            } while(!this.stopCtl);
         }
 
         private void readMessage() throws IOException, ClassNotFoundException {

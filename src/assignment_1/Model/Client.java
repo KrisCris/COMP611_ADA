@@ -1,7 +1,6 @@
 package assignment_1.Model;
 
 import java.io.*;
-import java.lang.reflect.Array;
 import java.net.InetAddress;
 import java.net.Socket;
 import java.util.*;
@@ -93,25 +92,6 @@ public class Client {
     }
 
     //0 offline
-    //4 error
-    //3 dup username
-    //2 logging
     //1 online
-
-//    public static void main(String[] args) throws IOException {
-//        Scanner in = new Scanner(System.in);
-//        Client client = new Client();
-//        System.out.println("enter your username:");
-//        client.login(in.nextLine());
-//        System.out.println("after login, choose a person to chat:");
-//
-//        String testMan = in.nextLine();
-//        System.out.println("you choice: "+testMan);
-//        while (true){
-////            client.sendChatMsg(testMan,in.nextLine());
-//            System.out.println("[CLI] sent");
-//        }
-//    }
-
-
+    //2 stealth
 }

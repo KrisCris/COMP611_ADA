@@ -66,6 +66,11 @@ public class Login extends JFrame implements ActionListener,CommonFunc{
         this.controller = controller;
     }
 
+    public void reset(){
+        this.setTitle("OFFLINE");
+        this.nameInput.setText("");
+    }
+
     @Override
     public void alert(String alertMsg){
         this.nameInput.setText(alertMsg);
