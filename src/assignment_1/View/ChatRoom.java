@@ -43,7 +43,7 @@ public class ChatRoom extends JFrame implements ActionListener,CommonFunc {
         this.inputScrollPane = new JScrollPane();
         this.chatInput = new JTextArea();
         this.user = new JButton("");
-        this.receiver = new JButton("");
+        this.receiver = new JButton("Click names to start Chats");
 //        this.you = new JButton("");
         this.sendBtn = new JButton("SEND");
         this.toolbar = new JPanel();
@@ -89,60 +89,12 @@ public class ChatRoom extends JFrame implements ActionListener,CommonFunc {
                 }
             }
         });
-
-//        for (int i = 0; i < 40; i++) {
-//            JButton t = new JButton("" + i);
-//            this.userList.add(t, new GBC(0, i, 1, 1).setWeight(100, 0).setFill(GBC.HORIZONTAL).setIpad(0, 25));
-//        }
-//        //a dummy JLabel below all the user btn, to take all the redundant spaces
-//        this.userList.add(new JLabel(""), new GBC(0, 40, 1, 1).setWeight(0, 1));
-//
-//        ArrayList<Message> al = new ArrayList<>();
-//        al.add(new Message("CHAT", "A", "B", "京东上的所有商品信息、客户评价、商品咨询、网友讨论等内容，是京东重要的经营资源，未经许可，禁止非法转载使用。\n" +
-//                "注：本站商品信息均来自于合作方，其真实性、准确性和合法性由信息拥有者（合作方）负责。本站不提供任何保证，并不承担任何法律责任。"));
-//        al.add(new Message("CHAT", "A", "B", "babla"));
-//        al.add(new Message("CHAT", "B", "A", "babla"));
-//        al.add(new Message("CHAT", "A", "B", "京东上的所有商品信息、客户评价、商品咨询、网友讨论等内容，是京东重要的经营资源，未经许可，禁止非法转载使用。\n" +
-//                "注：本站商品信息均来自于合作方，其真实性、准确性和合法性由信息拥有者（合作方）负责。本站不提供任何保证，并不承担任何法律责任。"));
-//        al.add(new Message("CHAT", "A", "B", "babla"));
-//        al.add(new Message("CHAT", "B", "A", "划线价：商品展示的划横线价格为参考价，并非原价，该价格可能是品牌专柜标价、商品吊牌价或由品牌供应商提供的正品零售价（如厂商指导价、建议零售价等）或该商品在京东平台上曾经展示过的销售价；由于地区、时间的差异性和市场行情波动，品牌专柜标价、商品吊牌价等可能会与您购物时展示的不一致，该价格仅供您参考。"));
-//        al.add(new Message("CHAT", "B", "A", "bablsddsafadsfasfdfasdfsafads\naffdsfdsfsdfsdfsdfdfdsfsdfsdfd"));
-//        al.add(new Message("CHAT", "A", "B", "babla"));
-//        al.add(new Message("CHAT", "B", "A", "babla"));
-//        al.add(new Message("CHAT", "A", "B", "babdsfadfdsafdsfasdfdsfsdfdsfsdfsdfsfdsfsdla"));
-//        this.chatContents.setLayout(new GridBagLayout());
-//        String user = "A";
-//        for (Message m : al) {
-//            int index = al.indexOf(m);
-//            int side = 0;
-//            if (m.getSender().equals(user)) {
-//                side = 1;
-//            }
-//            String content = m.getContent();
-//            //
-//            StringBuilder reBuildStr = new StringBuilder();
-//            reBuildStr.append("<html>");
-//            for (String str : content.split("\n")) {
-//                while (str.length() > 20) {
-//                    reBuildStr.append(str.substring(0, 20));
-//                    reBuildStr.append("<br>");
-//                    str = str.substring(20);
-//                }
-//                reBuildStr.append(str);
-//                reBuildStr.append("<br>");
-//            }
-//            reBuildStr.append("</html>");
-//            content = reBuildStr.toString();
-//            //
-//            this.chatContents.add(new JButton(content), new GBC(side, index, 1, 1).setWeight(100, 0).setFill(GBC.HORIZONTAL));
-//            //keep scrolling to bottom
-//            JScrollBar scrollBar = chatScrollPane.getVerticalScrollBar();
-//            scrollBar.setValue((scrollBar.getMaximum()));
-//        }
     }
+
     public void enableChat(){
         this.chatInput.setEnabled(true);
         this.sendBtn.setEnabled(true);
+        this.receiver.setEnabled(true);
     }
     public void setCurrentChatting(String target){
         this.receiver.setText(target);
@@ -153,7 +105,7 @@ public class ChatRoom extends JFrame implements ActionListener,CommonFunc {
 
     public void addChatContent(String content,GBC gbc){
         JButton msg = new JButton(content);
-        msg.setEnabled(false);
+//        msg.setEnabled(false);
         this.chatContents.add(msg,gbc);
         JScrollBar scrollBar = chatScrollPane.getVerticalScrollBar();
         scrollBar.setValue((scrollBar.getMaximum()));
@@ -165,9 +117,7 @@ public class ChatRoom extends JFrame implements ActionListener,CommonFunc {
     public void refreshChatContents(){
         this.chatContents.revalidate();
     }
-    public void switchChatTarget(){
 
-    }
     public void refreshUserList(){
         this.userList.revalidate();
     }
