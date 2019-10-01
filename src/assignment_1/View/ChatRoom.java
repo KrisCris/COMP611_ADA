@@ -104,7 +104,10 @@ public class ChatRoom extends JFrame implements ActionListener,CommonFunc {
     }
 
     public void addChatContent(String content,GBC gbc){
-        JButton msg = new JButton(content);
+//        JButton msg = new JButton(content);
+        JLabel msg = new JLabel(content);
+        msg.setBackground(new Color(220,222,226));
+        msg.setOpaque(true);
 //        msg.setEnabled(false);
         this.chatContents.add(msg,gbc);
         JScrollBar scrollBar = chatScrollPane.getVerticalScrollBar();
@@ -140,10 +143,11 @@ public class ChatRoom extends JFrame implements ActionListener,CommonFunc {
             }
         });
     }
-    public void userListFiller(GBC gbc){
-        this.userList.add(new JLabel(""),gbc);
-    }
 
+    public void rebuildUserlist(GBC gbc){
+        this.userList.add(new JLabel(""),gbc);
+        this.refreshUserList();
+    }
 
     public void init(String username){
         //TODO there can be a value to control the online status, like online,busy,etc.

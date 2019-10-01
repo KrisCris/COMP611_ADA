@@ -112,8 +112,7 @@ public class ClientController {
             this.chatRoom.addUser(username,gbc);
         }
         GBC dummy = new GBC(0, index+1, 1, 1).setWeight(0, 1);
-        this.chatRoom.userListFiller(dummy);
-        this.chatRoom.refreshUserList();
+        this.chatRoom.rebuildUserlist(dummy);
     }
 
     //

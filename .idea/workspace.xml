@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="405e7274-26e8-421b-b0dc-d3959e155847" name="Default Changelist" comment="init gui">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assignment_1/Controller/ClientController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/assignment_1/Controller/ClientController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/assignment_1/View/ChatRoom.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/assignment_1/View/ChatRoom.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -150,8 +151,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.ClientDemo" />
-        <item itemvalue="Application.ClientController" />
         <item itemvalue="Application.ServerDemo" />
+        <item itemvalue="Application.ClientController" />
         <item itemvalue="Application.Server" />
         <item itemvalue="Application.ChatRoom" />
       </list>
@@ -205,7 +206,9 @@
       <workItem from="1569763416269" duration="21031000" />
       <workItem from="1569819904680" duration="10763000" />
       <workItem from="1569853969727" duration="1472000" />
-      <workItem from="1569862457185" duration="4545000" />
+      <workItem from="1569862457185" duration="4552000" />
+      <workItem from="1569897668101" duration="1710000" />
+      <workItem from="1569904430153" duration="15000" />
     </task>
     <servers />
   </component>
