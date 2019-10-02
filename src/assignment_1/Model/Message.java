@@ -9,22 +9,38 @@ public class Message implements Serializable {
     private String sender;
     private String receiver;
     private String content;
+    private String stealthCode;
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public void setSender(String sender) {
+        this.sender = sender;
+    }
+
+    public void setReceiver(String receiver) {
+        this.receiver = receiver;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public String getStealthCode() {
+        return stealthCode;
+    }
+
+    public void setStealthCode(String stealthCode) {
+        this.stealthCode = stealthCode;
+    }
 
     public Message(String msg) {
         MESSAGE = msg;
         divMsg(MESSAGE);
     }
 
-    /*
-     * generally used constructor,
-     * which are suitable for all kinds of message
-     */
-    public Message(String type,String sender,String receiver,String content){
-        this.type = type;
-        this.sender = sender;
-        this.receiver = receiver;
-        this.content = content;
-    }
+
     /*
      * constructor for Server to send notifications to target clients,
      * which neither sender nor receiver parameter are needed.
@@ -34,6 +50,28 @@ public class Message implements Serializable {
         this.sender = "";
         this.receiver = "";
         this.content = content;
+        this.stealthCode = null;
+    }
+    /*
+     * generally used constructor,
+     * which are suitable for all kinds of message
+     */
+    public Message(String type,String sender,String receiver,String content,String stealthCode){
+        this.type = type;
+        this.sender = sender;
+        this.receiver = receiver;
+        this.content = content;
+        this.stealthCode = stealthCode;
+    }
+    public Message(String type,String sender,String content,String stealthCode){
+        this.type = type;
+        this.sender = sender;
+        this.receiver = "";
+        this.content = content;
+        this.stealthCode = stealthCode;
+    }
+    public Message(){
+
     }
     /*
      * This is the legacy way i decided to use for different kind of messages,
@@ -79,4 +117,7 @@ public class Message implements Serializable {
 //        Message msg = new Message(eg);
 //        System.out.println(msg.getType()+"\n"+msg.getSender()+"\n"+msg.getReceiver()+"\n"+msg.getContent());
 //    }
+    public String toString(){
+        return "["+this.getType()+"]["+this.getSender()+"]["+this.getReceiver()+"]["+this.getContent()+"]["+this.getStealthCode()+"]";
+    }
 }

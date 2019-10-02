@@ -16,6 +16,7 @@ public class Client {
 
     private int status;
     private String username;
+    private String stealthCode;
 
     private LinkedList<String> clientList;
     private Map<String,ArrayList<Message>> messageHistory;
@@ -23,8 +24,17 @@ public class Client {
 
     public Client(){
         this.status = 0;
+        this.stealthCode = null;
         this.clientList = new LinkedList<>();
         this.messageHistory = new LinkedHashMap<>();
+    }
+
+    public String getStealthCode() {
+        return stealthCode;
+    }
+
+    public void setStealthCode(String stealthCode) {
+        this.stealthCode = stealthCode;
     }
 
     public String getUsername(){
