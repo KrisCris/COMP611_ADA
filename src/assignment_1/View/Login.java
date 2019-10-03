@@ -29,6 +29,9 @@ public class Login extends JFrame implements ActionListener,CommonFunc{
         this.setLayout(null);
         this.nameInput.setBounds(50,50,150,30);
         this.loginBtn.setBounds(50,200,150,50);
+        /*
+         * Auto show and remove tips on the username input bar.
+         */
         this.nameInput.addFocusListener(new FocusListener() {
             @Override
             public void focusGained(FocusEvent e) {
@@ -82,7 +85,7 @@ public class Login extends JFrame implements ActionListener,CommonFunc{
         /*
          * Set cursor to indicate computation on-going; this matters only if
          * processing the event might take a noticeable amount of time as seen
-         * by the user
+         * by the user.
          */
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
 
@@ -93,17 +96,7 @@ public class Login extends JFrame implements ActionListener,CommonFunc{
             } catch (IOException ex) {
                 ex.printStackTrace();
             }
-        } else{
-            //TODO there might be some additional functionalities
-        }
+        } else{ ; }
         this.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
-    }
-
-    public static void main(String[] args) {
-        EventQueue.invokeLater(()->{
-            Login login = new Login();
-
-            login.setVisible(true);
-        });
     }
 }

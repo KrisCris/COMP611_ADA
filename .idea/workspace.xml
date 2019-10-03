@@ -3,12 +3,17 @@
   <component name="ChangeListManager">
     <list default="true" id="405e7274-26e8-421b-b0dc-d3959e155847" name="Default Changelist" comment="init gui">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ADA/META-INF/ADA.kotlin_module" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/assignment_1/Controller/ClientController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/assignment_1/Controller/ClientController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assignment_1/Controller/ServerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/assignment_1/Controller/ServerController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/assignment_1/Model/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/assignment_1/Model/Client.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/assignment_1/Model/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/assignment_1/Model/Message.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/assignment_1/Model/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/assignment_1/Model/Server.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/assignment_1/Test/ServerDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/assignment_1/Test/ServerDemo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/assignment_1/View/ChatRoom.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/assignment_1/View/ChatRoom.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assignment_1/View/CommonFunc.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/assignment_1/View/CommonFunc.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assignment_1/View/GBC.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/assignment_1/View/GBC.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assignment_1/View/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/assignment_1/View/Login.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -72,7 +77,7 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="preferences.general" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -118,19 +123,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PopMsg" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="assignment_1.View.PopMsg" />
-      <module name="ADA" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="assignment_1.View.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="ServerDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="assignment_1.Test.ServerDemo" />
       <module name="ADA" />
@@ -157,20 +149,33 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="assignment_1.View.test" />
+      <module name="ADA" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="assignment_1.View.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <list>
       <item itemvalue="Application.ClientDemo" />
       <item itemvalue="Application.ServerDemo" />
       <item itemvalue="Application.ClientController" />
-      <item itemvalue="Application.PopMsg" />
       <item itemvalue="Application.TextContainer" />
+      <item itemvalue="Application.test" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.ClientDemo" />
         <item itemvalue="Application.ServerDemo" />
+        <item itemvalue="Application.test" />
         <item itemvalue="Application.ClientController" />
         <item itemvalue="Application.TextContainer" />
-        <item itemvalue="Application.PopMsg" />
       </list>
     </recent_temporary>
   </component>
@@ -226,7 +231,12 @@
       <workItem from="1569897668101" duration="1710000" />
       <workItem from="1569904430153" duration="15000" />
       <workItem from="1569911660285" duration="33455000" />
-      <workItem from="1569990928203" duration="10747000" />
+      <workItem from="1569990928203" duration="11471000" />
+      <workItem from="1570019061057" duration="12515000" />
+      <workItem from="1570037395465" duration="66000" />
+      <workItem from="1570072101291" duration="15786000" />
+      <workItem from="1570099704738" duration="715000" />
+      <workItem from="1570101066648" duration="449000" />
     </task>
     <servers />
   </component>

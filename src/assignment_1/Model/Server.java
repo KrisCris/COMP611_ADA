@@ -11,10 +11,24 @@ import java.io.ObjectOutputStream;
 /*
  * The chat room Server.
  *
- * The MVC Pattern haven't been fully implemented, due to the limitation of time.
- * And because of that, most methods are still in Class Sever than its controller.
- * However, the Client side is based on MVC.
+ * The MVC Pattern haven't been implemented to server, due to the limitation of time,
+ * so that the server controller and view in their folder is still in progress.
+ * But at least the Server.class with ServerDemo.class are fully functional.
  *
+ * While I did had some idea about the "MVC" of server:
+ * 1. Server controller observing both server (Model) and a CLI (View).
+ * 2. Model only owns a bunch of map/list which contains sockets of every online client and some getter and setters.
+ * 3. Controller:
+ * 3.1. Controller has a thread for serverSocket listening for requests from new client.
+ * 3.1. It also has a inner class implementing runnable for each socket listening for its client requests.
+ * 3.2. Besides, there are a list of methods to deal with messages received and model/view control in the Controller.
+ * 4. View
+ * 4.1. The View is for inputting parameters that control the way server works including to stop the server.
+ * 4.2. It also could have some abilities to output some logs to the screen or disk for debugging or something.
+ * 4.3. All these functionality are observed and called by its Controller.
+ * Above may be possible to be implemented in the future.
+ *
+ * BTW, the Client side is based on MVC.
  *
  */
 public class Server {
@@ -22,18 +36,15 @@ public class Server {
     private static final int BACKLOG = 100;
 
     private ServerSocket serverSocket;
+    private ChatHandler watch;
     private Map<String,ChatHandler> clientTable;
     private Map<String,Map<String,ChatHandler>> stealthList;
-
-    public static void main(String[] args) throws IOException {
-        Server chatServer = new Server();
-        chatServer.init();
-        chatServer.startSocketListener();
-    }
+    private boolean serverStopCtrl;
 
     public Server(){
         this.clientTable = new HashMap<>();
         this.stealthList = new HashMap<>();
+        this.serverStopCtrl = false;
     }
 
     public void init() throws IOException {
@@ -45,26 +56,50 @@ public class Server {
         System.out.println("Server started at " + InetAddress.getLocalHost() + " on port " + port);
     }
 
-    public void startSocketListener() throws IOException {
-        while(true) {
-            Socket socket = this.serverSocket.accept();
-            System.out.println("Connection made with " + socket.getInetAddress());
-            ChatHandler chatHandler = new ChatHandler(socket);
-            Thread thread = new Thread(chatHandler);
-            thread.start();
-        }
+    /*
+     * To create a thread for serverSocket listening for new connections.
+     * The variable serverStopCtrl is used to stop this thread.
+     */
+    public void startSocketListener(){
+        Thread serverSocketListener = new Thread(() -> {
+            while(!Server.this.serverStopCtrl) {
+                Socket socket = null;
+                try {
+                    socket = Server.this.serverSocket.accept();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                System.out.println("Connection made with " + socket.getInetAddress());
+                this.watch = new ChatHandler(socket);
+                Thread thread = new Thread(this.watch);
+                thread.start();
+                if(Server.this.serverStopCtrl){
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        });
+        serverSocketListener.start();
     }
 
+    /*
+     * To get the Runnable chatHandler of target client, which provides controller methods to communication.
+     */
     public ChatHandler getChatHandler(String username){
         ChatHandler chatHandler = clientTable.get(username);
         return chatHandler;
     }
-
     public ChatHandler getChatHandler(String code,String username){
         ChatHandler chatHandler = this.stealthList.get(code).get(username);
         return chatHandler;
     }
 
+    /*
+     * Ensuring no user share the same name.
+     */
     public boolean ifUserDuplicated(String username){
         Boolean online = this.clientTable.containsKey(username);
         Boolean stealth = false;
@@ -77,6 +112,9 @@ public class Server {
         return online||stealth;
     }
 
+    /*
+     * A synchronized method to remove any client from clientList.
+     */
     public synchronized ChatHandler removeClient(String username) throws IOException {
         ChatHandler removed = null;
         if(this.clientTable.containsKey(username)){
@@ -85,7 +123,6 @@ public class Server {
         this.sendOnlineList();
         return removed;
     }
-
     public synchronized ChatHandler removeClient(String code, String username) throws IOException {
         ChatHandler removed = null;
         if (this.stealthList.containsKey(code)){
@@ -98,6 +135,9 @@ public class Server {
         return removed;
     }
 
+    /*
+     * A synchronized method to provide a client online list for clients.
+     */
     public synchronized void sendOnlineList() throws IOException {
         StringBuilder stringBuilder = new StringBuilder();
         for(String client : this.clientTable.keySet()){
@@ -111,14 +151,6 @@ public class Server {
             each.sendMsg(new Message("UPDATE",clientList));
         }
     }
-
-    public void stopServer(int time) throws InterruptedException, IOException {
-        Timer timer = new Timer();
-        timer.wait(time);
-        //TODO times
-        this.sendAll("STOP","Server is down");
-    }
-
     public void sendAll(String type, String content) throws IOException {
         Message msg = new Message(type,content);
         for(ChatHandler each : this.clientTable.values()){
@@ -131,6 +163,9 @@ public class Server {
         }
     }
 
+    /*
+     * To switch client to stealth mode.
+     */
     public void stealth(String code, String username, ChatHandler chatHandler) throws IOException {
         if(!this.stealthList.containsKey(code)){
             this.stealthList.put(code,new HashMap<String,ChatHandler>());
@@ -139,7 +174,10 @@ public class Server {
         this.sendStealthList(code);
     }
 
-    public void sendStealthList(String code) throws IOException {
+    /*
+     * A synchronized method to provide a client stealth list for stealth clients.
+     */
+    public synchronized void sendStealthList(String code) throws IOException {
         StringBuilder stringBuilder = new StringBuilder();
         for(String client : this.stealthList.get(code).keySet()){
             stringBuilder.append(client+"&");
@@ -153,30 +191,56 @@ public class Server {
         }
     }
 
-//    private class stopListener implements Runnable{
-//
-//        @Override
-//        public void run() {
-//            Scanner scanner = new Scanner(System.in);
-//            String ctrl = "";
-//            System.out.println("enter shutdown + Minute to stop server");
-//            do{
-//                ctrl = scanner.nextLine();
-//                String[] ctrls = ctrl.split(" ");
-//                if(ctrls.length == 2 && (ctrls[0].equals("shutdown") && isPositiveDigital(ctrls[1]))){
-//                    break;
-//                } else {
-//                    System.out.println("[Warn] Wrong format!");
-//                    System.out.println("[Info] Please follow the format:");
-//                    System.out.println("[Info] \"shutdown\" + MINUTES");
-//                    System.out.println("[Info] e.g. shutdown 10");
-//                }
-//            } while (true);
-//            //TODO SHUTDOWN SERVER
-//        }
-//    }
+    /*
+     * To send a warning before stopping the server.
+     */
+    public void stopWarn(int timer) throws InterruptedException, IOException {
+        this.sendAll("STOP",timer+"");
+    }
 
-    public static boolean isPositiveDigital(String str) {
+    /*
+     * To check the number of clients connected to the server.
+     */
+    public int countAll(){
+        int online = this.clientTable.size();
+        int stealth = 0;
+        for(Map<String,ChatHandler> map: this.stealthList.values()){
+            stealth += map.size();
+        }
+        return online+stealth;
+    }
+
+    /*
+     * To fully shutdown the server application;
+     */
+    public void stopServer() throws IOException, InterruptedException, ClassNotFoundException {
+        this.serverStopCtrl = true;
+        Socket poison = new Socket("127.0.0.1",PORT);
+        ObjectInputStream objectInputStream = new ObjectInputStream(poison.getInputStream());
+        ObjectOutputStream objectOutputStream = new ObjectOutputStream(poison.getOutputStream());
+        for(ChatHandler ch: clientTable.values()){
+            ch.stopChatHandler();
+        }
+        for(Map<String,ChatHandler> map:this.stealthList.values()){
+            for(ChatHandler ch:map.values()){
+                ch.stopChatHandler();
+            }
+        }
+        System.out.println("All AFK client sockets stopped.");
+        objectOutputStream.writeObject(new Message("OFFLINE",""));
+        poison.shutdownInput();
+        poison.shutdownOutput();
+        poison.close();
+        System.out.println("Poison socket stopped.");
+        this.serverSocket.close();
+        System.out.println("ServerSocket closed.");
+        System.exit(0);
+    }
+
+    /*
+     * Used to ensure a input string is positive digit.
+     */
+    public static boolean isPositiveDigit(String str) {
         int value = 0;
         try {
             value = Integer.parseInt(str);
@@ -190,6 +254,11 @@ public class Server {
         }
     }
 
+    /*
+     * The actual class used for listening to clients' requests.
+     * Each client will own a single thread of it.
+     * And the instances of this thread will be stored into clientList/stealthList
+     */
     private class ChatHandler implements Runnable{
         private Socket socket;
         private ObjectInputStream objIn;
@@ -228,21 +297,29 @@ public class Server {
             this.objOut.writeObject(msg);
         }
 
+        /*
+         * To deal with this the login stuff of this client.
+         * This method does something like ensuring the username is not duplicated,
+         * adding this client to online list and notifying other clients.
+         * Then it will send a message that tells the client whether or not it has successfully logged in.
+         */
         private void login() throws IOException {
-            System.out.println("[NOTIFICATION] "+this.sender+"/"+this.socket.getInetAddress()+" tried to login");
             if(Server.this.ifUserDuplicated(this.sender)){
                 Message err_dup = new Message("DUPLICATED","username already existed");
                 this.sendMsg(err_dup);
                 this.stopctl = true;
-                System.out.println("[ERROR] "+this.sender+"/"+this.socket.getInetAddress()+" username conflicted");
             } else {
                 Server.this.clientTable.put(sender,this);
                 Message passed = new Message("INIT",sender+"successfully logged in");
                 this.sendMsg(passed);
-                System.out.println("[SUCCEED] "+sender+" has login!");
             }
         }
 
+        /*
+         * To do the logout stuff.
+         * The message sent is to notify this client that it has successfully logged out.
+         * The method notifying other clients is written in Server.this.removeClient().
+         */
         private void logout() throws IOException {
             Server.this.removeClient(this.sender);
             Message offlineMsg = new Message("OFFLINE",this.sender+" are detached from server");
@@ -254,18 +331,21 @@ public class Server {
             this.sendMsg(offlineMsg);
         }
 
+        /*
+         * Different reactions to different types of messages.
+         */
         private void msgReactor() throws IOException, ClassNotFoundException {
             this.initIOStream();
-            System.out.println("---Waiting for client request---");
+            System.out.println("Waiting for client requests");
             do{
+                /*
+                 * Receiving and "decoding" the message.
+                 */
                 this.readMessage();
-                System.out.println(this.msg.toString());
-
                 if (this.type.equals("LOGIN")){
                     /*
-                     * Implemented for only the login request.
+                     * This is only for login request.
                      * User will be logged into Online mode by default.
-                     *
                      * Directly log into other modes may be possible in the future, but not for now,
                      * since it is such a time wasting work.
                      */
@@ -275,6 +355,7 @@ public class Server {
                 } else if (this.type.equals("CHAT")){
                     /*
                      * Forwarding chat message to the target user.
+                     * If stealthCode is not null, it means this user is in stealth mode.
                      */
                     if(this.stealthCode==null){
                         System.out.println(this.sender+" sent msg to "+this.receiver+" : "+this.content);
@@ -287,20 +368,22 @@ public class Server {
                 } else if (this.type.equals("OFFLINE")){
                     /*
                      * To deal with logout request.
-                     *
-                     * A online user list updating notification is integrated into the logout method.
                      */
-                    if(this.stealthCode==null){
-                        this.logout();
-                    } else {
-                        this.logout(this.stealthCode);
+                    if(this.sender.equals("")&&this.receiver.equals("")){
+                        System.out.println("one is forced to stop");
+                    }else {
+                        if(this.stealthCode==null){
+                            this.logout();
+                        } else {
+                            this.logout(this.stealthCode);
+                        }
+                        System.out.println(this.sender+" has logged out");
                     }
-                    System.out.println(this.sender+" has logged out");
-                    this.stopctl = true;
+                    this.stopChatHandler();
                 } else if (this.type.equals("STEALTH")){
                     /*
-                     * In stealth msg, stealthCode is the stealth portion current stays,
-                     * and content contains the new stealthCode.
+                     * In stealth messages, the stealthCode is the stealth portion client current stays,
+                     * and the content contains the new stealthCode.
                      *
                      * By adding handler to a new stealth room before removing it from previous room,
                      * we are confident that no one would login with the same name between the two steps.
@@ -309,13 +392,10 @@ public class Server {
                     if(this.stealthCode == null){
                         Server.this.removeClient(this.sender);
                     } else {
-                        System.out.println("current stealth code = "+ this.stealthCode);
                         Server.this.removeClient(this.stealthCode,this.sender);
                     }
                     Message stealthMsg = new Message("STEALTH",this.content);
                     this.sendMsg(stealthMsg);
-                    System.out.println(this.sender+" switched to stealth room: "+this.content+ " from "+this.stealthCode);
-
                 } else if(this.type.equals("ONLINE")){
                     /*
                      * Only for those who want to switch back to online mode from stealth
@@ -329,6 +409,8 @@ public class Server {
                     Message onlineMsg = new Message("ONLINE","");
                     this.sendMsg(onlineMsg);
                     Server.this.sendOnlineList();
+                } else {
+                    System.out.println(this.msg.toString());
                 }
             } while (!this.stopctl);
         }
@@ -341,6 +423,13 @@ public class Server {
             } catch (ClassNotFoundException e) {
                 e.printStackTrace();
             }
+        }
+
+        public void stopChatHandler() throws IOException {
+            this.objIn.close();
+            this.objOut.close();
+            this.socket.close();
+            this.stopctl = true;
         }
 
     }

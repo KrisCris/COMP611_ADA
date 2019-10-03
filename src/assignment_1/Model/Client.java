@@ -14,6 +14,12 @@ public class Client {
     private ObjectOutputStream objOut;
     private ObjectInputStream objIn;
 
+    /*
+     * status:
+     * 1 = online
+     * 2 = stealth
+     * 0 = offline
+     */
     private int status;
     private String username;
     private String stealthCode;
@@ -29,6 +35,9 @@ public class Client {
         this.messageHistory = new LinkedHashMap<>();
     }
 
+    /*
+     * Getters and setters.
+     */
     public String getStealthCode() {
         return stealthCode;
     }
@@ -101,7 +110,4 @@ public class Client {
         this.status = status;
     }
 
-    //0 offline
-    //1 online
-    //2 stealth
 }

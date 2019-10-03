@@ -27,6 +27,22 @@ public class Message implements Serializable {
         this.content = content;
     }
 
+    public String getType() {
+        return type;
+    }
+
+    public String getSender() {
+        return sender;
+    }
+
+    public String getReceiver() {
+        return receiver;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
     public String getStealthCode() {
         return stealthCode;
     }
@@ -73,6 +89,11 @@ public class Message implements Serializable {
     public Message(){
 
     }
+
+    public String toString(){
+        return "["+this.getType()+"]["+this.getSender()+"]["+this.getReceiver()+"]["+this.getContent()+"]["+this.getStealthCode()+"]";
+    }
+
     /*
      * This is the legacy way i decided to use for different kind of messages,
      * which is replaced by sending a Message object directly,
@@ -90,34 +111,5 @@ public class Message implements Serializable {
         this.sender = msg.substring(indexSender+8,indexReceiver-1);
         this.receiver = msg.substring(indexReceiver+10,indexContent-1);
         this.content = msg.substring(indexContent+9,msg.length()-1);
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public String getSender() {
-        return sender;
-    }
-
-    public String getReceiver() {
-        return receiver;
-    }
-
-    public String getContent() {
-        return content;
-    }
-
-    /*
-     * testing the legacy method.
-     * no need anymore.
-     */
-//    public static void main(String[] args){
-//        String eg = "{TYPE=LOGIN}{SENDER=hello}{RECEIVER=world}{CONTENT=helloWorld}";
-//        Message msg = new Message(eg);
-//        System.out.println(msg.getType()+"\n"+msg.getSender()+"\n"+msg.getReceiver()+"\n"+msg.getContent());
-//    }
-    public String toString(){
-        return "["+this.getType()+"]["+this.getSender()+"]["+this.getReceiver()+"]["+this.getContent()+"]["+this.getStealthCode()+"]";
     }
 }

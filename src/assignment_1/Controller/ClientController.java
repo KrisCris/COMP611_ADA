@@ -8,15 +8,16 @@ import assignment_1.View.GBC;
 import assignment_1.View.Login;
 
 import javax.swing.*;
+import javax.swing.Timer;
 import java.awt.*;
-import java.io.BufferedReader;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.InetAddress;
 import java.net.Socket;
 import java.util.*;
-import java.util.concurrent.ConcurrentLinkedDeque;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -26,6 +27,8 @@ public class ClientController {
     //view
     private ChatRoom chatRoom;
     private Login login;
+    //
+    private MessageHandler msgHandler;
 
     public ClientController(Client client,Login login,ChatRoom chatroom){
         this.client = client;
@@ -53,6 +56,9 @@ public class ClientController {
         String username = nameField.getText();
         if(nameField.getForeground()==Color.RED || nameField.getForeground()==Color.gray){
             nameField.setForeground(Color.RED);
+        } else if(username.contains(" ")) {
+            nameField.setText("Blank is invalid!");
+            nameField.setForeground(Color.red);
         } else {
             this.login.setTitle("Logging, wait patiently");
             this.login(username);
@@ -170,14 +176,13 @@ public class ClientController {
             if(this.isContainChinese(content)){
                 len = 20;
             } else {
-                len = 45;
+                len = 47;
             }
             for (String str : content.split("\n")) {
-                Runtime.getRuntime().gc();
                 int _len = len;
                 while (str.length() > len) {
                     _len = len;
-                    if(len==45){
+                    if(len==47){
                         while(str.charAt(_len)!=' '){
                             if(_len<1){
                                 _len = len;
@@ -222,8 +227,8 @@ public class ClientController {
     }
 
     private void initMessageHandlerThread(){
-        MessageHandler messageHandler = new MessageHandler(this.client.getSocket());
-        Thread thread = new Thread(messageHandler);
+        this.msgHandler = new MessageHandler(this.client.getSocket());
+        Thread thread = new Thread(msgHandler);
         thread.start();
     }
 
@@ -293,10 +298,16 @@ public class ClientController {
             //TODO switch to stealth mode, may change the ui.
             String tips = "People sharing the same code can see each other";
             String title = "Enter your stealth code";
+            if(this.client.getStatus()==2){
+                tips = "Your current code is "+this.client.getStealthCode();
+                title = "Enter a new code to switch.";
+            }
             String code = (String)JOptionPane.showInputDialog(null,tips,title,JOptionPane.PLAIN_MESSAGE,null,null,"");
             if(code != null){
-                if(code.equals("") || code.equals(this.client.getStealthCode())){
-                    JOptionPane.showMessageDialog(null,"You cannot use nether a blank nor current code.","Invalid stealth code!",JOptionPane.ERROR_MESSAGE);
+                if(code.equals("") || code.contains(" ")){
+                    JOptionPane.showMessageDialog(null,"Code shouldn't contain blanks or be empty.","Invalid stealth code!",JOptionPane.ERROR_MESSAGE);
+                } else if(code.equals(this.client.getStealthCode()) ) {
+                    JOptionPane.showMessageDialog(null,"You are already using this code.","Invalid stealth code!",JOptionPane.ERROR_MESSAGE);
                 } else {
                     this.sendRequestMsg("STEALTH",code);
                 }
@@ -321,7 +332,20 @@ public class ClientController {
         Runtime.getRuntime().gc();
         this.login.setVisible(true);
     }
+    public JDialog alert(String msg){
+        JOptionPane pane = new JOptionPane(msg,JOptionPane.WARNING_MESSAGE);
+        JDialog dialog = pane.createDialog(null,"ALERT");
+        dialog.setModal(false);
+        dialog.setVisible(true);
+        return dialog;
+    }
 
+    public void stop() throws IOException {
+        this.msgHandler.stop();
+        this.client.getObjIn().close();
+        this.client.getObjOut().close();
+        this.client.getSocket().close();
+    }
     private class MessageHandler implements Runnable {
         private Socket socket;
         private boolean stopCtl;
@@ -336,39 +360,53 @@ public class ClientController {
             this.stopCtl = false;
         }
 
+        public void stop(){
+            this.stopCtl = true;
+        }
+
         private void msgReactor() throws IOException, ClassNotFoundException {
-            do{
+            do {
                 this.readMessage();
-                System.out.println(msg.toString());;
-                if(this.type.equals("INIT")){
+                System.out.println(msg.toString());
+                ;
+                if (this.type.equals("INIT")) {
                     ClientController.this.client.setStatus(1);
                     ClientController.this.login.setVisible(false);
                     ClientController.this.initChatRoom();
-                } else if(this.type.equals("CHAT")){
+                } else if (this.type.equals("CHAT")) {
                     ClientController.this.addToMsgHistory(msg);
                     ClientController.this.alertNewMsg(msg);
                     //debug
-                    System.out.println(this.sender+" : "+this.content);
+                    System.out.println(this.sender + " : " + this.content);
 
-                } else if(this.type.equals("UPDATE")) {
+                } else if (this.type.equals("UPDATE")) {
                     ClientController.this.setClientList(this.content);
                     ClientController.this.refreshMessageHistory();
                     ClientController.this.updateViewClientList();
                     ClientController.this.alertTargetOffline();
                     //debug
                     System.out.print("[ALERT]online list: ");
-                    for(String client: ClientController.this.client.getClientList()) {
+                    for (String client : ClientController.this.client.getClientList()) {
                         System.out.println(client + ", ");
                     }
 
-                } else if(this.type.equals("STOP")) {
+                } else if (this.type.equals("STOP")) {
+                    JDialog dialog = ClientController.this.alert("Server will shutdown. Please logout after saving your data.");
+                    new Timer(Integer.parseInt(content), new ActionListener() {
+                        @Override
+                        public void actionPerformed(ActionEvent e) {
+                            dialog.setVisible(false);
+                        }
+                    }).start();
+                } else if(this.type.equals("FORCE_STOP")){
+                    ClientController.this.stop();
                     ClientController.this.reset();
-                    ClientController.this.login.alert("Server is down");
-
+                    ClientController.this.alert(this.content);
                 } else if(this.type.equals("ALERT")){
                     JOptionPane.showMessageDialog(null, this.content, "Alert",JOptionPane.WARNING_MESSAGE);
 
                 } else if(this.type.equals("OFFLINE")) {
+                    ClientController.this.stop();
                     ClientController.this.reset();
                     this.stopCtl = true;
                 } else if(this.type.equals("DUPLICATED")) {
@@ -409,6 +447,7 @@ public class ClientController {
                 e.printStackTrace();
             }
         }
+
     }
 
     public static void main(String[] args) throws IOException {

@@ -7,10 +7,7 @@ import assignment_1.Model.Message;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
+import java.awt.event.*;
 import java.io.IOException;
 import static javax.swing.ScrollPaneConstants.*;
 import java.util.LinkedList;
@@ -134,8 +131,6 @@ public class ChatRoom extends JFrame implements ActionListener,CommonFunc {
             msg.setBackground(new Color(220,222,226));
         }
         this.chatContents.add(msg,gbc);
-        JScrollBar scrollBar = chatScrollPane.getVerticalScrollBar();
-        scrollBar.setValue((scrollBar.getMaximum()));
     }
     public void clearChatContents(){
         this.chatContents.removeAll();
@@ -144,13 +139,17 @@ public class ChatRoom extends JFrame implements ActionListener,CommonFunc {
     public void refreshChatContents(int index){
         this.dummyChatFiller(index);
         this.chatContents.revalidate();
+        SwingUtilities.invokeLater(() -> {
+            JScrollBar bar = chatScrollPane.getVerticalScrollBar();
+            bar.setValue(bar.getMaximum());
+        });
     }
 
     public void dummyChatFiller(int index){
-        JLabel left = new JLabel("                                             ");
-        JLabel right = new JLabel("                                             ");
-        GBC gbcL = new GBC(0, index, 1, 1).setWeight(100, 0).setFill(GBC.HORIZONTAL);
-        GBC gbcR = new GBC(1, index, 1, 1).setWeight(100, 0).setFill(GBC.HORIZONTAL);
+        JLabel left = new JLabel("                                               ");
+        JLabel right = new JLabel("                                               ");
+        GBC gbcL = new GBC(0, index, 1, 1).setWeight(0, 1).setFill(GBC.HORIZONTAL);
+        GBC gbcR = new GBC(1, index, 1, 1).setWeight(0, 1).setFill(GBC.HORIZONTAL);
         this.chatContents.add(left,gbcL);
         this.chatContents.add(right,gbcR);
     }
@@ -196,7 +195,7 @@ public class ChatRoom extends JFrame implements ActionListener,CommonFunc {
     @Override
     public void actionPerformed(ActionEvent e) {
         Object source = e.getSource();
-        if(source == this.sendBtn){
+        if(source == this.sendBtn && !this.chatInput.getText().equals("")){
             String target = this.getCurrentChatting();
             String content = this.chatInput.getText();
             this.chatInput.setText("");
@@ -220,11 +219,4 @@ public class ChatRoom extends JFrame implements ActionListener,CommonFunc {
 
     }
 
-//    public static void main(String[] args) {
-//        EventQueue.invokeLater(()->{
-//            ChatRoom chatRoom = new ChatRoom();
-//            chatRoom.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//            chatRoom.setVisible(true);
-//        });
-//    }
 }
