@@ -51,10 +51,11 @@ public class Login extends JFrame implements ActionListener,CommonFunc{
                 }
             }
         });
-        this.add(this.nameInput);
         this.add(this.loginBtn);
+        this.add(this.nameInput);
 
         this.loginBtn.addActionListener(this);
+
     }
 
     public JTextField getNameInput() {

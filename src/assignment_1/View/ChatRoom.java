@@ -30,9 +30,10 @@ public class ChatRoom extends JFrame implements ActionListener,CommonFunc {
     private JButton sendBtn;
     private JPanel toolbar;
     private Object[] statusSelection;
+    private JLabel onlineNum;
 
     public ChatRoom() {
-
+        this.onlineNum = new JLabel("Clients: 0");
         this.statusSelection = new Object[]{"Online", "Stealth", "Offline"};
         this.leftPanel = new JPanel();
         this.rightPanel = new JPanel();
@@ -95,7 +96,14 @@ public class ChatRoom extends JFrame implements ActionListener,CommonFunc {
             }
         });
     }
-
+    public void setOnlineNumber(int num){
+        this.onlineNum.setText("Client: "+num);
+        this.onlineNum.setOpaque(true);
+        this.onlineNum.setBorder(new EmptyBorder(0,25,0,15));
+        this.onlineNum.setBackground(new Color(45, 182, 245));
+        GBC gbc = new GBC(0, 0, 1, 1).setWeight(100, 0).setFill(GBC.HORIZONTAL).setIpad(0, 25);
+        this.userList.add(this.onlineNum,gbc);
+    }
     public boolean getChatState(){
         return this.receiver.isEnabled();
     }

@@ -131,8 +131,9 @@ public class ClientController {
         LinkedList<String> clientList= this.client.getClientList();
         int index = 0;
         this.chatRoom.clearUserList();
+        this.chatRoom.setOnlineNumber(clientList.size()+1);
         for(String username : clientList){
-            index = clientList.indexOf(username);
+            index = clientList.indexOf(username)+1;
             GBC gbc = new  GBC(0, index, 1, 1).setWeight(100, 0).setFill(GBC.HORIZONTAL).setIpad(0, 25);
             this.chatRoom.addUser(username,gbc);
         }
@@ -447,17 +448,6 @@ public class ClientController {
                 e.printStackTrace();
             }
         }
-
-    }
-
-    public static void main(String[] args) throws IOException {
-//        ClientController controller = new ClientController();
-//        controller.login("TOM");
-//        Scanner scanner = new Scanner(System.in);
-//        String msg = "";
-//        while (!(msg = scanner.nextLine()).equals("#quit")){
-//            controller.chatWith("CHRIS",msg);
-//        }
 
     }
 }
