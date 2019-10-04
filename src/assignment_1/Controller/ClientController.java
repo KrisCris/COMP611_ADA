@@ -152,9 +152,10 @@ public class ClientController {
         while(it.hasNext()){
             JButton jb = it.next();
             if(!this.client.getClientList().contains(jb.getText())){
-                ;
+                it.remove();
             } else {
                 highLightList.add(jb.getText());
+                it.remove();
             }
         }
         for(String str:highLightList){
