@@ -70,6 +70,13 @@ public class ClientController {
         this.updateChatMessage(target);
         this.chatRoom.enableChat();
         this.chatRoom.deHighLight(target);
+        Iterator it = this.chatRoom.getClients().iterator();
+        while(it.hasNext()){
+            JButton one = (JButton) it.next();
+            if((!one.isEnabled()) && !one.getText().equals(target)){
+                one.setEnabled(true);
+            }
+        }
     }
 
     public void processSendChatMsgEvent(String target,String content) throws IOException {

@@ -234,6 +234,7 @@ public class ChatRoom extends JFrame implements ActionListener,CommonFunc {
             @Override
             public void actionPerformed(ActionEvent e) {
                 JButton userBtn = (JButton)e.getSource();
+                userBtn.setEnabled(false);
                 ChatRoom.this.controller.processSwitchChatTargetEvent(userBtn.getText());
             }
         });
