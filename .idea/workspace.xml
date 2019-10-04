@@ -2,12 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="405e7274-26e8-421b-b0dc-d3959e155847" name="Default Changelist" comment="init gui">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ADA/assignment_1/Untitled.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ADA/assignment_1/assignment_1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ADA/assignment_1/assignment_1.uml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ADA/assignment_1/assignment_1.uml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ADA/assignment_1/with_dependency.pdf" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/assignment_1/Controller/ClientController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/assignment_1/Controller/ClientController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/assignment_1/View/ChatRoom.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/assignment_1/View/ChatRoom.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assignment_1/View/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/assignment_1/View/Login.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assignment_1/assignment_1.uml" beforeDir="false" afterPath="$PROJECT_DIR$/src/assignment_1/assignment_1.uml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -236,7 +237,7 @@
       <workItem from="1570101066648" duration="449000" />
       <workItem from="1570116455292" duration="3754000" />
       <workItem from="1570120710234" duration="792000" />
-      <workItem from="1570123964639" duration="8829000" />
+      <workItem from="1570123964639" duration="17390000" />
     </task>
     <servers />
   </component>
@@ -285,5 +286,27 @@
         <option value="1" />
       </set>
     </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/assignment_1/View/ChatRoom.java</url>
+          <line>184</line>
+          <properties class="assignment_1.View.ChatRoom" method="highLight">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/assignment_1/View/ChatRoom.java</url>
+          <line>195</line>
+          <properties class="assignment_1.View.ChatRoom" method="deHighLight">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

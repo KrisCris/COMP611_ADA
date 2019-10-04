@@ -69,6 +69,7 @@ public class ClientController {
         this.chatRoom.setCurrentChatting(target);
         this.updateChatMessage(target);
         this.chatRoom.enableChat();
+        this.chatRoom.deHighLight(target);
     }
 
     public void processSendChatMsgEvent(String target,String content) throws IOException {
@@ -123,7 +124,7 @@ public class ClientController {
         if(this.chatRoom.getCurrentChatting().equals(msg.getSender())){
             this.updateChatMessage(msg.getSender());
         } else {
-            //TODO Do some alert
+            this.chatRoom.highLight(msg.getSender());
         }
     }
 
@@ -145,6 +146,19 @@ public class ClientController {
         if((!this.client.getClientList().contains(this.chatRoom.getCurrentChatting()))
                 && this.chatRoom.getChatState()){
             this.chatRoom.alertOffline();
+        }
+        LinkedList<String> highLightList = new LinkedList<>();
+        Iterator<JButton> it = this.chatRoom.getHighlightedClients().iterator();
+        while(it.hasNext()){
+            JButton jb = it.next();
+            if(!this.client.getClientList().contains(jb.getText())){
+                ;
+            } else {
+                highLightList.add(jb.getText());
+            }
+        }
+        for(String str:highLightList){
+            this.chatRoom.highLight(str);
         }
     }
 
@@ -246,13 +260,15 @@ public class ClientController {
         this.client.setClientList(clients);
     }
 
-    public void refreshMessageHistory(){
+    public synchronized void refreshMessageHistory(){
         Map<String,ArrayList<Message>> messageHistory = this.client.getMessageHistory();
-        for(String username : messageHistory.keySet()){
-            if(this.client.getClientList().contains(username) && !messageHistory.get(username).isEmpty()){
+        Iterator<Map.Entry<String, ArrayList<Message>>> it = messageHistory.entrySet().iterator();
+        while(it.hasNext()){
+            Map.Entry<String, ArrayList<Message>> entry = it.next();
+            if(this.client.getClientList().contains(entry.getKey()) && !entry.getValue().isEmpty()){
                 ;
             } else {
-                messageHistory.remove(username);
+                it.remove();
             }
         }
     }

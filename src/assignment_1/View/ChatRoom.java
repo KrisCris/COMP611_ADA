@@ -32,7 +32,10 @@ public class ChatRoom extends JFrame implements ActionListener,CommonFunc {
     private Object[] statusSelection;
     private JLabel onlineNum;
 
+    private LinkedList<JButton> clients;
+    private LinkedList<JButton> highlightedClients;
     public ChatRoom() {
+        this.highlightedClients = new LinkedList<>();
         this.onlineNum = new JLabel("Clients: 0");
         this.statusSelection = new Object[]{"Online", "Stealth", "Offline"};
         this.leftPanel = new JPanel();
@@ -45,16 +48,17 @@ public class ChatRoom extends JFrame implements ActionListener,CommonFunc {
         this.chatInput = new JTextArea();
         this.user = new JButton("");
         this.receiver = new JButton("Click names to start Chats");
+        this.receiver.setFont(new Font(Font.SANS_SERIF,Font.BOLD,18));
         this.sendBtn = new JButton("SEND");
         this.toolbar = new JPanel();
-
         this.setBackground(new Color(248, 248, 249));
         this.leftPanel.setBackground(new Color(248, 248, 249));
         this.rightPanel.setBackground(new Color(248, 248, 249));
         this.userList.setBackground(new Color(248, 248, 249));
         this.chatContents.setBackground(new Color(248, 248, 249));
         this.toolbar.setBackground(new Color(248, 248, 249));
-
+        this.user.setFont(new Font(Font.SANS_SERIF,Font.ITALIC,15));
+        this.user.setForeground(new Color(43, 132, 228));
         this.setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
         this.setLayout(new GridBagLayout());
         this.add(this.leftPanel, new GBC(0, 0, 1, 1).setFill(GBC.BOTH).setWeight(0, 100).setIpad(130, 0));
@@ -96,6 +100,23 @@ public class ChatRoom extends JFrame implements ActionListener,CommonFunc {
             }
         });
     }
+
+    public LinkedList<JButton> getClients() {
+        return clients;
+    }
+
+    public void setClients(LinkedList<JButton> clients) {
+        this.clients = clients;
+    }
+
+    public LinkedList<JButton> getHighlightedClients() {
+        return highlightedClients;
+    }
+
+    public void setHighlightedClients(LinkedList<JButton> highlightedClients) {
+        this.highlightedClients = highlightedClients;
+    }
+
     public void setOnlineNumber(int num){
         this.onlineNum.setText("Client: "+num);
         this.onlineNum.setOpaque(true);
@@ -161,17 +182,40 @@ public class ChatRoom extends JFrame implements ActionListener,CommonFunc {
         this.chatContents.add(left,gbcL);
         this.chatContents.add(right,gbcR);
     }
-
+    public void highLight(String sender){
+        for(JButton jb : this.clients){
+            if(jb.getText().equals(sender)){
+                if(!this.highlightedClients.contains(jb)){
+                    this.highlightedClients.add(jb);
+                    jb.setForeground(new Color(25, 190, 107));
+                    jb.setFont(new Font(Font.SANS_SERIF,Font.BOLD,17));
+                }
+            }
+        }
+    }
+    public void deHighLight(String target){
+        for(JButton jb:this.highlightedClients){
+            if(jb.getText().equals(target)){
+                this.highlightedClients.remove(jb);
+                jb.setForeground(Color.BLACK);
+                jb.setFont(new Font(Font.SANS_SERIF,Font.PLAIN,14));
+                break;
+            }
+        }
+    }
     public void refreshUserList(){
         this.userList.revalidate();
     }
     public void clearUserList(){
         this.userList.removeAll();
+        this.clients = new LinkedList<>();
         this.userList.repaint();
     }
     public void addUser(String username,GBC gbc){
         JButton user = new JButton(username);
+        user.setFont(new Font(Font.SANS_SERIF,Font.PLAIN,14));
         this.userList.add(user,gbc);
+        this.clients.add(user);
         /*
          * By adding actionListener directly to userBtn,
          * saves efforts finding which kind of btn it is.
