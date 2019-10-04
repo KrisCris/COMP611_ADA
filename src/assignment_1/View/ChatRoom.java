@@ -117,11 +117,11 @@ public class ChatRoom extends JFrame implements ActionListener,CommonFunc {
         this.highlightedClients = highlightedClients;
     }
 
-    public void setOnlineNumber(int num){
+    public void setOnlineNumber(int num,int mode){
         this.onlineNum.setText("Client: "+num);
         this.onlineNum.setOpaque(true);
         this.onlineNum.setBorder(new EmptyBorder(0,25,0,15));
-        this.onlineNum.setBackground(new Color(45, 182, 245));
+        this.switchModeColor(mode);
         GBC gbc = new GBC(0, 0, 1, 1).setWeight(100, 0).setFill(GBC.HORIZONTAL).setIpad(0, 25);
         this.userList.add(this.onlineNum,gbc);
     }
@@ -191,6 +191,16 @@ public class ChatRoom extends JFrame implements ActionListener,CommonFunc {
                     jb.setFont(new Font(Font.SANS_SERIF,Font.BOLD,17));
                 }
             }
+        }
+    }
+    public void switchModeColor(int mode){
+        System.out.println("MODE "+mode);
+        if(mode == 1){
+            this.onlineNum.setBackground(new Color(45, 182, 245));
+            this.onlineNum.setForeground(Color.BLACK);
+        } else if(mode==2){
+            this.onlineNum.setBackground(new Color(23, 35, 61));
+            this.onlineNum.setForeground(new Color(248, 248, 249));
         }
     }
     public void deHighLight(String target){

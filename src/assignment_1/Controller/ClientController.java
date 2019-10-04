@@ -132,7 +132,7 @@ public class ClientController {
         LinkedList<String> clientList= this.client.getClientList();
         int index = 0;
         this.chatRoom.clearUserList();
-        this.chatRoom.setOnlineNumber(clientList.size()+1);
+        this.chatRoom.setOnlineNumber(clientList.size()+1,this.client.getStatus());
         for(String username : clientList){
             index = clientList.indexOf(username)+1;
             GBC gbc = new  GBC(0, index, 1, 1).setWeight(100, 0).setFill(GBC.HORIZONTAL).setIpad(0, 25);
@@ -152,9 +152,10 @@ public class ClientController {
         while(it.hasNext()){
             JButton jb = it.next();
             if(!this.client.getClientList().contains(jb.getText())){
-                ;
+                it.remove();
             } else {
                 highLightList.add(jb.getText());
+                it.remove();
             }
         }
         for(String str:highLightList){
@@ -432,6 +433,7 @@ public class ClientController {
                 } else if(this.type.equals("STEALTH")){
                     ClientController.this.client.setStealthCode(this.content);
                     ClientController.this.client.setStatus(2);
+                    ClientController.this.chatRoom.switchModeColor(2);
                     ClientController.this.chatRoom.disableChat();
                     ClientController.this.chatRoom.clearChatContents();
                     ClientController.this.chatRoom.setCurrentChatting("Click names to start Chats");
