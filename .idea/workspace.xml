@@ -5,6 +5,8 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/assignment_1/Controller/ClientController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/assignment_1/Controller/ClientController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/assignment_1/View/ChatRoom.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/assignment_1/View/ChatRoom.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assignment_1/image:pdf/assignment_1.uml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assignment_1/image:pdf/uml类图.png" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -25,9 +27,6 @@
     </option>
     <expand />
     <select />
-  </component>
-  <component name="FavoritesManager">
-    <favorites_list name="COMP611_ADA" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -71,7 +70,7 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="settings.editor.selected.configurable" value="reference.settings.ide.settings.uml" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -90,7 +89,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.ClientDemo">
+  <component name="RunManager" selected="Application.ServerDemo">
     <configuration name="ClientController" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="assignment_1.Controller.ClientController" />
       <module name="ADA" />
@@ -165,8 +164,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.ClientDemo" />
         <item itemvalue="Application.ServerDemo" />
+        <item itemvalue="Application.ClientDemo" />
         <item itemvalue="Application.test" />
         <item itemvalue="Application.ClientController" />
         <item itemvalue="Application.TextContainer" />
