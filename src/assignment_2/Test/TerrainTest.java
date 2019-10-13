@@ -6,12 +6,10 @@ import assignment_2.View.TerrainView;
 
 public class TerrainTest {
     public static void main(String[] args) {
-        Terrain terrain = new Terrain();
-        TerrainView terrainView = new TerrainView();
-        TerrainController terrainController = new TerrainController();
+        Terrain model = new Terrain();
+        TerrainView view = new TerrainView();
+        TerrainController controller = new TerrainController(model,view);
 
-        terrainView.registerController(terrainController);
+        view.registerController(controller);
     }
-
-
 }
