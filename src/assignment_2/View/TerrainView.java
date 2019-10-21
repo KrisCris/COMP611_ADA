@@ -13,7 +13,7 @@ public class TerrainView extends JFrame{
     private TerrainController controller;
     private LinkedList<LinkedList<JLabel>> options;
 
-    /*
+    /**
      * Components of TerrainGen settings
      */
     private JPanel settingPanel;
@@ -25,7 +25,7 @@ public class TerrainView extends JFrame{
     private JSlider intelligence;
     private JButton generate;
 
-    /*
+    /**
      * Components show terrain staffs
      */
     private JLabel costs;

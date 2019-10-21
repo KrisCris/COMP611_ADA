@@ -3,9 +3,13 @@
   <component name="ChangeListManager">
     <list default="true" id="15746a32-4b38-4c31-9d50-5a12e5386c9d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assignment_2/Controller/TerrainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/assignment_2/Controller/TerrainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ADA/META-INF/ADA.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ADA/assignment_1/Package assignment_1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ADA/assignment_1/assignment_1.uml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ADA/assignment_1/image:pdf/assignment_1.uml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ADA/assignment_1/image:pdf/uml类图.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ADA/assignment_1/uml类图.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/assignment_2/Model/Terrain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/assignment_2/Model/Terrain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assignment_2/Test/TerrainTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/assignment_2/Test/TerrainTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/assignment_2/View/TerrainView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/assignment_2/View/TerrainView.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -59,7 +63,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../AUT/DemoMVC" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -91,7 +95,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.ClientDemo">
+  <component name="RunManager" selected="Application.Terrain">
     <configuration name="ClientController" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="assignment_1.Controller.ClientController" />
       <module name="ADA" />
@@ -131,12 +135,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TextContainer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="assignment_1.View.TextContainer" />
+    <configuration name="Terrain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="assignment_2.Model.Terrain" />
       <module name="ADA" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="assignment_1.View.*" />
+          <option name="PATTERN" value="assignment_2.Model.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -161,16 +165,16 @@
       <item itemvalue="Application.ClientDemo" />
       <item itemvalue="Application.ServerDemo" />
       <item itemvalue="Application.ClientController" />
-      <item itemvalue="Application.TextContainer" />
       <item itemvalue="Application.test" />
+      <item itemvalue="Application.Terrain" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Terrain" />
         <item itemvalue="Application.ClientDemo" />
         <item itemvalue="Application.ServerDemo" />
         <item itemvalue="Application.test" />
         <item itemvalue="Application.ClientController" />
-        <item itemvalue="Application.TextContainer" />
       </list>
     </recent_temporary>
   </component>
@@ -238,6 +242,19 @@
       <workItem from="1570200833753" duration="47000" />
       <workItem from="1570759047269" duration="612000" />
       <workItem from="1570954478524" duration="4435000" />
+      <workItem from="1571012785690" duration="19000" />
+      <workItem from="1571014015052" duration="4000" />
+      <workItem from="1571021976668" duration="32000" />
+      <workItem from="1571027898188" duration="6000" />
+      <workItem from="1571106769661" duration="2000" />
+      <workItem from="1571110085083" duration="1358000" />
+      <workItem from="1571125657559" duration="55000" />
+      <workItem from="1571194404173" duration="605000" />
+      <workItem from="1571270470207" duration="549000" />
+      <workItem from="1571277763767" duration="1626000" />
+      <workItem from="1571359086061" duration="5942000" />
+      <workItem from="1571414421769" duration="60000" />
+      <workItem from="1571555492350" duration="16713000" />
     </task>
     <servers />
   </component>
