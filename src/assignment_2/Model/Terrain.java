@@ -145,7 +145,7 @@ public class Terrain {
 
     public static void main(String[] args) {
         Terrain tr = new Terrain();
-        tr.generateMatrix(5,5);
+        tr.generateMatrix(10,10);
         int i = 0;
         for(Node[] layer:tr.getMatrix()){
             System.out.print("["+i+"]  ");
@@ -155,7 +155,7 @@ public class Terrain {
             i++;
             System.out.println();
         }
-        tr.findRoute(1);
+        tr.findRoute(10);
         for (Node shortest:tr.getShortestNode()){
             System.out.println(shortest.getRoute() + "\tDIFFICULTY = "+shortest.getEffort());
         }

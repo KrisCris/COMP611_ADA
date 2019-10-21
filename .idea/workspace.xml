@@ -3,9 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="15746a32-4b38-4c31-9d50-5a12e5386c9d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assignment_2/Model/Node.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/assignment_2/Model/Node.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assignment_2/Controller/TerrainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/assignment_2/Controller/TerrainController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/assignment_2/Model/Terrain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/assignment_2/Model/Terrain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assignment_2/View/NodeLabel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/assignment_2/View/NodeLabel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assignment_2/View/TerrainView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/assignment_2/View/TerrainView.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -90,20 +90,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.Terrain">
-    <configuration name="ClientController" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="assignment_1.Controller.ClientController" />
-      <module name="ADA" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="assignment_1.Controller.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="Application.TerrainView">
     <configuration name="ClientDemo" type="Application" factoryName="Application" singleton="false" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="assignment_1.Test.ClientDemo" />
       <module name="ADA" />
@@ -143,6 +130,19 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="TerrainView" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="assignment_2.View.TerrainView" />
+      <module name="ADA" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="assignment_2.View.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="assignment_1.View.test" />
       <module name="ADA" />
@@ -159,17 +159,17 @@
     <list>
       <item itemvalue="Application.ClientDemo" />
       <item itemvalue="Application.ServerDemo" />
-      <item itemvalue="Application.ClientController" />
       <item itemvalue="Application.test" />
       <item itemvalue="Application.Terrain" />
+      <item itemvalue="Application.TerrainView" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.TerrainView" />
         <item itemvalue="Application.Terrain" />
         <item itemvalue="Application.ClientDemo" />
         <item itemvalue="Application.ServerDemo" />
         <item itemvalue="Application.test" />
-        <item itemvalue="Application.ClientController" />
       </list>
     </recent_temporary>
   </component>
@@ -249,7 +249,7 @@
       <workItem from="1571277763767" duration="1626000" />
       <workItem from="1571359086061" duration="5942000" />
       <workItem from="1571414421769" duration="60000" />
-      <workItem from="1571555492350" duration="22705000" />
+      <workItem from="1571555492350" duration="29423000" />
     </task>
     <servers />
   </component>
