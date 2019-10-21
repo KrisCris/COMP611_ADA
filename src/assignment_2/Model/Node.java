@@ -6,6 +6,7 @@ public class Node {
      * EFFORT is the add all difficulty that a program took to travel to this node;
      * LAST indicates the last node which takes the lowest effort.
      */
+    private static final int INF = 99999999;
     private int value;
     private int effort;
     private Node last;
@@ -24,6 +25,10 @@ public class Node {
     public void setPos(int row, int col){
         this.row = row;
         this.col = col;
+    }
+
+    public void setInf(){
+        this.effort = INF;
     }
 
     public Node getLast() {

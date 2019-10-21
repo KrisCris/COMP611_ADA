@@ -3,14 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="15746a32-4b38-4c31-9d50-5a12e5386c9d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ADA/META-INF/ADA.kotlin_module" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ADA/assignment_1/Package assignment_1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ADA/assignment_1/assignment_1.uml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ADA/assignment_1/image:pdf/assignment_1.uml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ADA/assignment_1/image:pdf/uml类图.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ADA/assignment_1/uml类图.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assignment_2/Model/Node.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/assignment_2/Model/Node.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/assignment_2/Model/Terrain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/assignment_2/Model/Terrain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assignment_2/View/TerrainView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/assignment_2/View/TerrainView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assignment_2/View/NodeLabel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/assignment_2/View/NodeLabel.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -254,7 +249,7 @@
       <workItem from="1571277763767" duration="1626000" />
       <workItem from="1571359086061" duration="5942000" />
       <workItem from="1571414421769" duration="60000" />
-      <workItem from="1571555492350" duration="16713000" />
+      <workItem from="1571555492350" duration="22705000" />
     </task>
     <servers />
   </component>
@@ -303,5 +298,21 @@
         <option value="1" />
       </set>
     </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/assignment_2/Model/Terrain.java</url>
+          <line>47</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/assignment_2/Model/Terrain.java</url>
+          <line>60</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

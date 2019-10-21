@@ -1,10 +1,11 @@
 package assignment_2.Model;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 public class Terrain {
-    private final int LOWER_BOUND = -5;
-    private final int UPPER_BOUND = 15;
+    private static final int LOWER_BOUND = -5;
+    private static final int UPPER_BOUND = 15;
     private Node[][] matrix;
     private int height;
     private int width;
@@ -37,31 +38,47 @@ public class Terrain {
      * @param insight
      * insight is the number of layer this program can see at once,
      * also means the Intelligence described in assignment2.pdf.
+     *
+     * If the intelligence is 100%, then only the first loop can be entered.
+     * Otherwise, the second loop will be entered,
+     * and in order to make sure only the partially shortest route determined by last loop can be chosen,
+     * the difficulty of the rest of nodes in the same layer will be set to INF.
      */
     public void findRoute(int insight){
-        int layer = 0;
+        Integer layer = 0;
         Node[][] tmp= new Node[insight][width];
         for (int i = 0;i<insight;i++){
             tmp[i] = matrix[layer++];
         }
         findRoute(tmp);
-        layer++;
         while(height-layer>=insight){
-            tmp= new Node[insight+1][width];
-            for (int i = 0;i<=insight;i++){
-                tmp[i] = matrix[layer-1];
-                layer++;
-            }
+            tmp = subMatrix(layer,insight);
+            setInf(tmp,getShortestNode(layer));
             findRoute(tmp);
+            layer += insight;
         }
         int rest = height-layer;
         if(rest>0){
-            tmp = new Node[rest+1][width];
-            for(int i = 0; i<=rest;i++){
-                tmp[i] = matrix[layer-1];
-                layer++;
-            }
+            tmp = subMatrix(layer,rest);
+            setInf(tmp,getShortestNode(layer));
             findRoute(tmp);
+        }
+    }
+
+    private Node[][] subMatrix(Integer begin, int bound){
+        Node[][] tmp = new Node[bound+1][width];
+        for(int i = 0; i<=bound;i++){
+            tmp[i] = matrix[begin-1];
+            begin++;
+        }
+        return tmp;
+    }
+
+    private void setInf(Node[][] matrix, ArrayList<Node> mins){
+        for(Node node : matrix[0]){
+            if(!mins.contains(node)){
+                node.setInf();
+            }
         }
     }
 
@@ -71,10 +88,8 @@ public class Terrain {
             for(int j = 0; j<subMatrix[i].length;j++){
                 int lastRow = i-1;
                 if(j==0){
-                    //Middle of each row
                     min = getMin(subMatrix[lastRow][j+1],subMatrix[lastRow][j]);
                 } else if (j==subMatrix[i].length-1){
-                    //Tail of each row
                     min = getMin(subMatrix[lastRow][j-1],subMatrix[lastRow][j]);
                 } else {
                     min = getMin(subMatrix[lastRow][j-1],subMatrix[lastRow][j],subMatrix[lastRow][j+1]);
@@ -84,16 +99,26 @@ public class Terrain {
         }
     }
 
-    public Node getShortestNode(){
+    public ArrayList<Node> getShortestNode(){
+        return getShortestNode(this.height);
+    }
+
+    private ArrayList<Node> getShortestNode(int top){
         Node min;
-        Node[] topLayer = matrix[height-1];
+        ArrayList<Node> mins = new ArrayList<>();
+        Node[] topLayer = matrix[top-1];
         min = topLayer[0];
         for (int i = 0;i<width-1;i++){
             if(min.getEffort()>topLayer[i+1].getEffort()){
                 min = topLayer[i+1];
             }
         }
-        return min;
+        for (Node each:topLayer){
+            if(each.getEffort() == min.getEffort()){
+                mins.add(each);
+            }
+        }
+        return mins;
     }
 
     private Node getMin(Node side, Node middle){
@@ -130,9 +155,11 @@ public class Terrain {
             i++;
             System.out.println();
         }
-        tr.findRoute(5);
-        Node shortest = tr.getShortestNode();
-        System.out.println(shortest.getRoute());
+        tr.findRoute(1);
+        for (Node shortest:tr.getShortestNode()){
+            System.out.println(shortest.getRoute() + "\tDIFFICULTY = "+shortest.getEffort());
+        }
+
 
     }
 
