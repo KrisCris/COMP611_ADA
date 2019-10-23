@@ -11,5 +11,6 @@ public class TerrainTest {
         TerrainController controller = new TerrainController(model,view);
 
         view.registerController(controller);
+
     }
 }

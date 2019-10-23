@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="ADA:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/ADA_jar</output-path>
+    <root id="archive" name="ADA.jar">
+      <element id="module-output" name="ADA" />
+    </root>
+  </artifact>
+</component>

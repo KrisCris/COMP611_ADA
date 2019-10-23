@@ -13,6 +13,7 @@ public class NodeLabel extends JLabel {
     private static final Color PRESS_GR = new Color(109, 236, 172);
     private static final Color AUTO_SELECTED = new Color(45,183,245);
     private static final Color WATERSHED = new Color(255,153,0);
+    private static final Color USER_SELECTED = new Color(123,104,238);
     private int row;
     private int col;
     private boolean selectable;
@@ -46,6 +47,9 @@ public class NodeLabel extends JLabel {
         this.selectable = selectable;
     }
 
+    /**
+     * Color setting methods
+     */
     public void selectableColor(){
         this.setBackground(SELECTABLE);
     }
@@ -63,7 +67,7 @@ public class NodeLabel extends JLabel {
     }
 
     public void userSelectColor(){
-        this.setBackground(new Color(123,104,238));
+        this.setBackground(USER_SELECTED);
     }
 
     public void mouseEnterColor(){
@@ -82,6 +86,15 @@ public class NodeLabel extends JLabel {
         this.setBackground(PRESS_GR);
     }
 
+    public boolean isUserSelectedColor(){
+        if(this.getBackground() == USER_SELECTED) return true;
+        else return false;
+    }
+
+    /**
+     * @return
+     * Whether the label is in this color.
+     */
     public boolean isDefaultColor(){
         if(this.getBackground() == BACKGROUND) return true;
         else return false;

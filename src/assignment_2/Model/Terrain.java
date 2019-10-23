@@ -118,6 +118,7 @@ public class Terrain {
             findRoute(tmp);
             return this.getShortestNode();
         }
+        //dummy return
         return getShortestNode();
     }
 
@@ -136,6 +137,13 @@ public class Terrain {
                 subMatrix[i][j].setLast(min);
             }
         }
+        //test
+        if(this.layer == height){
+            for (Node shortest:getShortestNode()){
+                System.out.println(shortest.getRoute() + "\tDIFFICULTY = "+shortest.getEffort());
+            }
+        }
+        //
     }
 
     private Node[][] subMatrix(Integer begin, int bound){
@@ -226,6 +234,19 @@ public class Terrain {
         return current.getEffort();
     }
 
+    /**
+     * Implementing the step back functionality.
+     * It decrease the layer level and set the EFFORT of current row of nodes to regular value than INF.
+     * Only works when undo manual decision.
+     *
+     * It works more complex when undoing the automatic decision,
+     * since there can be multiple shortest node in each row, and each situation can be different,
+     * and it took me tons of efforts to debug and rewrite the code,
+     * in the end I disabled it.
+     *
+     * @return
+     * The node need to be undo.
+     */
     public Node prev(){
         if(this.layer>0){
             Node undoNode = this.getShortestNode(layer).get(0);

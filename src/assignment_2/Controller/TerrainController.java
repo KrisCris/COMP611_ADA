@@ -78,7 +78,7 @@ public class TerrainController {
                 NodeLabel nl = this.view.getLabel(row,col);
                 if(node.isWatershed()){
                     nl.watershedColor();
-                    nl.setToolTipText("A farthest node reached with intelligence = "+intelli);
+                    nl.setToolTipText("The farthest node reached with intelligence = "+intelli);
                 } else {
                     nl.selectedColor();
                 }
@@ -89,6 +89,7 @@ public class TerrainController {
 
     public void processPrevEvent(){
         Node undoNode = this.model.prev();
+        System.out.println("UndoNode: "+undoNode.toString()+" Dist: "+undoNode.getEffort());   //debug
         int row = undoNode.getRow();
         this.view.unselectable(row+1);
         if(row<1){
@@ -100,7 +101,13 @@ public class TerrainController {
             this.view.unselectable(row);
             int prevRow = undoNode.getLast().getRow();
             int prevCol = undoNode.getLast().getCol();
+            System.out.println("prev back to "+undoNode.getLast().toString()+"\n"); //debug
+            this.view.updateDifficulty(undoNode.getLast().getEffort());
             nextToSelect(prevRow,prevCol);
+            //disable PREV functionality when meet auto decision.
+            if(!this.view.getLabel(prevRow,prevCol).isUserSelectedColor()){
+                this.view.disablePrev();
+            }
         }
     }
 
@@ -118,7 +125,7 @@ public class TerrainController {
         }
     }
 
-
-
-
+    public void VCRegistered(){
+        this.view.initFirstRound();
+    }
 }

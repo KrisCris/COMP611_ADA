@@ -5,8 +5,8 @@ import assignment_2.Controller.TerrainController;
 import assignment_2.Model.Node;
 
 import javax.swing.*;
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import javax.swing.text.NumberFormatter;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -14,13 +14,11 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
-import java.util.Base64;
-import java.util.LinkedList;
 
 public class TerrainView extends JFrame implements ActionListener{
     private static final int WIDTH = 1080;
     private static final int HEIGHT = 720;
-    private static final int DEFAULT_SIZE = 5;
+    private static final int DEFAULT_SIZE = 10;
     private static final Color BACKGROUND = new Color(248, 248, 249);
     private static final Color FOREGROUND = new Color(23, 35, 61);
     private static final Color DIVIDER = new Color(220, 222, 226);
@@ -51,6 +49,9 @@ public class TerrainView extends JFrame implements ActionListener{
     private JSeparator divider;
 
     private JLabel intelliTag;
+    private JLabel intelliValue;
+    private JLabel intelliTag2;
+    private JLabel intelliPercentage;
     private JSlider intelligence;
     private JButton prev;
     private JButton next;
@@ -82,8 +83,8 @@ public class TerrainView extends JFrame implements ActionListener{
         this.widthTag = new JLabel("WIDTH",JLabel.CENTER);
         this.heightTag = new JLabel("HEIGHT",JLabel.CENTER);
 
-        this.widthInput = new JSpinner(new SpinnerNumberModel(DEFAULT_SIZE,2,99,1));
-        this.heightInput = new JSpinner(new SpinnerNumberModel(DEFAULT_SIZE,2,99,1));
+        this.widthInput = new JSpinner(new SpinnerNumberModel(DEFAULT_SIZE,1,99,1));
+        this.heightInput = new JSpinner(new SpinnerNumberModel(DEFAULT_SIZE,1,99,1));
         JFormattedTextField tmp = ((JSpinner.NumberEditor)widthInput.getEditor()).getTextField();
         ((NumberFormatter)tmp.getFormatter()).setAllowsInvalid(false);
         tmp = ((JSpinner.NumberEditor)heightInput.getEditor()).getTextField();
@@ -99,6 +100,10 @@ public class TerrainView extends JFrame implements ActionListener{
 
         this.intelliTag = new JLabel("INTELLIGENCE",JLabel.CENTER);
         this.intelligence = new JSlider(JSlider.HORIZONTAL);
+
+        this.intelliValue = new JLabel(DEFAULT_SIZE+"",JLabel.CENTER);
+        this.intelliTag2 = new JLabel("Line(s). Approx.",JLabel.CENTER);
+        this.intelliPercentage = new JLabel("100%",JLabel.CENTER);
         this.prev = new JButton("PREV");
         this.next = new JButton("NEXT");
 
@@ -146,25 +151,38 @@ public class TerrainView extends JFrame implements ActionListener{
 
         this.intelliTag.setBounds(0,240,360,20);
         this.intelliTag.setForeground(FOREGROUND);
+        this.intelliTag.setFont(font);
         this.settingPanel.add(this.intelliTag);
 
-        this.intelligence.setBounds(20,270,320,40);
+        this.intelliValue.setBounds(30,270,90,50);
+        this.intelliValue.setForeground(FOREGROUND);
+        this.intelliValue.setFont(font);
+        this.intelliTag2.setBounds(120,270,120,50);
+        this.intelliTag2.setForeground(FOREGROUND);
+        this.intelliPercentage.setBounds(240,270,90,50);
+        this.intelliPercentage.setForeground(FOREGROUND);
+        this.intelliPercentage.setFont(font);
+        this.settingPanel.add(this.intelliValue);
+        this.settingPanel.add(this.intelliTag2);
+        this.settingPanel.add(this.intelliPercentage);
+
+        this.intelligence.setBounds(20,310,320,40);
         this.intelligence.setToolTipText("To set how far this algorithm can see in each decision.");
-        this.intelligence.setPaintTicks(true);
-        this.intelligence.setPaintLabels(true);
-        this.intelligence.setSnapToTicks(true);
-        this.intelligence.setMinimum(1);
-        this.intelligence.setMajorTickSpacing(1);
+//        this.intelligence.setPaintTicks(true);
+//        this.intelligence.setPaintLabels(true);
+//        this.intelligence.setSnapToTicks(true);
+//        this.intelligence.setMinimum(1);
+//        this.intelligence.setMajorTickSpacing(1);
         this.setIntelliSlider(DEFAULT_SIZE);
         this.intelligence.setForeground(FOREGROUND);
         this.settingPanel.add(this.intelligence);
 
-        this.next.setBounds(20,330,320,35);
-        this.prev.setBounds(20,375,320,35);
+        this.next.setBounds(20,360,320,35);
+        this.prev.setBounds(20,405,320,35);
         this.next.setForeground(FOREGROUND);
         this.prev.setForeground(FOREGROUND);
-        this.next.setToolTipText("Automatically making the next decision.");
-        this.prev.setToolTipText("To move one step back.");
+        this.next.setToolTipText("Automatic decision-making based on the INTELLIGENCE.");
+        this.prev.setToolTipText("To move one step back.\nOnly works when this decision is made manually.");
         this.settingPanel.add(next);
         this.settingPanel.add(prev);
 
@@ -174,6 +192,26 @@ public class TerrainView extends JFrame implements ActionListener{
         this.generate.addActionListener(this);
         this.next.addActionListener(this);
         this.prev.addActionListener(this);
+        this.intelligence.addChangeListener(new ChangeListener() {
+            @Override
+            public void stateChanged(ChangeEvent e) {
+                JSlider slider = (JSlider) e.getSource();
+                int current = slider.getValue();
+                int max = slider.getMaximum();
+                double percentageD = 100.0*current/max;
+                String percentage = "";
+                if(percentageD<100 && percentageD>99){
+                    percentage = "99%";
+                } else {
+                    percentage = (int)percentageD+"%";
+                }
+                TerrainView.this.updateIntelli(current,percentage);
+            }
+        });
+
+        /**
+         * Init first round.
+         */
     }
 
     /**
@@ -279,14 +317,32 @@ public class TerrainView extends JFrame implements ActionListener{
         this.terrainPanel.revalidate();
     }
 
+    public void updateIntelli(int rows,String percentage){
+        this.intelliValue.setText(rows+"");
+        this.intelliPercentage.setText(percentage);
+    }
 
     public void setIntelliSlider(int height){
+        this.intelligence.setSnapToTicks(true);
+        this.intelligence.setPaintTicks(true);
+        this.intelligence.setMinimum(1);
         this.intelligence.setMaximum(height);
         this.intelligence.setValue(height);
+        if(height<=16){
+            this.intelligence.setPaintLabels(true);
+            this.intelligence.setMajorTickSpacing(1);
+            this.intelligence.setMinorTickSpacing(0);
+        } else {
+            this.intelligence.setPaintLabels(false);
+            this.intelligence.setMajorTickSpacing(5);
+            this.intelligence.setMinorTickSpacing(1);
+        }
+
     }
 
     public void registerController(TerrainController terrainController){
         this.controller = terrainController;
+        this.controller.VCRegistered();//tell controller
     }
 
     private int[] getInputValue(){
@@ -368,8 +424,18 @@ public class TerrainView extends JFrame implements ActionListener{
         }
     }
 
+    public void initFirstRound(){
+        int[] size = this.getInputValue();
+        this.controller.processGenerateEvent(size[1],size[0]);
+        this.setIntelliSlider(size[1]);
+    }
+
     public NodeLabel getLabel(int row, int col){
         return this.nodeLabels[row][col];
+    }
+
+    public TerrainController getController() {
+        return controller;
     }
 
     public void disablePrev(){
@@ -393,6 +459,7 @@ public class TerrainView extends JFrame implements ActionListener{
         if(source == this.generate){
             int[] size = this.getInputValue();
             this.controller.processGenerateEvent(size[1],size[0]);
+            this.setIntelliSlider(size[1]);
         } else if(source == this.next){
             this.controller.processNextEvent(this.intelligence.getValue());
         } else if(source == this.prev){

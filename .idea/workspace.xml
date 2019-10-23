@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="ADA:jar" />
+    </artifacts-to-build>
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="15746a32-4b38-4c31-9d50-5a12e5386c9d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/assignment_2/Controller/TerrainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/assignment_2/Controller/TerrainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assignment_2/Model/Node.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/assignment_2/Model/Node.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/assignment_2/Model/Terrain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/assignment_2/Model/Terrain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assignment_2/Test/TerrainTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/assignment_2/Test/TerrainTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/assignment_2/View/NodeLabel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/assignment_2/View/NodeLabel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/assignment_2/View/TerrainView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/assignment_2/View/TerrainView.java" afterDir="false" />
     </list>
@@ -68,7 +73,7 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="reference.settings.ide.settings.uml" />
@@ -252,7 +257,8 @@
       <workItem from="1571359086061" duration="5942000" />
       <workItem from="1571414421769" duration="60000" />
       <workItem from="1571555492350" duration="29702000" />
-      <workItem from="1571708368444" duration="43252000" />
+      <workItem from="1571708368444" duration="50051000" />
+      <workItem from="1571814683100" duration="9279000" />
     </task>
     <servers />
   </component>
@@ -306,19 +312,9 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/assignment_2/View/TerrainView.java</url>
-          <line>345</line>
-          <option name="timeStamp" value="21" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/assignment_2/View/TerrainView.java</url>
-          <line>346</line>
-          <option name="timeStamp" value="23" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/assignment_2/View/TerrainView.java</url>
-          <line>348</line>
-          <option name="timeStamp" value="25" />
+          <url>file://$PROJECT_DIR$/src/assignment_2/Controller/TerrainController.java</url>
+          <line>117</line>
+          <option name="timeStamp" value="27" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
