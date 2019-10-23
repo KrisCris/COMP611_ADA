@@ -12,19 +12,41 @@ public class Node {
     private Node last;
     private int row;
     private int col;
+    private boolean watershed;
 
     public Node(int value){
         this.value = value;
+        this.watershed = false;
     }
 
     public Node(int value, int row, int col){
-        this.value = value;
+        this(value);
         this.setPos(row,col);
+    }
+
+    public boolean isWatershed() {
+        return watershed;
+    }
+
+    public void setWatershed(boolean watershed) {
+        this.watershed = watershed;
     }
 
     public void setPos(int row, int col){
         this.row = row;
         this.col = col;
+    }
+
+    public int getRow() {
+        return row;
+    }
+
+    public int getCol() {
+        return col;
+    }
+
+    public int getValue() {
+        return value;
     }
 
     public void setInf(){
