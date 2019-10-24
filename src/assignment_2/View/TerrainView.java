@@ -78,7 +78,7 @@ public class TerrainView extends JFrame implements ActionListener{
         this.terrainPanel.setBackground(BACKGROUND);
         this.mainPanel.setDividerLocation(1.0/3.0,WIDTH,HEIGHT);
         this.mainPanel.setDividerSize(1);
-        this.tag = new JLabel("CURRENT DIFFICULTY",JLabel.CENTER);
+        this.tag = new JLabel("CURRENT COST",JLabel.CENTER);
         this.costs = new JLabel("0",JLabel.CENTER);
         this.widthTag = new JLabel("WIDTH",JLabel.CENTER);
         this.heightTag = new JLabel("HEIGHT",JLabel.CENTER);

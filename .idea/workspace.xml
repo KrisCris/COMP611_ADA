@@ -8,10 +8,6 @@
   <component name="ChangeListManager">
     <list default="true" id="15746a32-4b38-4c31-9d50-5a12e5386c9d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assignment_2/Controller/TerrainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/assignment_2/Controller/TerrainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assignment_2/Model/Terrain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/assignment_2/Model/Terrain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assignment_2/Test/TerrainTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/assignment_2/Test/TerrainTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assignment_2/View/NodeLabel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/assignment_2/View/NodeLabel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/assignment_2/View/TerrainView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/assignment_2/View/TerrainView.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -259,6 +255,7 @@
       <workItem from="1571555492350" duration="29702000" />
       <workItem from="1571708368444" duration="50051000" />
       <workItem from="1571814683100" duration="9279000" />
+      <workItem from="1571845565487" duration="1276000" />
     </task>
     <servers />
   </component>
@@ -307,16 +304,5 @@
         <option value="1" />
       </set>
     </option>
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/assignment_2/Controller/TerrainController.java</url>
-          <line>117</line>
-          <option name="timeStamp" value="27" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>
