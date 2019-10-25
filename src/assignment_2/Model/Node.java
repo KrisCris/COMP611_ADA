@@ -3,12 +3,12 @@ package assignment_2.Model;
 public class Node {
     /**
      * VALUE is the difficulty of this node;
-     * EFFORT is the add all difficulty that a program took to travel to this node;
+     * DIST is the minimum total difficulty that a program took to travel to this node;
      * LAST indicates the last node which takes the lowest effort.
      */
     private static final int INF = 99999999;
     private int value;
-    private int effort;
+    private int dist;
     private Node last;
     private int row;
     private int col;
@@ -19,6 +19,15 @@ public class Node {
         this.watershed = false;
     }
 
+    /**
+     *
+     * @param value
+     * The cost of this node.
+     * @param row
+     * The row this node is positioned.
+     * @param col
+     * The column this node is positioned.
+     */
     public Node(int value, int row, int col){
         this(value);
         this.setPos(row,col);
@@ -28,6 +37,13 @@ public class Node {
         return watershed;
     }
 
+    /**
+     *
+     * @param watershed
+     * When intelligence less than 100%, each node of the decision made will be set to watershed = true.
+     * Which means next round of decision making will starting from this node.
+     * And a node with watershed = true will be displayed in orange color in the View.
+     */
     public void setWatershed(boolean watershed) {
         this.watershed = watershed;
     }
@@ -50,7 +66,7 @@ public class Node {
     }
 
     public void setInf(){
-        this.effort = INF;
+        this.dist = INF;
     }
 
     public Node getLast() {
@@ -62,8 +78,8 @@ public class Node {
         setEffort();
     }
 
-    public int getEffort(){
-        return effort;
+    public int getDist(){
+        return dist;
     }
 
     /**
@@ -72,9 +88,9 @@ public class Node {
      */
     private void setEffort(){
         if(this.last == null){
-            this.effort = this.value;
+            this.dist = this.value;
         } else {
-            this.effort = this.last.getEffort() + this.value;
+            this.dist = this.last.getDist() + this.value;
         }
     }
 
@@ -88,5 +104,19 @@ public class Node {
         } else {
             return toString()+"  <-  "+last.getRoute();
         }
+    }
+
+    /**
+     * If you want to play with this terrain again without change the cost of each node,
+     * this method will be called.
+     */
+    public void reset(){
+        if(this.row == 0){
+            this.dist = this.value;
+        } else {
+            this.dist = 0;
+        }
+        this.last = null;
+        this.watershed = false;
     }
 }

@@ -81,7 +81,12 @@ public class Terrain {
         }
     }
 
-
+    /**
+     * The GUI Controlled version of automatically route finding.
+     * This methods will call the private findRoute(), where the real algorithm performed.
+     * @param insight
+     * @return
+     */
     public ArrayList<Node> findRoute(int insight){
         Node[][] tmp= new Node[insight][width];
         int layersToConquer = height-layer;
@@ -122,6 +127,10 @@ public class Terrain {
         return getShortestNode();
     }
 
+    /**
+     * The real decision making algorithm.
+     * @param subMatrix
+     */
     private void findRoute(Node[][] subMatrix){
         Node min;
         for(int i = 1; i<subMatrix.length;i++){
@@ -137,15 +146,25 @@ public class Terrain {
                 subMatrix[i][j].setLast(min);
             }
         }
-        //test
+        //test, display the route when reaching the top.
         if(this.layer == height){
             for (Node shortest:getShortestNode()){
-                System.out.println(shortest.getRoute() + "\tDIFFICULTY = "+shortest.getEffort());
+                System.out.println(shortest.getRoute() + "\tDIFFICULTY = "+shortest.getDist());
             }
         }
         //
     }
 
+    /**
+     * To get a part of the node Matrix.
+     *
+     * @param begin
+     * The row this subMatrix begins.
+     * @param bound
+     * How many rows this subMatrix contains.
+     * @return
+     * A subMatrix.
+     */
     private Node[][] subMatrix(Integer begin, int bound){
         Node[][] tmp = new Node[bound+1][width];
         for(int i = 0; i<=bound;i++){
@@ -155,6 +174,11 @@ public class Terrain {
         return tmp;
     }
 
+    /**
+     * To set the dist of unreachable nodes to INF.
+     * @param matrix
+     * @param mins
+     */
     private void setInf(Node[][] matrix, ArrayList<Node> mins){
         for(Node node : matrix[0]){
             if(!mins.contains(node)){
@@ -179,25 +203,29 @@ public class Terrain {
         Node[] topLayer = matrix[top-1];
         min = topLayer[0];
         for (int i = 0;i<width-1;i++){
-            if(min.getEffort()>topLayer[i+1].getEffort()){
+            if(min.getDist()>topLayer[i+1].getDist()){
                 min = topLayer[i+1];
             }
         }
         for (Node each:topLayer){
-            if(each.getEffort() == min.getEffort()){
+            if(each.getDist() == min.getDist()){
                 mins.add(each);
             }
         }
         return mins;
     }
 
+    /**
+     * @return
+     * Return the minimum node among the 3 or 2 nodes reachable.
+     */
     private Node getMin(Node side, Node middle){
-        return side.getEffort()<middle.getEffort()?side:middle;
+        return side.getDist()<middle.getDist()?side:middle;
     }
 
     private Node getMin(Node left,Node middle, Node right){
-        Node min = left.getEffort()<right.getEffort() ? left : right;
-        return min.getEffort()<middle.getEffort()? min : middle;
+        Node min = left.getDist()<right.getDist() ? left : right;
+        return min.getDist()<middle.getDist()? min : middle;
     }
 
     public static int genInt(int lowerBound, int upperBound){
@@ -207,12 +235,31 @@ public class Terrain {
         return tmp;
     }
 
+    /**
+     * Randomly generate integers in a range.
+     * @param lowerBound
+     * The lowest number can be generated.
+     * @param upperBound
+     * The largest number can be generated.
+     * @param rd
+     * A Random instance.
+     * To avoid generating multiple Random instances and saving memories.
+     * @return
+     * A integer generated.
+     */
     private static int genInt(int lowerBound, int upperBound, Random rd){
         int tmp = rd.nextInt(upperBound-lowerBound+1);
         tmp += lowerBound;
         return tmp;
     }
 
+    /**
+     * To link nodes being clicked together.
+     * And set dist of other nodes to NIF.
+     * @param row
+     * @param col
+     * @return
+     */
     public int manual(int row,int col){
         Node current = this.matrix[row][col];
         ArrayList<Node> min;
@@ -231,7 +278,7 @@ public class Terrain {
             }
         }
         layer++;
-        return current.getEffort();
+        return current.getDist();
     }
 
     /**
@@ -259,6 +306,19 @@ public class Terrain {
         return null;
     }
 
+    /**
+     * Every node will be reset.
+     * This method is provided for someone who want to play with the same terrain multiple times.
+     */
+    public void resetRoute(){
+        this.layer = 0;
+        for(Node[] nodes: matrix){
+            for (Node node:nodes){
+                node.reset();
+            }
+        }
+    }
+
     public static void main(String[] args) {
         Terrain tr = new Terrain();
         tr.generateMatrix(5,5);
@@ -273,7 +333,7 @@ public class Terrain {
         }
         tr.oneKeyFindRoute(1);
         for (Node shortest:tr.getShortestNode()){
-            System.out.println(shortest.getRoute() + "\tDIFFICULTY = "+shortest.getEffort());
+            System.out.println(shortest.getRoute() + "\tDIFFICULTY = "+shortest.getDist());
         }
     }
 
