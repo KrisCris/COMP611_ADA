@@ -8,11 +8,6 @@
   <component name="ChangeListManager">
     <list default="true" id="15746a32-4b38-4c31-9d50-5a12e5386c9d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assignment_2/Controller/TerrainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/assignment_2/Controller/TerrainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assignment_2/Model/Node.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/assignment_2/Model/Node.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assignment_2/Model/Terrain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/assignment_2/Model/Terrain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assignment_2/View/TSplitPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/assignment_2/View/TSplitPane.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assignment_2/View/TerrainView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/assignment_2/View/TerrainView.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -97,7 +92,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.TerrainTest">
+  <component name="RunManager" selected="Application.ClientDemo">
     <configuration name="ClientDemo" type="Application" factoryName="Application" singleton="false" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="assignment_1.Test.ClientDemo" />
       <module name="ADA" />
@@ -172,11 +167,11 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.ClientDemo" />
+        <item itemvalue="Application.ServerDemo" />
         <item itemvalue="Application.TerrainTest" />
         <item itemvalue="Application.Terrain" />
         <item itemvalue="Application.TerrainView" />
-        <item itemvalue="Application.ClientDemo" />
-        <item itemvalue="Application.ServerDemo" />
       </list>
     </recent_temporary>
   </component>
@@ -263,6 +258,10 @@
       <workItem from="1571982807713" duration="619000" />
       <workItem from="1571990507308" duration="592000" />
       <workItem from="1571995672162" duration="6930000" />
+      <workItem from="1572006819660" duration="285000" />
+      <workItem from="1572150543446" duration="422000" />
+      <workItem from="1572243363667" duration="524000" />
+      <workItem from="1572361115976" duration="792000" />
     </task>
     <servers />
   </component>
