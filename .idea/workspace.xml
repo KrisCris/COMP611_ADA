@@ -8,6 +8,7 @@
   <component name="ChangeListManager">
     <list default="true" id="15746a32-4b38-4c31-9d50-5a12e5386c9d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assignment_3/RedBlackTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/assignment_3/RedBlackTree.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -263,7 +264,7 @@
       <workItem from="1572150543446" duration="422000" />
       <workItem from="1572243363667" duration="524000" />
       <workItem from="1572361115976" duration="792000" />
-      <workItem from="1573624300377" duration="640000" />
+      <workItem from="1573624300377" duration="9904000" />
     </task>
     <servers />
   </component>
