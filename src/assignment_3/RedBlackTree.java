@@ -41,11 +41,16 @@ public class RedBlackTree {
     }
 
     private Node contains(Node node, int val){
-        if(node.equals(val) || node.isLeaf()){
+        if(node.isLeaf() || node.equals(val)){
             return node;
         } else if(val<node.getVal()){
+            //problems occurred
+            if(node.getLeftChild() == null)
+                return node;
             return contains(node.leftChild, val);
         } else {
+            if(node.getRightChild() == null)
+                return node;
             return contains(node.rightChild, val);
         }
     }
@@ -69,7 +74,7 @@ public class RedBlackTree {
                 } else {
                     //case.2
                     //Left-Right situation, to rotate current and its parent to Left-Left position first.
-                    if(parent.isLeftChild()){
+                    if(!current.isLeftChild()){
                         this.leftRotate(parent);
                     }
                     //Left-Left situation, to right-rotate parent and grandpa thus made grandpa to be the right child of parent.
@@ -81,14 +86,36 @@ public class RedBlackTree {
                 }
                 parent = current.getParent();
             } else {
+                //Vise versa:
                 if(uncle != null && uncle.isRed()){
                     parent.setRed(false);
                     uncle.setRed(false);
                     parent.getParent().setRed(true);
+                } else {
+                    if(current.isLeftChild()){
+                        this.rightRotate(parent);
+                    }
+                    parent.setRed(false);
+                    parent.getParent().setRed(true);
+                    this.leftRotate(parent.getParent());
                 }
             }
         }
         this.root.setRed(false);
+    }
+
+    public void inOrderTraversal(){
+        this.inOrderTraversal(this.root);
+    }
+
+    private void inOrderTraversal(Node node){
+        if(node == null){
+            return;
+        } else {
+            inOrderTraversal(node.leftChild);
+            System.out.print(node.getVal()+"\t");
+            inOrderTraversal(node.rightChild);
+        }
     }
 
     /**
@@ -134,7 +161,7 @@ public class RedBlackTree {
         private Node rightChild;
         private Node parent;
         private boolean isRed;
-        private int minGap;
+//        private int minGap;
 
         public Node(int val, Node parent){
             this.val = val;
@@ -194,13 +221,13 @@ public class RedBlackTree {
             }
         }
 
-        public int getMinGap() {
-            return minGap;
-        }
-
-        public void setMinGap(int minGap) {
-            this.minGap = minGap;
-        }
+//        public int getMinGap() {
+//            return minGap;
+//        }
+//
+//        public void setMinGap(int minGap) {
+//            this.minGap = minGap;
+//        }
 
         public int getVal() {
             return val;

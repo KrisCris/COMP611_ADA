@@ -94,13 +94,26 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.ClientDemo">
+  <component name="RunManager" selected="Application.RBTreeTest">
     <configuration name="ClientDemo" type="Application" factoryName="Application" singleton="false" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="assignment_1.Test.ClientDemo" />
       <module name="ADA" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="assignment_1.Test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RBTreeTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="assignment_3.RBTreeTest" />
+      <module name="ADA" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="assignment_3.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -147,33 +160,20 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TerrainView" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="assignment_2.View.TerrainView" />
-      <module name="ADA" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="assignment_2.View.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <list>
       <item itemvalue="Application.ClientDemo" />
       <item itemvalue="Application.ServerDemo" />
       <item itemvalue="Application.Terrain" />
-      <item itemvalue="Application.TerrainView" />
       <item itemvalue="Application.TerrainTest" />
+      <item itemvalue="Application.RBTreeTest" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.RBTreeTest" />
         <item itemvalue="Application.ClientDemo" />
         <item itemvalue="Application.ServerDemo" />
         <item itemvalue="Application.TerrainTest" />
         <item itemvalue="Application.Terrain" />
-        <item itemvalue="Application.TerrainView" />
       </list>
     </recent_temporary>
   </component>
@@ -265,6 +265,7 @@
       <workItem from="1572243363667" duration="524000" />
       <workItem from="1572361115976" duration="792000" />
       <workItem from="1573624300377" duration="9904000" />
+      <workItem from="1573652749859" duration="5617000" />
     </task>
     <servers />
   </component>
