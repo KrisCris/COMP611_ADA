@@ -8,6 +8,8 @@
   <component name="ChangeListManager">
     <list default="true" id="15746a32-4b38-4c31-9d50-5a12e5386c9d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assignment_3/GraphUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/assignment_3/GraphUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assignment_3/RBTreeTest.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/assignment_3/RedBlackTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/assignment_3/RedBlackTree.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -61,7 +63,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../AUT/DemoMVC" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../COMP603_PDC/COMP603_Lab" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -265,7 +267,12 @@
       <workItem from="1572243363667" duration="524000" />
       <workItem from="1572361115976" duration="792000" />
       <workItem from="1573624300377" duration="9904000" />
-      <workItem from="1573652749859" duration="5617000" />
+      <workItem from="1573652749859" duration="7024000" />
+      <workItem from="1573720035171" duration="7000" />
+      <workItem from="1573982335799" duration="128000" />
+      <workItem from="1573984230706" duration="2368000" />
+      <workItem from="1574744027454" duration="4000" />
+      <workItem from="1574815820604" duration="1559000" />
     </task>
     <servers />
   </component>

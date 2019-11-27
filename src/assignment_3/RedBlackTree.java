@@ -41,9 +41,10 @@ public class RedBlackTree {
     }
 
     private Node contains(Node node, int val){
-        if(node.isLeaf() || node.equals(val)){
+        if(node.equals(val)){
             return node;
-        } else if(val<node.getVal()){
+        } else if(node.)
+        else if(val<node.getVal()){
             //problems occurred
             if(node.getLeftChild() == null)
                 return node;
@@ -269,7 +270,19 @@ public class RedBlackTree {
             isRed = red;
         }
 
-
-
+    }
+    public static void main(String[] args) {
+        RedBlackTree redBlackTree = new RedBlackTree(8);
+        redBlackTree.add(6);
+        redBlackTree.add(10);
+        redBlackTree.add(16);
+        redBlackTree.add(12);
+        redBlackTree.add(10);
+        redBlackTree.add(4);
+        redBlackTree.add(7);
+        redBlackTree.add(0);
+        redBlackTree.add(8);
+        redBlackTree.add(100);
+        redBlackTree.inOrderTraversal();
     }
 }
