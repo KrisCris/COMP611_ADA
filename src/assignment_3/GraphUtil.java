@@ -7,7 +7,7 @@ public class GraphUtil<E> {
 
 
     public GraphADT<Info<E>> calculateDepths (GraphADT<E> graph, Vertex<E> startVertex){
-
+        return null;
     }
 
 
