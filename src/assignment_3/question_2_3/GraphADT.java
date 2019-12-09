@@ -30,14 +30,6 @@ public class GraphADT<E> {
         return false;
     }
 
-//    public boolean add(Object name, E val) {
-//        if (!contains(val)) {
-//            this.vertices.put(name, new Vertex<>(val));
-//            return true;
-//        }
-//        return false;
-//    }
-
     public boolean contains(E val) {
         if (vertices.containsKey(val))
             return true;
