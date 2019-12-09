@@ -1,7 +1,6 @@
-package assignment_3;
+package assignment_3.question_2;
 
 public class GraphUtil<E> {
-
 
 
 
@@ -11,15 +10,10 @@ public class GraphUtil<E> {
     }
 
 
-    class GraphADT<E>{
-
-    }
-
     class Info<E>{
-
+        Vertex<E> vertex;
+        int d;
+        int m;
     }
 
-    class Vertex<E>{
-
-    }
 }

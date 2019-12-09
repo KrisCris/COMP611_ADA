@@ -19,41 +19,56 @@ public class MinGapTest {
          * To compare insertion time.
          */
         long startTime = System.currentTimeMillis();
-        for (int i : ints){
+        for (int i : ints) {
             rbt.add(i);
         }
         long endTime = System.currentTimeMillis();
-        System.out.println("RB Tree insertion time cost: "+(endTime-startTime)+" ms");
+        System.out.println("RB Tree insertion time cost: " + (endTime - startTime) + " ms");
 
         startTime = System.currentTimeMillis();
-        for (int i : ints){
+        for (int i : ints) {
             mgt.add(i);
         }
         endTime = System.currentTimeMillis();
-        System.out.println("MG Tree insertion time cost: "+(endTime-startTime)+" ms");
+        System.out.println("MG Tree insertion time cost: " + (endTime - startTime) + " ms");
 
         System.out.println();
+
         /**
          * To find the minGap
          */
         int mingap1;
         int mingap2;
-        startTime = System.currentTimeMillis();
-        mingap1 = mgt.getMinGap();
-        endTime = System.currentTimeMillis();
-        System.out.println("Augmented DS Methods time costs: "+ (endTime-startTime)+" ms");
 
+        /**
+         * Using minGap() method to find minGap.
+         * To display the time cost.
+         */
+        startTime = System.currentTimeMillis();
+        mingap1 = mgt.minGap();
+        endTime = System.currentTimeMillis();
+        System.out.println("Augmented DS Methods time costs: " + (endTime - startTime) + " ms");
+
+        /**
+         * A brute force way to find the minGap.
+         */
         startTime = System.currentTimeMillis();
         mingap2 = mgt.bruteForceGetMinGap();
         endTime = System.currentTimeMillis();
-        System.out.println("Brute Force Methods time costs: "+ (endTime-startTime)+" ms");
+        System.out.println("Brute Force Methods time costs: " + (endTime - startTime) + " ms");
 
         System.out.println();
 
-        if(mingap1 != mingap2){
+        /**
+         * Display minGap
+         *
+         * If the answer goes wrong then print "WRONG".
+         * But actually there is no way to go wrong. LOL
+         */
+        if (mingap1 != mingap2) {
             System.out.println("WRONG");
         } else {
-            System.out.println("MINGAP = "+mingap1);
+            System.out.println("minGap = " + mingap1);
         }
 
     }

@@ -6,20 +6,8 @@ import java.util.Random;
 
 public class MinGapTree extends RedBlackTree {
 
-    public int getMinGap(){
+    public int minGap(){
         return ((MinGapNode) this.root).minGap;
-    }
-
-    public int[] getRange(){
-        return new int[]{getMin(),getMax()};
-    }
-
-    public int getMin(){
-        return ((MinGapNode) this.root).min;
-    }
-
-    public int getMax(){
-        return ((MinGapNode) this.root).max;
     }
 
     @Override
@@ -242,8 +230,8 @@ public class MinGapTree extends RedBlackTree {
             }
             minGapTree.inOrderTraversal();
 
-            System.out.println("MINGAP = "+minGapTree.getMinGap());
-            if(minGapTree.getMinGap() > minGapTree.bruteForceGetMinGap()){
+            System.out.println("MINGAP = "+minGapTree.minGap());
+            if(minGapTree.minGap() > minGapTree.bruteForceGetMinGap()){
                 System.out.println("WRONG ANSWER ");
                 break;
             }

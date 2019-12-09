@@ -7,12 +7,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="15746a32-4b38-4c31-9d50-5a12e5386c9d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/assignment_3/question_1/RedBlackTree.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ADA/assignment_3/Assignment3.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ADA/assignment_3/Assignment3.pdf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/assignment_3/Assignment3.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/src/assignment_3/Assignment3.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assignment_3/GraphUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/assignment_3/GraphUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assignment_3/RedBlackTree.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assignment_3/GraphUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/assignment_3/question_2/GraphUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assignment_3/question_1/MinGapTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/assignment_3/question_1/MinGapTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assignment_3/question_1/MinGapTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/assignment_3/question_1/MinGapTree.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -118,12 +117,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="RedBlackTree (3)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="assignment_3.RedBlackTree" />
+    <configuration name="RedBlackTree" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="assignment_3.question_1.RedBlackTree" />
       <module name="ADA" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="assignment_3.*" />
+          <option name="PATTERN" value="assignment_3.question_1.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -132,11 +131,11 @@
       </method>
     </configuration>
     <configuration name="RedBlackTree" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="assignment_3.question_1.RedBlackTree" />
+      <option name="MAIN_CLASS_NAME" value="assignment_3.RedBlackTree" />
       <module name="ADA" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="assignment_3.question_1.*" />
+          <option name="PATTERN" value="assignment_3.question_2.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -283,7 +282,7 @@
       <workItem from="1574842163771" duration="564000" />
       <workItem from="1575615563097" duration="20000" />
       <workItem from="1575616287874" duration="21503000" />
-      <workItem from="1575796126177" duration="16188000" />
+      <workItem from="1575796126177" duration="24185000" />
     </task>
     <servers />
   </component>
@@ -356,29 +355,33 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="698" y="294" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/-1024.312.1024.768/0.0.1920.1080@0.0.1920.1080" timestamp="1575812056327" />
-    <state width="1878" height="324" key="GridCell.Tab.0.bottom" timestamp="1575812934524">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state width="1878" height="316" key="GridCell.Tab.0.bottom" timestamp="1575868790675">
+      <screen x="0" y="23" width="1869" height="1057" />
     </state>
-    <state width="1878" height="324" key="GridCell.Tab.0.bottom/-1024.312.1024.768/0.0.1920.1080@0.0.1920.1080" timestamp="1575812934524" />
+    <state width="1878" height="316" key="GridCell.Tab.0.bottom/-1024.312.1024.768/0.0.1920.1080@0.0.1920.1080" timestamp="1575821837158" />
     <state width="1878" height="572" key="GridCell.Tab.0.bottom/-1024.335.1024.745/0.0.1869.1080@0.0.1869.1080" timestamp="1575798220557" />
+    <state width="1878" height="316" key="GridCell.Tab.0.bottom/-1024.335.1024.745/0.23.1869.1057@0.23.1869.1057" timestamp="1575868790675" />
     <state width="1878" height="304" key="GridCell.Tab.0.bottom/-1112.312.1112.834/0.0.1920.1080@0.0.1920.1080" timestamp="1575647622031" />
-    <state width="1878" height="324" key="GridCell.Tab.0.center" timestamp="1575812934523">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state width="1878" height="316" key="GridCell.Tab.0.center" timestamp="1575868790673">
+      <screen x="0" y="23" width="1869" height="1057" />
     </state>
-    <state width="1878" height="324" key="GridCell.Tab.0.center/-1024.312.1024.768/0.0.1920.1080@0.0.1920.1080" timestamp="1575812934523" />
+    <state width="1878" height="316" key="GridCell.Tab.0.center/-1024.312.1024.768/0.0.1920.1080@0.0.1920.1080" timestamp="1575821837157" />
     <state width="1878" height="572" key="GridCell.Tab.0.center/-1024.335.1024.745/0.0.1869.1080@0.0.1869.1080" timestamp="1575798220555" />
+    <state width="1878" height="316" key="GridCell.Tab.0.center/-1024.335.1024.745/0.23.1869.1057@0.23.1869.1057" timestamp="1575868790673" />
     <state width="1878" height="304" key="GridCell.Tab.0.center/-1112.312.1112.834/0.0.1920.1080@0.0.1920.1080" timestamp="1575647622029" />
-    <state width="1878" height="324" key="GridCell.Tab.0.left" timestamp="1575812934522">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state width="1878" height="316" key="GridCell.Tab.0.left" timestamp="1575868790672">
+      <screen x="0" y="23" width="1869" height="1057" />
     </state>
-    <state width="1878" height="324" key="GridCell.Tab.0.left/-1024.312.1024.768/0.0.1920.1080@0.0.1920.1080" timestamp="1575812934522" />
+    <state width="1878" height="316" key="GridCell.Tab.0.left/-1024.312.1024.768/0.0.1920.1080@0.0.1920.1080" timestamp="1575821837156" />
     <state width="1878" height="572" key="GridCell.Tab.0.left/-1024.335.1024.745/0.0.1869.1080@0.0.1869.1080" timestamp="1575798220553" />
+    <state width="1878" height="316" key="GridCell.Tab.0.left/-1024.335.1024.745/0.23.1869.1057@0.23.1869.1057" timestamp="1575868790672" />
     <state width="1878" height="304" key="GridCell.Tab.0.left/-1112.312.1112.834/0.0.1920.1080@0.0.1920.1080" timestamp="1575647622028" />
-    <state width="1878" height="324" key="GridCell.Tab.0.right" timestamp="1575812934523">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state width="1878" height="316" key="GridCell.Tab.0.right" timestamp="1575868790674">
+      <screen x="0" y="23" width="1869" height="1057" />
     </state>
-    <state width="1878" height="324" key="GridCell.Tab.0.right/-1024.312.1024.768/0.0.1920.1080@0.0.1920.1080" timestamp="1575812934523" />
+    <state width="1878" height="316" key="GridCell.Tab.0.right/-1024.312.1024.768/0.0.1920.1080@0.0.1920.1080" timestamp="1575821837158" />
     <state width="1878" height="572" key="GridCell.Tab.0.right/-1024.335.1024.745/0.0.1869.1080@0.0.1869.1080" timestamp="1575798220556" />
+    <state width="1878" height="316" key="GridCell.Tab.0.right/-1024.335.1024.745/0.23.1869.1057@0.23.1869.1057" timestamp="1575868790674" />
     <state width="1878" height="304" key="GridCell.Tab.0.right/-1112.312.1112.834/0.0.1920.1080@0.0.1920.1080" timestamp="1575647622030" />
     <state width="1342" height="375" key="GridCell.Tab.1.bottom" timestamp="1575730471253">
       <screen x="0" y="0" width="1920" height="1080" />
