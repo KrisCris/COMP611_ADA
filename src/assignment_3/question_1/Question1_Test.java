@@ -3,7 +3,7 @@ package assignment_3.question_1;
 import java.util.LinkedList;
 import java.util.Random;
 
-public class MinGapTest {
+public class Question1_Test {
     public static void main(String[] args) {
         RedBlackTree rbt = new RedBlackTree();
         MinGapTree mgt = new MinGapTree();
