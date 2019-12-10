@@ -6,6 +6,10 @@ import java.util.Map;
 
 public class GraphADT<E> {
 
+    /**
+     * int time         is the same usage as the one in the GraphUtil, I put it here for the algorithm test of d & m before I wrote the GraphUtil class.
+     * Map vertices     is a map that contains all the Vertex, so that each Vertex<E> can be easily reached by key E.
+     */
     private int time;
     private Map<E, Vertex<E>> vertices;
 
@@ -42,6 +46,9 @@ public class GraphADT<E> {
         return false;
     }
 
+    /**
+     * To link Vertices of val_1 and val_2 mutually.
+     */
     public boolean linkUndirected(E val_1, E val_2) throws Exception {
         if (contains(val_1) && contains(val_2)) {
             Vertex<E> v1 = getVertex(val_1);
@@ -53,6 +60,11 @@ public class GraphADT<E> {
         return false;
     }
 
+    /**
+     * To link vertex directed.
+     * Vertex of val_1 ---> Vertex of val_2.
+     *
+     */
     public boolean linkDirected(E val_1, E val_2) throws Exception {
         if (contains(val_1) && contains(val_2)) {
             Vertex<E> v1 = getVertex(val_1);
@@ -73,23 +85,27 @@ public class GraphADT<E> {
         return vertices.get(val);
     }
 
+    /**
+     * @return the Vertices MAP.
+     */
     public Map<E, Vertex<E>> getVertices() {
         return vertices;
     }
 
+    /**
+     * To display the linkage among each Vertex.
+     */
     public void showLinkage(){
         for (Vertex<E> v : vertices.values()){
             for(Vertex<E> u : v.getAdjList()){
-                System.out.println(v.getVal()+"---"+u.getVal());
+                System.out.println(v.getVal()+"  --->  "+u.getVal());
             }
         }
     }
+
     /**
-     * 0 unvisited
-     * 1 visiting
-     * 2 visited
-     *
-     * @param val
+     * Deep-first searching the Graph.
+     * @param val the value of start vertex.
      */
     public void dfs(E val) throws Exception {
         this.time = 0;
@@ -111,6 +127,16 @@ public class GraphADT<E> {
         }
     }
 
+    /**
+     * DFS start at Vertex<E> v.
+     *
+     * setD() and setM() methods are not necessary in this methods,
+     * just for testing the algorithm of problem 2 before writing the huge complex calculateDepths() in GraphUtil;
+     *
+     * And the DFS method solving Question.2 is written in GraphUtil class.
+     *
+     * @param v the start Vertex.
+     */
     private void dfsVisit(Vertex<E> v) {
         v.setD(time);
         v.setM(time++);
@@ -141,6 +167,10 @@ public class GraphADT<E> {
         return sb.toString();
     }
 
+    /**
+     * This main methods is for debug use,
+     * please use the Question1_Test class to test the assignment 3.1 requirements.
+     */
     public static void main(String[] args) throws Exception {
         GraphADT<String> testGraph = new GraphADT<>();
         testGraph.add("a");
@@ -187,13 +217,26 @@ public class GraphADT<E> {
 
 
 class Vertex<E> {
+    /**
+     *
+     * int visitedState:
+     *      0 unvisited
+     *      1 visiting
+     *      2 visited
+     *
+     * LinkedList adjList
+     *      The list that holds Vertices this Vertex direct to.
+     *
+     * Vertex ascVertex
+     *     Holds vertex ascending to this Vertex when do the DFS.
+     */
     private E val;
     private int visitedState;
     private LinkedList<Vertex<E>> adjList;
     private Vertex<E> ascVertex;
 
     /**
-     * These two are the same usage as in Class Info, which resolved the question2.
+     * These two are the same usage as in Class Info, which solved the question2.
      * And these two attributes will be used if you call the dfs() in GraphADT.
      * However these attributes are just for test, not for solving question2.
      */

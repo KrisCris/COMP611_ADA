@@ -13,6 +13,11 @@ public class GraphUtil<E> {
         this.unconnected = false;
     }
 
+    /**
+     * Question.2
+     * This methods completely follow the requirements of Question.2,
+     * though it is quite weird to put Info into a graph while the Info itself holds a reference to the Vertex of Original Graph.
+     */
     public GraphADT<Info<E>> calculateDepths(GraphADT<E> graph, Vertex<E> startVertex) throws Exception {
         time = 0;
         infoMap.clear();
@@ -22,6 +27,9 @@ public class GraphUtil<E> {
 
         GraphADT<Info<E>> infoGraph = new GraphADT<>();
 
+        /**
+         * To prepare for DFS and initializing Info Graph.
+         */
         for (Vertex<E> vertex : graph.getVertices().values()) {
             vertex.unvisited();
             vertex.setAscVertex(null);
@@ -101,6 +109,9 @@ public class GraphUtil<E> {
         return analyzedResult;
     }
 
+    /**
+     * To check if the graph is undirected.
+     */
     public boolean isUndirected(GraphADT<E> graph) {
         for (Vertex<E> v : graph.getVertices().values()) {
             for (Vertex<E> u : v.getAdjList()) {
@@ -111,6 +122,9 @@ public class GraphUtil<E> {
         return true;
     }
 
+    /**
+     * This method does a Deep first search to the Original Graph and saving M and D information into the Info Graph.
+     */
     public void dfs(Vertex<E> v, GraphADT<Info<E>> infoGraph) throws Exception {
         Info<E> v_info = infoGraph.getVertex(infoMap.get(v)).getVal();
         v_info.setD(time);
@@ -182,6 +196,11 @@ class Info<E> {
     }
 }
 
+/**
+ * This class is for analyzeGraph(),
+ * who returns an AnalyzedResult that contains both articulation points and bridges of the graph.
+ * @param <E>
+ */
 class AnalyzedResult<E> {
     Set<Vertex<E>> articulationPoints;
     Map<Vertex<E>, LinkedList<Vertex<E>>> bridges;

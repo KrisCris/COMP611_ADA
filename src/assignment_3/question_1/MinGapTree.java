@@ -120,6 +120,10 @@ public class MinGapTree extends RedBlackTree {
         fixRotatedGap((MinGapNode) node);
     }
 
+    /**
+     * To recalculate gap information between 2 rotated nodes.
+     * @param node
+     */
     private void fixRotatedGap(MinGapNode node) {
         int i = 0;
         while (i < 2 && node != null) {
@@ -130,6 +134,11 @@ public class MinGapTree extends RedBlackTree {
         }
     }
 
+    /**
+     * A brute force way to solve this problem.
+     * For comparing the time efficiency with augmented DS one.
+     * @return
+     */
     public int bruteForceGetMinGap(){
         ArrayList<Integer> list = new ArrayList<>();
         this.inOrderTraversal(this.root, list);
@@ -141,6 +150,13 @@ public class MinGapTree extends RedBlackTree {
         }
         return minGap;
     }
+
+    /**
+     * Put the value of nodes into a list in an ascending order;
+     * @param node The node to begin with.
+     * @param list A list to hold the value of nodes.
+     * @return The list.
+     */
     private ArrayList<Integer> inOrderTraversal(Node node, ArrayList<Integer> list){
         if(node == null){
             return null;
@@ -158,10 +174,8 @@ public class MinGapTree extends RedBlackTree {
          * min : the minimum value in subtree rooted as Node;
          * max : Vise Versa;
          * minGap : the minGap among nodes in the subtree rooted as Node;
-         * between : the two nodes with minimum gap. Only used when check which two share the minGap.
          */
         protected int minGap;
-
         protected int min;
         protected int max;
 
@@ -210,6 +224,10 @@ public class MinGapTree extends RedBlackTree {
 
     }
 
+    /**
+     * This main methods is for debug use,
+     * please use the Question1_Test class to test the assignment 3.1 requirements.
+     */
     public static void main(String[] args) {
         int NUM = 100;
         Random rd = new Random();

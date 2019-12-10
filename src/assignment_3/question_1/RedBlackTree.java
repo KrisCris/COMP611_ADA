@@ -92,6 +92,11 @@ public class RedBlackTree {
         return temp;
     }
 
+    /**
+     *
+     * @param val
+     * @return If the tree contains val, return true;
+     */
     public boolean contains(int val) {
         if (this.contains(root, val).equals(val)) {
             return true;
@@ -99,6 +104,12 @@ public class RedBlackTree {
         return false;
     }
 
+    /**
+     *
+     * @param node
+     * @param val
+     * @return If the tree contains
+     */
     protected Node contains(Node node, int val) {
         if (node.equals(val)) {
             return node;
@@ -122,24 +133,48 @@ public class RedBlackTree {
     protected void balance(Node node) {
         Node uncle = null;
         while (node.getParent() != null && node.getParent().isRed()) {
+            /**
+             * Uncle can be set before if() thanks to the getSibling() method.
+             */
             uncle = node.getParent().getSibling();
+
             if (node.getParent().isLeftChild()) {
+                /**
+                 * When node.parent is a left child:
+                 */
 //                uncle = node.getParent().getRightChild();
                 if (uncle != null && uncle.isRed()){
+                    /**
+                     * Case.1 when only need to change color:
+                     */
                     node.getParent().setRed(false);
                     uncle.setRed(false);
                     node.getParent().getParent().setRed(true);
                     node = node.getParent().getParent();
                 } else {
+                    /**
+                     * When rotation required:
+                     */
                     if (!node.isLeftChild()){
+                        /**
+                         * Case.2 when node is a right child
+                         */
                         node = node.getParent();
                         leftRotate(node);
                     }
+                    /**
+                     * Case.3
+                     */
                     node.getParent().setRed(false);
                     node.getParent().getParent().setRed(true);
                     rightRotate(node.getParent().getParent());
                 }
             } else {
+
+                /**
+                 * When node.parent is a left child:
+                 * Same as above but interchange left and right
+                 */
 //                uncle = node.getParent().getLeftChild();
                 if (uncle != null && uncle.isRed()){
                     node.getParent().setRed(false);
@@ -165,6 +200,10 @@ public class RedBlackTree {
         System.out.println("");
     }
 
+    /**
+     * In order traversal and print each node with its color.
+     * @param node
+     */
     private void inOrderTraversal(Node node) {
         if (node == null) {
             return;
@@ -172,8 +211,8 @@ public class RedBlackTree {
             inOrderTraversal(node.leftChild);
             String ANSI_RESET = "\u001B[0m";
             String ANSI_RED = "\u001B[31m";
-            if (node.isRed) System.out.print(ANSI_RED + node.getVal() + ANSI_RESET + "\t");
-            else System.out.print(node.getVal() + "\t");
+            if (node.isRed) System.out.print(ANSI_RED + node.getVal() + ANSI_RESET + "  ");
+            else System.out.print(node.getVal() + "  ");
 
             inOrderTraversal(node.rightChild);
         }
@@ -270,12 +309,20 @@ public class RedBlackTree {
             return false;
         }
 
+        /**
+         * To check if this node is a leaf node.
+         * @return
+         */
         public boolean isLeaf() {
             if (this.leftChild == null && this.rightChild == null)
                 return true;
             return false;
         }
 
+        /**
+         * To check if this node is a left child of its parent.
+         * @return is left child return TRUE, is right child return FALSE.
+         */
         public boolean isLeftChild() {
             if (this.parent != null) {
                 if (this.parent.getLeftChild() == this) {
@@ -287,6 +334,10 @@ public class RedBlackTree {
             return false;
         }
 
+        /**
+         *
+         * @return To return the sibling of current node.
+         */
         public Node getSibling() {
             if (this.parent != null) {
                 if (this.isLeftChild()) {
@@ -352,6 +403,11 @@ public class RedBlackTree {
 
     }
 
+    /**
+     * This main methods is for debug use,
+     * please use the Question1_Test class to test the assignment 3.1 requirements.
+     * @param args
+     */
     public static void main(String[] args) {
         RedBlackTree redBlackTree = new RedBlackTree();
         int NUM = 10;

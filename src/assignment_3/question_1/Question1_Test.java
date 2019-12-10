@@ -4,6 +4,9 @@ import java.util.LinkedList;
 import java.util.Random;
 
 public class Question1_Test {
+    public static final int NODE_NUM = 100;
+    public static final int RANDOM_RANGE = 10000;
+
     public static void main(String[] args) {
         RedBlackTree rbt = new RedBlackTree();
         MinGapTree mgt = new MinGapTree();
@@ -11,8 +14,8 @@ public class Question1_Test {
         Random rd = new Random();
         LinkedList<Integer> ints = new LinkedList<>();
 
-        for (int i = 0; i < 100000; i++) {
-            ints.add(rd.nextInt(1000000));
+        for (int i = 0; i < NODE_NUM; i++) {
+            ints.add(rd.nextInt(RANDOM_RANGE));
         }
 
         /**
@@ -71,5 +74,9 @@ public class Question1_Test {
             System.out.println("minGap = " + mingap1);
         }
 
+        System.out.println();
+
+        System.out.println("Tree content:");
+        mgt.inOrderTraversal();
     }
 }
