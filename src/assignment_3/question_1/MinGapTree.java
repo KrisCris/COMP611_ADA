@@ -14,7 +14,7 @@ public class MinGapTree extends RedBlackTree {
     public boolean add(int val) {
 
         MinGapNode childNode = new MinGapNode(val);
-
+ 
         Node parentNode = this.addCheck(childNode);
         if (parentNode == null)
             return false;
