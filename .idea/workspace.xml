@@ -8,9 +8,7 @@
   <component name="ChangeListManager">
     <list default="true" id="15746a32-4b38-4c31-9d50-5a12e5386c9d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assignment_3/question_1/MinGapTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/assignment_3/question_1/MinGapTree.java" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -88,18 +86,6 @@
       <recent name="$PROJECT_DIR$/src/assignment_1" />
       <recent name="$PROJECT_DIR$/src/assignment_1/image:pdf" />
     </key>
-  </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
   </component>
   <component name="RunManager" selected="Application.MinGapTree">
     <configuration name="MinGapTree" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -183,6 +169,18 @@
         <item itemvalue="Application.Question2_Test" />
       </list>
     </recent_temporary>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -290,6 +288,11 @@
       <workItem from="1575973766570" duration="241000" />
       <workItem from="1575974675472" duration="1591000" />
       <workItem from="1576228776885" duration="23000" />
+      <workItem from="1576306887168" duration="60000" />
+      <workItem from="1576309273941" duration="34000" />
+      <workItem from="1576332511373" duration="1688000" />
+      <workItem from="1576403967582" duration="713000" />
+      <workItem from="1576408619082" duration="1957000" />
     </task>
     <servers />
   </component>
@@ -432,11 +435,13 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="461" y="179" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1575616348775" />
-    <state x="611" y="383" key="com.intellij.ide.util.TipDialog" timestamp="1575974676140">
-      <screen x="0" y="23" width="1869" height="1057" />
+    <state x="611" y="383" key="com.intellij.ide.util.TipDialog" timestamp="1576403970114">
+      <screen x="0" y="23" width="1870" height="1057" />
     </state>
+    <state x="611" y="383" key="com.intellij.ide.util.TipDialog/-1112.335.1112.811/0.23.1870.1057@0.23.1870.1057" timestamp="1576309275207" />
     <state x="628" y="368" key="com.intellij.ide.util.TipDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1575796153243" />
     <state x="611" y="383" key="com.intellij.ide.util.TipDialog/0.23.1869.1057@0.23.1869.1057" timestamp="1575974676140" />
+    <state x="611" y="383" key="com.intellij.ide.util.TipDialog/0.23.1870.1057@0.23.1870.1057" timestamp="1576403970114" />
     <state x="698" y="324" key="extract.method.dialog" timestamp="1575798262065">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
