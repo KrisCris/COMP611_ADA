@@ -1,12 +1,8 @@
 package assignment_4.View.Windows;
 
-import assignment_4.Controller.SketchpadController;
-import assignment_4.Model.FigureModel;
 import assignment_4.View.Components.SketchpadPanel;
-
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+
 
 public class SampleGenView extends JFrame {
     public final int HEIGHT = 300;
@@ -20,8 +16,6 @@ public class SampleGenView extends JFrame {
     public SampleGenView() {
         this.initComponents();
         this.setLayout();
-        this.bindControllers();
-
     }
 
     private void initComponents() {
@@ -58,20 +52,7 @@ public class SampleGenView extends JFrame {
         this.add(clearBtn);
     }
 
-    private void bindControllers() {
-        SketchpadController sc = new SketchpadController();
-        FigureModel model = new FigureModel();
-        sc.bind(model, sketchpadPanel);
 
-
-        this.saveBtn.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                model.saveSample();
-            }
-        });
-
-    }
 
     public static void main(String[] args) {
         SampleGenView sgf = new SampleGenView();
