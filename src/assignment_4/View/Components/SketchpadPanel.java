@@ -1,5 +1,7 @@
 package assignment_4.View.Components;
 
+import assignment_4.Model.Outline;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
@@ -9,8 +11,8 @@ import java.util.LinkedList;
 
 
 public class SketchpadPanel extends JPanel implements MouseMotionListener, MouseListener {
-    public final int HEIGHT = 180;
-    public final int WIDTH = 180;
+//    public final int HEIGHT = 320;
+//    public final int WIDTH = 320;
 
     /**
      * By paint the pen stroke line by line,
@@ -23,6 +25,12 @@ public class SketchpadPanel extends JPanel implements MouseMotionListener, Mouse
     private int lastY;
     private LinkedList<int[]> drawnLines;
 
+    private int outlineX;
+    private int outlineY;
+    private int outlineW;
+    private int outlineH;
+    private boolean drawOutline;
+
     public SketchpadPanel() {
         this.initComponent();
         this.initData();
@@ -30,7 +38,6 @@ public class SketchpadPanel extends JPanel implements MouseMotionListener, Mouse
     }
 
     private void initComponent() {
-        this.setSize(HEIGHT, WIDTH);
         this.setBackground(Color.BLACK);
     }
 
@@ -38,11 +45,53 @@ public class SketchpadPanel extends JPanel implements MouseMotionListener, Mouse
         this.lastX = 0;
         this.lastY = 0;
         this.drawnLines = new LinkedList<>();
+
+        this.outlineH = 0;
+        this.outlineW = 0;
+        this.outlineX = 0;
+        this.outlineY = 0;
+        this.drawOutline = false;
     }
 
     private void bindListener(){
         this.addMouseMotionListener(this);
         this.addMouseListener(this);
+    }
+
+    /**
+     * To set a outline with some fancy animations. LOL
+     *
+     */
+    public void setOutLine(Outline outline){
+        int x = outline.getX();
+        int y = outline.getY();
+        int len = outline.getLength();
+        new Thread(new Runnable() {
+            public void run() {
+                for(int i=50;i>=0;i--){
+                    try {
+                        outlineX = x-i;
+                        outlineY = y-i;
+                        outlineW = len+i*2;
+                        outlineH = len+i*2;
+                        drawOutline = true;
+                        repaint();
+                        Thread.sleep(5);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+
+            }
+        }).start();
+    }
+
+    /**
+     * clear the panel
+     */
+    public void clear(){
+        initData();
+        repaint();
     }
 
     /**
@@ -61,7 +110,7 @@ public class SketchpadPanel extends JPanel implements MouseMotionListener, Mouse
          * Draw what user draws.
          */
         g.setColor(Color.WHITE);
-        g.setStroke(new BasicStroke(10));
+        g.setStroke(new BasicStroke(this.getWidth()/28));
         for (int i = 0; i < drawnLines.size(); i++) {
             g.drawLine(
                     drawnLines.get(i)[0],
@@ -69,6 +118,15 @@ public class SketchpadPanel extends JPanel implements MouseMotionListener, Mouse
                     drawnLines.get(i)[2],
                     drawnLines.get(i)[3]
             );
+        }
+
+        /**
+         * draw the fancy outline.
+         */
+        if(drawOutline == true){
+            g.setColor(Color.RED);
+            g.setStroke(new BasicStroke(1));
+            g.drawRect(outlineX,outlineY,outlineW,outlineH);
         }
 
         g.dispose();
