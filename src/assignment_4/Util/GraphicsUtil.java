@@ -45,15 +45,15 @@ public class GraphicsUtil {
          * and turn it into the grayScale.
          */
         double[] grayMatrix = new double[height * width];
-        for (int i = 0; i < width; i++) {
-            for (int j = 0; j < height; j++) {
-                int rgb = image.getRGB(i, j);
+        for (int y = 0; y < width; y++) {
+            for (int x = 0; x < height; x++) {
+                int rgb = image.getRGB(x,y);
                 int r = (rgb >> 16) & 0xff;
                 int g = (rgb >> 8) & 0xff;
                 int b = (rgb & 0xff);
                 double gray = Double.valueOf(r * 299 + g * 587 + b * 114 + 500) / 255000.0;
 
-                grayMatrix[i * width + j] = gray;
+                grayMatrix[y * width + x] = gray;
             }
         }
 
@@ -96,8 +96,8 @@ public class GraphicsUtil {
          * Iterate all pixels, to find the border of the figure.
          */
         for (int i = 0; i < binaryMatrix.length; i++) {
-            y = i % edgeLen;
-            x = i / edgeLen;
+            y = i / edgeLen;
+            x = i % edgeLen;
             /**
              * Update border information.
              */

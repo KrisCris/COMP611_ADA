@@ -9,11 +9,12 @@ import javax.swing.*;
 
 
 public class SampleView extends JFrame implements View {
-    public final int HEIGHT = 420;
+    public final int HEIGHT = 480;
     public final int WIDTH = 400;
 
 
     private SketchpadPanel sketchpadPanel;
+    private JComboBox<Integer> numberList;
     private JButton saveBtn;
     private JButton clearBtn;
     private JButton recognizeBtn;
@@ -26,7 +27,12 @@ public class SampleView extends JFrame implements View {
 
     private void initComponents() {
         this.setSize(WIDTH, HEIGHT);
+        this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.sketchpadPanel = new SketchpadPanel();
+        this.numberList = new JComboBox<>();
+        for (int i = 0; i < 10; i++) {
+            this.numberList.addItem(i);
+        }
         this.saveBtn = new JButton("Save");
         this.clearBtn = new JButton("Clear");
         this.recognizeBtn = new JButton("Recognize");
@@ -45,29 +51,41 @@ public class SampleView extends JFrame implements View {
                 40,
                 360,
                 100,
-                20
+                35
         );
         this.clearBtn.setBounds(
                 150,
                 360,
                 100,
-                20
+                35
         );
         this.recognizeBtn.setBounds(
                 260,
                 360,
                 100,
-                20
+                35
+        );
+
+        this.numberList.setBounds(
+                40,
+                405,
+                320,
+                35
         );
 
         this.add(sketchpadPanel);
         this.add(saveBtn);
         this.add(clearBtn);
         this.add(recognizeBtn);
+        this.add(numberList);
     }
 
     public SketchpadPanel getSketchpadPanel() {
         return sketchpadPanel;
+    }
+
+    public JComboBox<Integer> getNumberList() {
+        return numberList;
     }
 
     @Override

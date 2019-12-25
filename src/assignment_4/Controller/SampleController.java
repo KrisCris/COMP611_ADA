@@ -10,6 +10,7 @@ import assignment_4.View.Windows.SampleView;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.image.BufferedImage;
+import java.net.URL;
 
 public class SampleController implements Controller {
     private View view;
@@ -37,10 +38,12 @@ public class SampleController implements Controller {
             SampleView sv = (SampleView) view;
             if (o instanceof JButton) {
                 JButton btn = (JButton) o;
+                String path = this.getClass().getClassLoader().getResource("assignment_4").getPath();
                 GraphicsUtil GU = GraphicsUtil.getInstance();
-                IOUtil IOU = IOUtil.getInstance();
+                IOUtil IOU = IOUtil.getInstance(path+"/TrainingData");
 
                 if (btn.getText().equals("Save")) {
+                    int number = sv.getNumberList().getSelectedIndex();
                     BufferedImage panelImage = GU.panelToImage(sv.getSketchpadPanel());
 
                     double[] grayM = GU.imageToGrayMatrix(panelImage);
@@ -63,7 +66,7 @@ public class SampleController implements Controller {
                                     GU.imageToGrayMatrix(figureImage)
                             );
 
-                    IOU.matrixToFile(binaryFigure, -1);
+                    IOU.matrixToFile(binaryFigure, number);
 
                 } else if (btn.getText().equals("Clear")) {
                     sv.getSketchpadPanel().clear();
