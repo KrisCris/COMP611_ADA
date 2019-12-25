@@ -8,12 +8,8 @@
   <component name="ChangeListManager">
     <list default="true" id="15746a32-4b38-4c31-9d50-5a12e5386c9d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assignment_4/Model/Outline.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/assignment_4/Model/Outline.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assignment_4/Util/GraphicsUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/assignment_4/Util/GraphicsUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assignment_4/Util/IOUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/assignment_4/Util/IOUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assignment_4/View/Components/SketchpadPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/assignment_4/View/Components/SketchpadPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assignment_4/View/Windows/SampleGenView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/assignment_4/View/Windows/SampleView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assignment_4/test.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assignment_4/Model/FigureModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assignment_4/Util/KNN.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/assignment_4/Util/KNN.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -308,6 +304,7 @@
       <workItem from="1577164993175" duration="15148000" />
       <workItem from="1577250072854" duration="95000" />
       <workItem from="1577250769201" duration="13784000" />
+      <workItem from="1577278492450" duration="1403000" />
     </task>
     <servers />
   </component>
@@ -374,10 +371,10 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="673" y="350" key="#com.intellij.fileTypes.FileTypeChooser/-1112.312.1112.834/0.0.1920.1080@0.0.1920.1080" timestamp="1575641719369" />
-    <state x="1131" y="272" key="#com.intellij.ide.util.MemberChooser" timestamp="1577258249018">
+    <state x="1131" y="272" key="#com.intellij.ide.util.MemberChooser" timestamp="1577279344845">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="1131" y="272" key="#com.intellij.ide.util.MemberChooser/-1024.0.1024.768/0.0.1920.1080@0.0.1920.1080" timestamp="1577194626582" />
+    <state x="1131" y="272" key="#com.intellij.ide.util.MemberChooser/-1024.0.1024.768/0.0.1920.1080@0.0.1920.1080" timestamp="1577279344845" />
     <state x="773" y="256" key="#com.intellij.ide.util.MemberChooser/-1024.312.1024.768/0.0.1920.1080@0.0.1920.1080" timestamp="1575804923540" />
     <state x="752" y="256" key="#com.intellij.ide.util.MemberChooser/-1024.335.1024.745/0.0.1869.1080@0.0.1869.1080" timestamp="1575797249456" />
     <state x="773" y="256" key="#com.intellij.ide.util.MemberChooser/-1112.312.1112.834/0.0.1920.1080@0.0.1920.1080" timestamp="1575641837399" />
@@ -492,13 +489,18 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="960" height="540" key="XDebugger.FullValuePopup/0.0.1920.1080@0.0.1920.1080" timestamp="1577256492726" />
-    <state x="623" y="485" key="com.intellij.ide.util.TipDialog" timestamp="1577250796550">
+    <state x="623" y="485" key="com.intellij.ide.util.TipDialog" timestamp="1577278492997">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
+    <state x="623" y="485" key="com.intellij.ide.util.TipDialog/-1024.0.1024.768/0.0.1920.1080@0.0.1920.1080" timestamp="1577278492997" />
     <state x="611" y="383" key="com.intellij.ide.util.TipDialog/-1112.335.1112.811/0.23.1870.1057@0.23.1870.1057" timestamp="1576309275207" />
     <state x="623" y="485" key="com.intellij.ide.util.TipDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1577250796550" />
     <state x="611" y="383" key="com.intellij.ide.util.TipDialog/0.23.1869.1057@0.23.1869.1057" timestamp="1575974676140" />
     <state x="611" y="383" key="com.intellij.ide.util.TipDialog/0.23.1870.1057@0.23.1870.1057" timestamp="1576403970114" />
+    <state x="664" y="441" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1577279723223">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="664" y="441" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/-1024.0.1024.768/0.0.1920.1080@0.0.1920.1080" timestamp="1577279723223" />
     <state x="698" y="324" key="extract.method.dialog" timestamp="1575798262065">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
