@@ -29,17 +29,15 @@ public class Calculator extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jLabel1 = new javax.swing.JLabel();
         OperatorsPanel = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jLabel1 = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jPanel4 = new javax.swing.JPanel();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -65,6 +63,9 @@ public class Calculator extends javax.swing.JFrame {
 
         jLabel2.setText("jLabel2");
 
+        jLabel1.setText("jLabel1");
+        jScrollPane2.setViewportView(jLabel1);
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -72,41 +73,17 @@ public class Calculator extends javax.swing.JFrame {
         OperatorsPanel.setBackground(new java.awt.Color(204, 255, 204));
         OperatorsPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel3.setBackground(new java.awt.Color(204, 0, 255));
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("=");
-        jLabel3.setOpaque(true);
-        OperatorsPanel.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 192, 72, 48));
-
         jLabel4.setBackground(new java.awt.Color(204, 0, 255));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("+");
         jLabel4.setOpaque(true);
         OperatorsPanel.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 72, 48));
 
-        jLabel5.setBackground(new java.awt.Color(204, 0, 255));
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("X");
-        jLabel5.setOpaque(true);
-        OperatorsPanel.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 96, 72, 48));
-
-        jLabel6.setBackground(new java.awt.Color(204, 0, 255));
-        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setText("-");
-        jLabel6.setOpaque(true);
-        OperatorsPanel.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 48, 72, 48));
-
-        jLabel7.setBackground(new java.awt.Color(204, 0, 255));
-        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel7.setText("/");
-        jLabel7.setOpaque(true);
-        OperatorsPanel.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 144, 72, 48));
-
-        getContentPane().add(OperatorsPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 90, 72, 240));
+        getContentPane().add(OperatorsPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 132, 72, 240));
 
         jPanel2.setBackground(new java.awt.Color(204, 255, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 180, 180));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 132, 180, 180));
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 0));
 
@@ -121,13 +98,25 @@ public class Calculator extends javax.swing.JFrame {
             .addGap(0, 60, Short.MAX_VALUE)
         );
 
-        getContentPane().add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 270, 180, 60));
+        getContentPane().add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 312, 180, 60));
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, -20, -1, -1));
 
-        jLabel1.setText("jLabel1");
-        jScrollPane2.setViewportView(jLabel1);
+        jPanel4.setBackground(new java.awt.Color(153, 255, 204));
 
-        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 250, 90));
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 256, Short.MAX_VALUE)
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 86, Short.MAX_VALUE)
+        );
+
+        jScrollPane3.setViewportView(jPanel4);
+
+        getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 260, 90));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -171,16 +160,14 @@ public class Calculator extends javax.swing.JFrame {
     private javax.swing.JPanel OperatorsPanel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     // End of variables declaration//GEN-END:variables
 }
