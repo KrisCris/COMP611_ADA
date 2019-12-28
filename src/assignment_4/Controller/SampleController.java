@@ -4,6 +4,7 @@ import assignment_4.Model.Model;
 import assignment_4.Model.Outline;
 import assignment_4.Util.GraphicsUtil;
 import assignment_4.Util.IOUtil;
+import assignment_4.Util.KNN;
 import assignment_4.View.View;
 import assignment_4.View.Windows.SampleView;
 
@@ -11,6 +12,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.image.BufferedImage;
 import java.net.URL;
+import java.util.ArrayList;
 
 public class SampleController implements Controller {
     private View view;
@@ -38,33 +40,14 @@ public class SampleController implements Controller {
             SampleView sv = (SampleView) view;
             if (o instanceof JButton) {
                 JButton btn = (JButton) o;
-                String path = this.getClass().getClassLoader().getResource("assignment_4").getPath();
+
                 GraphicsUtil GU = GraphicsUtil.getInstance();
-                IOUtil IOU = IOUtil.getInstance(path+"/TrainingData");
+                IOUtil IOU = IOUtil.getInstance();
 
                 if (btn.getText().equals("Save")) {
                     int number = sv.getNumberList().getSelectedIndex();
-                    BufferedImage panelImage = GU.panelToImage(sv.getSketchpadPanel());
 
-                    double[] grayM = GU.imageToGrayMatrix(panelImage);
-                    int[] binaryM = GU.garyToBinaryMatrix(grayM);
-
-                    Outline outline = GU.getOutline(binaryM);
-                    sv.getSketchpadPanel().setOutLine(outline);
-
-                    BufferedImage figureImage = GU.compressImage(
-                            GU.getFigureImage(
-                                    panelImage,
-                                    outline
-                            ),
-                            32,
-                            32
-                    );
-
-                    int[] binaryFigure =
-                            GU.garyToBinaryMatrix(
-                                    GU.imageToGrayMatrix(figureImage)
-                            );
+                    int[] binaryFigure = GU.panelToBinaryFigureMatrix(sv.getSketchpadPanel());
 
                     IOU.matrixToFile(binaryFigure, number);
 
@@ -72,8 +55,11 @@ public class SampleController implements Controller {
                     sv.getSketchpadPanel().clear();
 
                 } else if (btn.getText().equals("Recognize")) {
-
-
+                    int[] targetMatrix = GU.panelToBinaryFigureMatrix(sv.getSketchpadPanel());
+                    
+                    KNN knnCore = KNN.getKnnCore();
+                    int result = knnCore.getResult(targetMatrix, 6);
+                    JOptionPane.showMessageDialog(null,"Estimated: "+result,"result",JOptionPane.INFORMATION_MESSAGE);
                 }
             }
         }

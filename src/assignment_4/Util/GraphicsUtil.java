@@ -1,6 +1,7 @@
 package assignment_4.Util;
 
 import assignment_4.Model.Outline;
+import assignment_4.View.Components.SketchpadPanel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -47,7 +48,7 @@ public class GraphicsUtil {
         double[] grayMatrix = new double[height * width];
         for (int y = 0; y < width; y++) {
             for (int x = 0; x < height; x++) {
-                int rgb = image.getRGB(x,y);
+                int rgb = image.getRGB(x, y);
                 int r = (rgb >> 16) & 0xff;
                 int g = (rgb >> 8) & 0xff;
                 int b = (rgb & 0xff);
@@ -115,10 +116,28 @@ public class GraphicsUtil {
             }
         }
 
-        /**
-         * To get the side length of the square outline.
-         */
+//        /**
+//         * To get the side length of the square outline.
+//         */
+//        double figureLen = Math.max(maxX - minX, maxY - minY)*1.4;
+//
+//        /**
+//         * To find the relatively centre point in this image,
+//         * then put the outline in centre of figure.
+//         */
+//        double cx = minX+(maxX-minX)/2.0;
+//        double cy = minY+(maxY-minY)/2.0;
+//
+//        int baseX = (int)(cx - figureLen/2);
+//        int baseY = (int)(cy - figureLen/2);
+//
+//
+//        System.out.println("outline: "+baseX+"\t"+baseY+"\t"+(int)figureLen);
+//        return new Outline(baseX, baseY, (int)figureLen);
+
         int figureLen = Math.max(maxX - minX, maxY - minY);
+
+//        System.out.println("outline: "+minX+"\t"+minY+"\t"+figureLen);
 
         return new Outline(minX, minY, figureLen);
 
@@ -126,23 +145,45 @@ public class GraphicsUtil {
 
     /**
      * This method create a subImage of the panel image that only contains the figure.
-     * @param image a image from the panel
+     *
+     * @param image   a image from the panel
      * @param outline the outline of figure
      * @return
      */
     public BufferedImage getFigureImage(BufferedImage image, Outline outline) {
+        int x = outline.getX();
+        int y = outline.getY();
+        int lenX = outline.getLength();
+        int lenY = outline.getLength();
+
+        /**
+         * To avoid the outline exceeds the img size;
+         */
+        if (x + lenX > image.getWidth()) {
+            lenX = image.getWidth() - x;
+        }
+        if (y + lenY > image.getHeight()) {
+            lenY = image.getHeight() - y;
+        }
 
         BufferedImage figureImage =
                 image.getSubimage(
-                        outline.getX(),
-                        outline.getY(),
-                        outline.getLength(),
-                        outline.getLength()
+                        x,
+                        y,
+                        lenX,
+                        lenY
                 );
-        return figureImage;
+        int len = Math.max(lenX,lenY);
+        BufferedImage newImg = new BufferedImage(len,len,BufferedImage.TYPE_INT_RGB);
+        Graphics2D g2d = newImg.createGraphics();
+        g2d.setBackground(Color.black);
+        g2d.drawImage(figureImage,0,0,null);
+        g2d.dispose();
+
+        return newImg;
     }
 
-    public BufferedImage compressImage(BufferedImage image, int h, int w){
+    public BufferedImage compressImage(BufferedImage image, int h, int w) {
         Image img = image.getScaledInstance(w, h, Image.SCALE_SMOOTH);
         BufferedImage scaledImage =
                 new BufferedImage(
@@ -151,10 +192,36 @@ public class GraphicsUtil {
                         BufferedImage.TYPE_INT_RGB
                 );
         Graphics2D g2d = scaledImage.createGraphics();
-        g2d.drawImage(img,0,0,null);
+        g2d.drawImage(img, 0, 0, null);
         g2d.dispose();
 
         return scaledImage;
+    }
+
+    public int[] panelToBinaryFigureMatrix(SketchpadPanel panel) {
+        BufferedImage panelImage = this.panelToImage(panel);
+
+        double[] grayM = this.imageToGrayMatrix(panelImage);
+        int[] binaryM = this.garyToBinaryMatrix(grayM);
+
+        Outline outline = this.getOutline(binaryM);
+        panel.setOutLine(outline);
+
+        BufferedImage figureImage = this.compressImage(
+                this.getFigureImage(
+                        panelImage,
+                        outline
+                ),
+                20,
+                20
+        );
+
+        int[] binaryFigure =
+                this.garyToBinaryMatrix(
+                        this.imageToGrayMatrix(figureImage)
+                );
+
+        return binaryFigure;
     }
 
     @Override
