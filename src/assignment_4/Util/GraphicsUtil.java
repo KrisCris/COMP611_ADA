@@ -139,6 +139,7 @@ public class GraphicsUtil {
 
 //        System.out.println("outline: "+minX+"\t"+minY+"\t"+figureLen);
 
+        System.out.println(minX +"\t" + minY +"\t"+figureLen);
         return new Outline(minX, minY, figureLen);
 
     }
@@ -205,6 +206,9 @@ public class GraphicsUtil {
         int[] binaryM = this.garyToBinaryMatrix(grayM);
 
         Outline outline = this.getOutline(binaryM);
+        if (outline.getX() == 2147483647 || outline.getY() == 	2147483647){
+            return null;
+        }
         panel.setOutLine(outline);
 
         BufferedImage figureImage = this.compressImage(

@@ -1,18 +1,20 @@
 package assignment_4.View.Windows;
 
+import assignment_4.Controller.CalculatorController;
+import assignment_4.Model.Calculation;
 import assignment_4.Model.Constants;
 import assignment_4.View.Components.Display;
 import assignment_4.View.Components.OperatorLabel;
 import assignment_4.View.Components.SketchpadPanel;
 
 import javax.swing.*;
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
 import java.util.Observable;
 import java.util.Observer;
 
-public class Calculator extends JFrame implements ActionListener, Observer {
+public class Calculator extends JFrame implements Observer {
+
+    private CalculatorController cc;
 
     private JPanel rightOpPanel;
     private JPanel topOpPanel;
@@ -41,7 +43,6 @@ public class Calculator extends JFrame implements ActionListener, Observer {
         initComponents();
         initLayout();
         initStyle();
-
     }
 
     private void initComponents() {
@@ -55,8 +56,8 @@ public class Calculator extends JFrame implements ActionListener, Observer {
 
         this.plus = new OperatorLabel("+");
         this.minus = new OperatorLabel("-");
-        this.multi = new OperatorLabel("x");
-        this.div = new OperatorLabel("/");
+        this.multi = new OperatorLabel("×");
+        this.div = new OperatorLabel("÷");
         this.leftBracket = new OperatorLabel("(");
         this.rightBracket = new OperatorLabel(")");
         this.mod = new OperatorLabel("Mod");
@@ -142,28 +143,87 @@ public class Calculator extends JFrame implements ActionListener, Observer {
         this.recognize.setColor(Constants.DK3_COLOR, Constants.DK4_COLOR, Constants.DK2_COLOR);
         this.dot.setColor(Constants.DK3_COLOR, Constants.DK4_COLOR, Constants.DK2_COLOR);
 
-        this.div.setColor(Constants.ORANGE_M_COLOR, Constants.ORANGE_L_COLOR, Constants.ORANGE_H_COLOR);
-        this.multi.setColor(Constants.ORANGE_M_COLOR, Constants.ORANGE_L_COLOR, Constants.ORANGE_H_COLOR);
-        this.plus.setColor(Constants.ORANGE_M_COLOR, Constants.ORANGE_L_COLOR, Constants.ORANGE_H_COLOR);
-        this.minus.setColor(Constants.ORANGE_M_COLOR, Constants.ORANGE_L_COLOR, Constants.ORANGE_H_COLOR);
-        this.equal.setColor(Constants.ORANGE_M_COLOR, Constants.ORANGE_L_COLOR, Constants.ORANGE_H_COLOR);
+        this.div.setColor(Constants.ORANGE_H_COLOR, Constants.ORANGE_L_COLOR, Constants.ORANGE_M_COLOR);
+        this.multi.setColor(Constants.ORANGE_H_COLOR, Constants.ORANGE_L_COLOR, Constants.ORANGE_M_COLOR);
+        this.plus.setColor(Constants.ORANGE_H_COLOR, Constants.ORANGE_L_COLOR, Constants.ORANGE_M_COLOR);
+        this.minus.setColor(Constants.ORANGE_H_COLOR, Constants.ORANGE_L_COLOR, Constants.ORANGE_M_COLOR);
+        this.equal.setColor(Constants.ORANGE_H_COLOR, Constants.ORANGE_L_COLOR, Constants.ORANGE_M_COLOR);
 
 
     }
 
+    protected void bindListener(){
+        /**
+         * Bind buttons with mouse event listeners.
+         */
+        this.plus.addMouseListener(this.cc);
+        this.minus.addMouseListener(this.cc);
+        this.multi.addMouseListener(this.cc);
+        this.div.addMouseListener(this.cc);
+        this.leftBracket.addMouseListener(this.cc);
+        this.rightBracket.addMouseListener(this.cc);
+        this.mod.addMouseListener(this.cc);
+        this.dot.addMouseListener(this.cc);
+        this.equal.addMouseListener(this.cc);
+        this.ac.addMouseListener(this.cc);
+        this.recognize.addMouseListener(this.cc);
+        this.clear.addMouseListener(this.cc);
+        this.plus.addMouseMotionListener(this.cc);
+        this.minus.addMouseMotionListener(this.cc);
+        this.multi.addMouseMotionListener(this.cc);
+        this.div.addMouseMotionListener(this.cc);
+        this.leftBracket.addMouseMotionListener(this.cc);
+        this.rightBracket.addMouseMotionListener(this.cc);
+        this.mod.addMouseMotionListener(this.cc);
+        this.dot.addMouseMotionListener(this.cc);
+        this.equal.addMouseMotionListener(this.cc);
+        this.ac.addMouseMotionListener(this.cc);
+        this.recognize.addMouseMotionListener(this.cc);
+        this.clear.addMouseMotionListener(this.cc);
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
+        this.displayPanel.getTextField().getDocument().addDocumentListener(this.cc);
+    }
 
+    public void registerController(CalculatorController controller){
+        this.cc = controller;
+        this.bindListener();
+    }
+
+
+    public void clearSketchPad(){
+        this.handwritingPanel.clear();
+    }
+
+    public SketchpadPanel getHandwritingPanel() {
+        return handwritingPanel;
+    }
+
+    public int getCursorPosition(){
+        JTextField txt= this.displayPanel.getTextField();
+        return txt.getCaretPosition();
     }
 
     @Override
     public void update(Observable o, Object arg) {
+        if (o instanceof Calculation){
+            Calculation c = (Calculation) o;
+            JTextField txt = this.displayPanel.getTextField();
+            if (c.getErrorIndex() < 0){
+                txt.setForeground(Constants.FORE_COLOR);
+                String str = c.getFormula();
+                try{
+                    txt.setText(str);
+                } catch (IllegalStateException e){
 
+                } finally {
+                    txt.setText(str);
+                }
+
+            } else {
+                txt.setForeground(Constants.ERROR_COLOR);
+            }
+
+        }
     }
 
-    public static void main(String[] args) {
-        Calculator c = new Calculator();
-        c.setVisible(true);
-    }
 }

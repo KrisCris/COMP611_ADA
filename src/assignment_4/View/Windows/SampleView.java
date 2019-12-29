@@ -1,14 +1,12 @@
 package assignment_4.View.Windows;
 
-import assignment_4.Controller.Controller;
 import assignment_4.Controller.SampleController;
 import assignment_4.View.Components.SketchpadPanel;
-import assignment_4.View.View;
 
 import javax.swing.*;
 
 
-public class SampleView extends JFrame implements View {
+public class SampleView extends JFrame{
     public final int HEIGHT = 480;
     public final int WIDTH = 400;
 
@@ -88,8 +86,7 @@ public class SampleView extends JFrame implements View {
         return numberList;
     }
 
-    @Override
-    public void registerController(Controller c) {
+    public void registerController(SampleController c) {
         this.saveBtn.addActionListener(c);
         this.clearBtn.addActionListener(c);
         this.recognizeBtn.addActionListener(c);
@@ -97,8 +94,7 @@ public class SampleView extends JFrame implements View {
 
     public static void main(String[] args) {
         SampleView sv = new SampleView();
-        SampleController sc = new SampleController();
-        sc.bindView(sv);
+        SampleController sc = new SampleController(sv);
         sv.setVisible(true);
     }
 }

@@ -1,32 +1,20 @@
 package assignment_4.Controller;
 
-import assignment_4.Model.Model;
-import assignment_4.Model.Outline;
 import assignment_4.Util.GraphicsUtil;
 import assignment_4.Util.IOUtil;
 import assignment_4.Util.KNN;
-import assignment_4.View.View;
 import assignment_4.View.Windows.SampleView;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
-import java.awt.image.BufferedImage;
-import java.net.URL;
-import java.util.ArrayList;
+import java.awt.event.ActionListener;
 
-public class SampleController implements Controller {
-    private View view;
-    private Model model;
+public class SampleController implements ActionListener {
+    private SampleView view;
 
-    @Override
-    public void bindView(View v) {
-        this.view = v;
+    public SampleController(SampleView view){
+        this.view = view;
         this.view.registerController(this);
-    }
-
-    @Override
-    public void bindModel(Model m) {
-        this.model = model;
     }
 
     @Override

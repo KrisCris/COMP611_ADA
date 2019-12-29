@@ -8,7 +8,7 @@ public class test {
     public static void main(String[] args) throws ScriptException {
         ScriptEngine jse = new ScriptEngineManager().getEngineByName("JavaScript");
 
-        String indexFormula = "((100 % 3.12) +8) *3/7";
+        String indexFormula = "2E *9";
         Object aa = jse.eval(indexFormula);
         System.out.println(aa);
 

@@ -13,8 +13,7 @@ public class OperatorLabel extends JLabel implements MouseListener, MouseMotionL
     private Color enteredColor;
     private Color pressedColor;
 
-    public OperatorLabel(String op)
-    {
+    public OperatorLabel(String op) {
         super(op);
         this.setForeground(Constants.FORE_COLOR);
         this.setOpaque(true);
@@ -23,7 +22,7 @@ public class OperatorLabel extends JLabel implements MouseListener, MouseMotionL
         this.addMouseMotionListener(this);
     }
 
-    public void setColor(Color defaultColor, Color enteredColor, Color  pressedColor){
+    public void setColor(Color defaultColor, Color enteredColor, Color pressedColor) {
         this.defaultColor = defaultColor;
         this.enteredColor = enteredColor;
         this.pressedColor = pressedColor;
@@ -33,7 +32,6 @@ public class OperatorLabel extends JLabel implements MouseListener, MouseMotionL
 
     @Override
     public void mouseClicked(MouseEvent e) {
-
     }
 
     @Override
@@ -47,10 +45,10 @@ public class OperatorLabel extends JLabel implements MouseListener, MouseMotionL
         int x = e.getX();
         int y = e.getY();
 
-        if (x<0 || x>this.getWidth()){
+        if (x < 0 || x > this.getWidth()) {
             this.mouseExited(e);
         }
-        if (y<0 || y>this.getHeight()){
+        if (y < 0 || y > this.getHeight()) {
             this.mouseExited(e);
         }
     }
@@ -67,27 +65,10 @@ public class OperatorLabel extends JLabel implements MouseListener, MouseMotionL
 
     @Override
     public void mouseDragged(MouseEvent e) {
-        int x = e.getX();
-        int y = e.getY();
-
-        if (x<0 || x>this.getWidth()){
-            this.mouseExited(e);
-        }
-        if (y<0 || y>this.getHeight()){
-            this.mouseExited(e);
-        }
     }
 
     @Override
     public void mouseMoved(MouseEvent e) {
-        int x = e.getX();
-        int y = e.getY();
 
-        if (x<0 || x>this.getWidth()){
-            this.mouseExited(e);
-        }
-        if (y<0 || y>this.getHeight()){
-            this.mouseExited(e);
-        }
     }
 }

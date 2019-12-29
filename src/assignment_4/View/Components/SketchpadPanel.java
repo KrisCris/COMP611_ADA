@@ -1,5 +1,6 @@
 package assignment_4.View.Components;
 
+import assignment_4.Model.Constants;
 import assignment_4.Model.Outline;
 
 import javax.swing.*;
@@ -38,7 +39,7 @@ public class SketchpadPanel extends JPanel implements MouseMotionListener, Mouse
     }
 
     private void initComponent() {
-        this.setBackground(Color.BLACK);
+        this.setBackground(Constants.SP_COLOR);
     }
 
     private void initData() {

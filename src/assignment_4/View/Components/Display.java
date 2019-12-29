@@ -6,6 +6,7 @@ import javax.swing.*;
 import java.awt.*;
 
 public class Display extends JScrollPane {
+
     private JTextField textField;
 
     public Display() {
@@ -28,6 +29,7 @@ public class Display extends JScrollPane {
 
     }
 
+
     private void initStyle() {
         this.setBorder(null);
         this.textField.setBackground(Constants.DK0_COLOR);
@@ -35,6 +37,9 @@ public class Display extends JScrollPane {
         this.textField.setCaretColor(Constants.FORE_COLOR);
         this.textField.setBorder(null);
 
+    }
 
+    public JTextField getTextField() {
+        return textField;
     }
 }

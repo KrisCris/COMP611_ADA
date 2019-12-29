@@ -8,15 +8,20 @@
   <component name="ChangeListManager">
     <list default="true" id="15746a32-4b38-4c31-9d50-5a12e5386c9d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ViewA4/src/main/java/Calculator.form" beforeDir="false" afterPath="$PROJECT_DIR$/ViewA4/src/main/java/Calculator.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ViewA4/src/main/java/Calculator.java" beforeDir="false" afterPath="$PROJECT_DIR$/ViewA4/src/main/java/Calculator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ADA/META-INF/ADA.kotlin_module" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ADA/assignment_4/TrainingSet 2/4_046053be-3f62-4abb-96b0-0e681206c6a7.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assignment_4/Controller/Controller.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assignment_4/Controller/SampleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/assignment_4/Controller/SampleController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/assignment_4/Model/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/assignment_4/Model/Constants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assignment_4/Model/Model.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assignment_4/Util/GraphicsUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/assignment_4/Util/GraphicsUtil.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/assignment_4/View/Components/Display.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/assignment_4/View/Components/Display.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/assignment_4/View/Components/OperatorLabel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/assignment_4/View/Components/OperatorLabel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assignment_4/View/Components/SketchpadPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/assignment_4/View/Components/SketchpadPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assignment_4/View/View.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/assignment_4/View/Windows/Calculator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/assignment_4/View/Windows/Calculator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assignment_4/View/Windows/SampleView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/assignment_4/View/Windows/SampleView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assignment_4/test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/assignment_4/test.java" afterDir="false" />
     </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -86,7 +91,7 @@
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="configurable.group.build" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -97,7 +102,19 @@
       <recent name="$PROJECT_DIR$/src/assignment_1/image:pdf" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Calculator">
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Application.CalculatorTest">
     <configuration name="Calculator" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="assignment_4.View.Windows.Calculator" />
       <module name="ADA" />
@@ -111,12 +128,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="KNN" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="assignment_4.Util.KNN" />
+    <configuration name="CalculatorTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="assignment_4.Test.CalculatorTest" />
       <module name="ADA" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="assignment_4.Util.*" />
+          <option name="PATTERN" value="assignment_4.Test.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -166,31 +183,19 @@
     <list>
       <item itemvalue="Application.test" />
       <item itemvalue="Application.SampleView" />
-      <item itemvalue="Application.KNN" />
       <item itemvalue="Application.Calculator" />
       <item itemvalue="Application.TerrainTest" />
+      <item itemvalue="Application.CalculatorTest" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.CalculatorTest" />
+        <item itemvalue="Application.test" />
+        <item itemvalue="Application.SampleView" />
         <item itemvalue="Application.Calculator" />
         <item itemvalue="Application.TerrainTest" />
-        <item itemvalue="Application.SampleView" />
-        <item itemvalue="Application.test" />
-        <item itemvalue="Application.KNN" />
       </list>
     </recent_temporary>
-  </component>
-  <component name="ServiceViewManager">
-    <option name="viewStates">
-      <list>
-        <serviceView>
-          <treeState>
-            <expand />
-            <select />
-          </treeState>
-        </serviceView>
-      </list>
-    </option>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -325,6 +330,7 @@
       <workItem from="1577601443220" duration="633000" />
       <workItem from="1577624699364" duration="6180000" />
       <workItem from="1577632120478" duration="2708000" />
+      <workItem from="1577636400712" duration="13673000" />
     </task>
     <servers />
   </component>
@@ -623,5 +629,21 @@
     <state x="456" y="178" width="670" height="513" key="search.everywhere.popup/0.0.1424.802@0.0.1424.802" timestamp="1577281276368" />
     <state x="615" y="240" width="904" height="691" key="search.everywhere.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1577443861674" />
     <state x="599" y="258" width="670" height="676" key="search.everywhere.popup/0.23.1869.1057@0.23.1869.1057" timestamp="1575912495982" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/assignment_4/View/Windows/Calculator.java</url>
+          <line>212</line>
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/assignment_4/Model/Calculation.java</url>
+          <line>73</line>
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
