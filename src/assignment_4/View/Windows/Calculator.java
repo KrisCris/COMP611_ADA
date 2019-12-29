@@ -8,7 +8,6 @@ import assignment_4.View.Components.OperatorLabel;
 import assignment_4.View.Components.SketchpadPanel;
 
 import javax.swing.*;
-import java.awt.event.*;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -153,6 +152,7 @@ public class Calculator extends JFrame implements Observer {
     }
 
     protected void bindListener(){
+        this.addKeyListener(this.cc);
         /**
          * Bind buttons with mouse event listeners.
          */
@@ -181,7 +181,7 @@ public class Calculator extends JFrame implements Observer {
         this.recognize.addMouseMotionListener(this.cc);
         this.clear.addMouseMotionListener(this.cc);
 
-        this.displayPanel.getTextField().getDocument().addDocumentListener(this.cc);
+        this.displayPanel.getTextField().addKeyListener(cc);
     }
 
     public void registerController(CalculatorController controller){
@@ -198,29 +198,37 @@ public class Calculator extends JFrame implements Observer {
         return handwritingPanel;
     }
 
-    public int getCursorPosition(){
-        JTextField txt= this.displayPanel.getTextField();
-        return txt.getCaretPosition();
-    }
-
     @Override
     public void update(Observable o, Object arg) {
         if (o instanceof Calculation){
             Calculation c = (Calculation) o;
             JTextField txt = this.displayPanel.getTextField();
+
             if (c.getErrorIndex() < 0){
                 txt.setForeground(Constants.FORE_COLOR);
                 String str = c.getFormula();
-                try{
-                    txt.setText(str);
-                } catch (IllegalStateException e){
-
-                } finally {
-                    txt.setText(str);
-                }
+                txt.setText(str);
 
             } else {
                 txt.setForeground(Constants.ERROR_COLOR);
+            }
+
+            int len = c.getFormula().length();
+            if (len>11 && len<13){
+                txt.setFont(Constants.DISPLAY_SM1_FONT);
+            } else if (len >= 13 && len<16){
+                txt.setFont(Constants.DISPLAY_SM2_FONT);
+            } else if (len >= 16 && len<19){
+                txt.setFont(Constants.DISPLAY_SM3_FONT);
+            }else if (len >= 19 && len<22){
+                txt.setFont(Constants.DISPLAY_SM4_FONT);
+            }else if (len >= 22){
+                SwingUtilities.invokeLater(() -> {
+                    JScrollBar bar = displayPanel.getHorizontalScrollBar();
+                    bar.setValue(bar.getMaximum());
+                });
+            }else{
+                txt.setFont(Constants.DISPLAY_DEFAULT_FONT);
             }
 
         }

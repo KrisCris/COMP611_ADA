@@ -4,6 +4,9 @@ import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
 import javax.script.ScriptException;
 import java.util.Observable;
+import java.util.Scanner;
+import java.util.Stack;
+import java.util.StringTokenizer;
 
 public class Calculation extends Observable {
 
@@ -23,36 +26,114 @@ public class Calculation extends Observable {
         this.notifyObservers();
     }
 
-    public void addOperators(String op, int index) {
+    public void del() {
+        if (formula.equals("Infinity")){
+            this.clear();
+        }
+        if (this.formula.length() > 0) {
+            this.errorIndex = -1;
+            this.formula = this.formula.substring(0, this.formula.length() - 1);
+            if (this.formula.length() == 0) {
+                clear();
+            }
+            this.setChanged();
+            this.notifyObservers();
+        }
+
+    }
+
+    public void addOperators(String op) {
+        if (formula.equals("Infinity")){
+            return;
+        }
         this.errorIndex = -1;
 
-        this.formula += op;
+        if (!this.formula.equals("0")) {
+            if (Character.isDigit(formula.charAt(formula.length() - 1)) ||
+                    formula.charAt(formula.length() - 1) == '(' ||
+                    formula.charAt(formula.length() - 1) == ')') {
+                this.formula += op;
+                this.setChanged();
+                this.notifyObservers();
+            }
+        }
 
+
+    }
+
+    public void addDot() {
+        if (formula.equals("Infinity")){
+            return;
+        }
+        StringTokenizer st = new StringTokenizer(formula,"+-×÷()%");
+        String str = "";
+        while(st.hasMoreTokens()){
+            str = st.nextToken();
+            System.out.println(str);
+        }
+        if (Character.isDigit(formula.charAt(formula.length()-1))){
+            if (!str.contains(".")){
+                formula += ".";
+            }
+        }
+
+        setChanged();
+        notifyObservers();
+    }
+
+    public void addDigit(String digit) {
+        if (formula.equals("Infinity")){
+            return;
+        }
+        this.errorIndex = -1;
+        if (this.formula.equals("0")) {
+            this.formula = digit;
+        } else {
+            this.formula += digit;
+        }
 
         this.setChanged();
         this.notifyObservers();
     }
 
-    public void addDot(int index) {
+    public void addBracket(String str) {
+        if (formula.equals("Infinity")){
+            return;
+        }
+        if (formula.equals("0")) {
+            if (str.equals("("))
+                formula = str;
+        } else {
+            Stack<Character> stk = new Stack<>();
+            for (char c : formula.toCharArray()) {
+                if (c == '(') {
+                    stk.push(c);
+                } else if (c == ')' && !stk.empty()) {
+                    stk.pop();
+                }
+            }
 
-    }
+            if (str.equals("(")) {
+                if (!Character.isDigit(formula.charAt(formula.length() - 1)) && formula.charAt(formula.length() - 1) != '.') {
+                    this.formula += str;
+                }
+            } else {
+                if ((Character.isDigit(formula.charAt(formula.length() - 1)) || formula.charAt(formula.length() - 1) == ')') && !stk.empty()) {
+                    this.formula += str;
+                }
+            }
 
-    public void addDigit(String digit, int index) {
-        this.errorIndex = -1;
-        this.formula += digit;
-
+        }
 
         this.setChanged();
         this.notifyObservers();
-    }
-
-    public void addBracket(int pos) {
-
     }
 
     public void getResult() {
         this.errorIndex = -1;
-
+        if (formula.equals("Infinity")){
+            return;
+        }
         String str = formula + "";
         str = str.replace('×', '*').replace('÷', '/');
 
@@ -62,51 +143,11 @@ public class Calculation extends Observable {
             this.formula = result.toString();
 
         } catch (ScriptException e) {
-            e.printStackTrace();
             this.errorIndex = e.getColumnNumber();
         } finally {
             this.setChanged();
             this.notifyObservers();
         }
-    }
-
-    public void validateChange(String str) {
-        this.errorIndex = -1;
-        String chars = "1234567890E+-×÷%.()";
-        str = str.replace('/', '÷').replace('*', '×').replace('e', 'E').replace(" ","");
-        System.out.println(str);
-        for (int i = 0; i < str.length(); i++) {
-            String c = str.charAt(i) + "";
-            if (!chars.contains(c)) {
-                str = str.substring(0, i) + str.substring(i + 1);
-            }
-        }
-        while (str.contains("..")){
-            str = str.replace("..",".");
-        }
-        while (str.contains("EE")){
-            str = str.replace("EE","E");
-        }
-        while (str.contains("++")){
-            str = str.replace("++","+");
-        }
-        while (str.contains("--")){
-            str = str.replace("--","-");
-        }
-        while (str.contains("××")){
-            str = str.replace("××","×");
-        }
-        while (str.contains("÷÷")){
-            str = str.replace("÷÷","÷");
-        }
-        while (str.contains("%%")){
-            str = str.replace("%%","%");
-        }
-        formula = str;
-
-        this.setChanged();
-        this.notifyObservers();
-
     }
 
     public String getFormula() {

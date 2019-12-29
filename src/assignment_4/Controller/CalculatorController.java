@@ -1,6 +1,7 @@
 package assignment_4.Controller;
 
 import assignment_4.Model.Calculation;
+import assignment_4.Model.Constants;
 import assignment_4.Util.GraphicsUtil;
 import assignment_4.Util.KNN;
 import assignment_4.View.Components.OperatorLabel;
@@ -10,15 +11,24 @@ import javax.swing.*;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.text.BadLocationException;
+import java.awt.*;
 import java.awt.event.*;
 
-public class CalculatorController implements ActionListener, MouseMotionListener, MouseListener, DocumentListener {
-    Calculator view;
-    Calculation model;
+public class CalculatorController implements ActionListener, MouseMotionListener, MouseListener,  KeyListener {
+    private Calculator view;
+    private Calculation model;
+
+    private KNN knnCore;
 
     public CalculatorController(Calculator view, Calculation model) {
         this.view = view;
         this.model = model;
+
+        initEngine();
+    }
+
+    private void initEngine(){
+        knnCore = KNN.getKnnCore();
     }
 
     public void start() {
@@ -31,8 +41,6 @@ public class CalculatorController implements ActionListener, MouseMotionListener
         if (e.getSource() instanceof OperatorLabel) {
             OperatorLabel op = (OperatorLabel) e.getSource();
             String str = op.getText();
-            int pos = this.view.getCursorPosition();
-            System.out.println(pos);
 
             /**
              * Normal operators
@@ -43,6 +51,7 @@ public class CalculatorController implements ActionListener, MouseMotionListener
 
             if (str.equals("AC")) {
                 this.model.clear();
+                this.view.getHandwritingPanel().clear();
             }
             if (str.equals("+") ||
                     str.equals("-") ||
@@ -50,16 +59,17 @@ public class CalculatorController implements ActionListener, MouseMotionListener
                     str.equals("÷") ||
                     str.equals("Mod")
             ) {
-                this.model.addOperators("str", pos);
+                if (str.equals("Mod")) {
+                    this.model.addOperators("%");
+                } else {
+                    this.model.addOperators(str);
+                }
             }
-            if (op.getText().equals("(")) {
-
-            }
-            if (op.getText().equals(")")) {
-
+            if (op.getText().equals("(") || op.getText().equals(")")) {
+                this.model.addBracket(op.getText());
             }
             if (op.getText().equals(".")) {
-                this.model.addDot(pos);
+                this.model.addDot();
             }
 
             /**
@@ -70,15 +80,13 @@ public class CalculatorController implements ActionListener, MouseMotionListener
             }
             if (op.getText().equals("Recog")) {
                 GraphicsUtil GU = GraphicsUtil.getInstance();
-                KNN knnCore = KNN.getKnnCore();
                 int[] target = GU.panelToBinaryFigureMatrix(view.getHandwritingPanel());
                 if (target == null) return;
 
                 int result = knnCore.getResult(target, 6);
 
-                JOptionPane.showMessageDialog(null, "Estimated: " + result, "result", JOptionPane.INFORMATION_MESSAGE);
                 //TODO add digit into textField.
-                this.model.addDigit(result + "", pos);
+                this.model.addDigit(result + "");
             }
 
 
@@ -86,26 +94,33 @@ public class CalculatorController implements ActionListener, MouseMotionListener
     }
 
     @Override
-    public void changedUpdate(DocumentEvent e) {
-
-    }
-
-    @Override
-    public void insertUpdate(DocumentEvent e) {
-        try {
-            this.model.validateChange(e.getDocument().getText(0, e.getDocument().getLength()));
-        } catch (BadLocationException ex) {
-            ex.printStackTrace();
+    public void keyTyped(KeyEvent e) {
+        String chars = "1234567890";
+        String ops = "+/*-";
+        String brackets = "()";
+        if (chars.contains(e.getKeyChar() + "")) {
+            model.addDigit(e.getKeyChar() + "");
+        } else if (ops.contains(e.getKeyChar() + "")) {
+            if (e.getKeyChar() == '*') {
+                model.addOperators("×");
+            } else if (e.getKeyChar() == '/') {
+                model.addOperators("÷");
+            } else {
+                model.addOperators(e.getKeyChar() + "");
+            }
+        } else if (brackets.contains(e.getKeyChar() + "")) {
+            model.addBracket(e.getKeyChar() + "");
+        } else if (e.getKeyChar() == '=' || e.getKeyChar() == '\n') {
+            model.getResult();
+        } else if (e.getKeyChar() == '.') {
+            model.addDot();
+        } else {
+            int key = e.getKeyCode();
+            if (key == KeyEvent.VK_BACK_SPACE || key == KeyEvent.VK_DELETE || key == 0) {
+                model.del();
+            }
         }
-    }
 
-    @Override
-    public void removeUpdate(DocumentEvent e) {
-        try {
-            this.model.validateChange(e.getDocument().getText(0, e.getDocument().getLength()));
-        } catch (BadLocationException ex) {
-            ex.printStackTrace();
-        }
     }
 
     @Override
@@ -136,7 +151,7 @@ public class CalculatorController implements ActionListener, MouseMotionListener
 
     @Override
     public void mouseDragged(MouseEvent e) {
-
+        this.mouseClicked(e);
     }
 
     @Override
@@ -144,5 +159,13 @@ public class CalculatorController implements ActionListener, MouseMotionListener
 
     }
 
+    @Override
+    public void keyPressed(KeyEvent e) {
 
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+
+    }
 }

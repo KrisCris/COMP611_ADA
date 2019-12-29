@@ -8,18 +8,12 @@
   <component name="ChangeListManager">
     <list default="true" id="15746a32-4b38-4c31-9d50-5a12e5386c9d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assignment_4/Controller/Controller.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assignment_4/Controller/SampleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/assignment_4/Controller/SampleController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assignment_4/Controller/CalculatorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/assignment_4/Controller/CalculatorController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assignment_4/Model/Calculation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/assignment_4/Model/Calculation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/assignment_4/Model/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/assignment_4/Model/Constants.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assignment_4/Model/Model.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assignment_4/Util/GraphicsUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/assignment_4/Util/GraphicsUtil.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/assignment_4/View/Components/Display.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/assignment_4/View/Components/Display.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assignment_4/View/Components/OperatorLabel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/assignment_4/View/Components/OperatorLabel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/assignment_4/View/Components/SketchpadPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/assignment_4/View/Components/SketchpadPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assignment_4/View/View.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/assignment_4/View/Windows/Calculator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/assignment_4/View/Windows/Calculator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assignment_4/View/Windows/SampleView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/assignment_4/View/Windows/SampleView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assignment_4/test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/assignment_4/test.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -330,7 +324,11 @@
       <workItem from="1577601443220" duration="633000" />
       <workItem from="1577624699364" duration="6180000" />
       <workItem from="1577632120478" duration="2708000" />
-      <workItem from="1577636400712" duration="13673000" />
+      <workItem from="1577636400712" duration="13971000" />
+      <workItem from="1577650883846" duration="1578000" />
+      <workItem from="1577652493651" duration="221000" />
+      <workItem from="1577659937928" duration="141000" />
+      <workItem from="1577660170135" duration="34000" />
     </task>
     <servers />
   </component>
@@ -635,13 +633,8 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/assignment_4/View/Windows/Calculator.java</url>
-          <line>212</line>
+          <line>214</line>
           <option name="timeStamp" value="12" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/assignment_4/Model/Calculation.java</url>
-          <line>73</line>
-          <option name="timeStamp" value="13" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

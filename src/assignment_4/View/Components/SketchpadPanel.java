@@ -54,27 +54,26 @@ public class SketchpadPanel extends JPanel implements MouseMotionListener, Mouse
         this.drawOutline = false;
     }
 
-    private void bindListener(){
+    private void bindListener() {
         this.addMouseMotionListener(this);
         this.addMouseListener(this);
     }
 
     /**
      * To set a outline with some fancy animations. LOL
-     *
      */
-    public void setOutLine(Outline outline){
+    public void setOutLine(Outline outline) {
         int x = outline.getX();
         int y = outline.getY();
         int len = outline.getLength();
         new Thread(new Runnable() {
             public void run() {
-                for(int i=50;i>=0;i--){
+                for (int i = 50; i >= 0; i--) {
                     try {
-                        outlineX = x-i;
-                        outlineY = y-i;
-                        outlineW = len+i*2;
-                        outlineH = len+i*2;
+                        outlineX = x - i;
+                        outlineY = y - i;
+                        outlineW = len + i * 2;
+                        outlineH = len + i * 2;
                         drawOutline = true;
                         repaint();
                         Thread.sleep(5);
@@ -90,7 +89,7 @@ public class SketchpadPanel extends JPanel implements MouseMotionListener, Mouse
     /**
      * clear the panel
      */
-    public void clear(){
+    public void clear() {
         initData();
         repaint();
     }
@@ -98,6 +97,7 @@ public class SketchpadPanel extends JPanel implements MouseMotionListener, Mouse
     /**
      * To draw pen strokes drew by user when being called.
      * When being repaint()ed.
+     *
      * @param graphics
      */
     @Override
@@ -111,7 +111,7 @@ public class SketchpadPanel extends JPanel implements MouseMotionListener, Mouse
          * Draw what user draws.
          */
         g.setColor(Color.WHITE);
-        g.setStroke(new BasicStroke(this.getWidth()/28));
+        g.setStroke(new BasicStroke(this.getWidth() / 28));
         for (int i = 0; i < drawnLines.size(); i++) {
             g.drawLine(
                     drawnLines.get(i)[0],
@@ -124,10 +124,10 @@ public class SketchpadPanel extends JPanel implements MouseMotionListener, Mouse
         /**
          * draw the fancy outline.
          */
-        if(drawOutline == true){
+        if (drawOutline == true) {
             g.setColor(Color.RED);
             g.setStroke(new BasicStroke(1));
-            g.drawRect(outlineX,outlineY,outlineW,outlineH);
+            g.drawRect(outlineX, outlineY, outlineW, outlineH);
         }
 
         g.dispose();
@@ -135,6 +135,7 @@ public class SketchpadPanel extends JPanel implements MouseMotionListener, Mouse
 
     /**
      * Set new line to be rendered.
+     *
      * @param e
      */
     @Override
@@ -153,12 +154,19 @@ public class SketchpadPanel extends JPanel implements MouseMotionListener, Mouse
     /**
      * Update last click point when pressed,
      * to avoid starting a pen stroke from somewhere unexpected.
+     *
      * @param e
      */
     @Override
     public void mousePressed(MouseEvent e) {
+        if (drawOutline == true) {
+            drawOutline = false;
+            clear();
+        }
+
         this.lastX = e.getX();
         this.lastY = e.getY();
+
     }
 
     @Override

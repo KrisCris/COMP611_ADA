@@ -14,4 +14,10 @@ public final class Constants {
     public static final Color ORANGE_H_COLOR = new Color(225,144,20);
     public static final Color FORE_COLOR = new Color(248,248,249);
     public static final Color ERROR_COLOR = new Color(237, 64, 20);
+
+    public static final Font DISPLAY_DEFAULT_FONT = new Font(Font.SANS_SERIF, Font.BOLD,30);
+    public static final Font DISPLAY_SM1_FONT = new Font(Font.SANS_SERIF, Font.BOLD,26);
+    public static final Font DISPLAY_SM2_FONT = new Font(Font.SANS_SERIF, Font.BOLD,22);
+    public static final Font DISPLAY_SM3_FONT = new Font(Font.SANS_SERIF, Font.BOLD,18);
+    public static final Font DISPLAY_SM4_FONT = new Font(Font.SANS_SERIF, Font.BOLD,14);
 }
