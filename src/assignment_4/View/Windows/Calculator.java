@@ -1,5 +1,6 @@
 package assignment_4.View.Windows;
 
+import assignment_4.Model.Constants;
 import assignment_4.View.Components.Display;
 import assignment_4.View.Components.OperatorLabel;
 import assignment_4.View.Components.SketchpadPanel;
@@ -30,14 +31,22 @@ public class Calculator extends JFrame implements ActionListener, Observer {
     private OperatorLabel dot;
     private OperatorLabel equal;
 
+    private OperatorLabel ac;
+
+    private OperatorLabel recognize;
+    private OperatorLabel clear;
+
+
     public Calculator() {
         initComponents();
         initLayout();
-        setVisible(true);
+        initStyle();
+
     }
 
     private void initComponents() {
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+
         this.rightOpPanel = new JPanel();
         this.topOpPanel = new JPanel();
         this.bottomOpPanel = new JPanel();
@@ -50,54 +59,95 @@ public class Calculator extends JFrame implements ActionListener, Observer {
         this.div = new OperatorLabel("/");
         this.leftBracket = new OperatorLabel("(");
         this.rightBracket = new OperatorLabel(")");
-        this.mod = new OperatorLabel("mod");
+        this.mod = new OperatorLabel("Mod");
         this.dot = new OperatorLabel(".");
         this.equal = new OperatorLabel("=");
+        this.ac = new OperatorLabel("AC");
+        this.clear = new OperatorLabel("Clear");
+        this.recognize = new OperatorLabel("Recog");
     }
 
     private void initLayout() {
 
         this.setSize(252, 394);
-       // this.setResizable(false);
+        this.setResizable(false);
 
+        /**
+         * Button (Label)s
+         */
+        this.mod.setBounds(0, 0, 60, 60);
+        this.leftBracket.setBounds(60, 0, 60, 60);
+        this.rightBracket.setBounds(120, 0, 60, 60);
+        this.ac.setBounds(180, 0, 72, 60);
+
+        this.topOpPanel.setLayout(null);
+        this.topOpPanel.add(mod);
+        this.topOpPanel.add(leftBracket);
+        this.topOpPanel.add(rightBracket);
+        this.topOpPanel.add(ac);
+
+
+        this.clear.setBounds(0, 0, 60, 60);
+        this.recognize.setBounds(60, 0, 60, 60);
+        this.dot.setBounds(120, 0, 60, 60);
+
+        this.bottomOpPanel.setLayout(null);
+        this.bottomOpPanel.add(clear);
+        this.bottomOpPanel.add(recognize);
+        this.bottomOpPanel.add(dot);
+
+
+        this.div.setBounds(0, 0, 72, 48);
+        this.multi.setBounds(0, 48, 72, 48);
+        this.minus.setBounds(0, 96, 72, 48);
+        this.plus.setBounds(0, 144, 72, 48);
+        this.equal.setBounds(0, 192, 72, 48);
+
+        this.rightOpPanel.setLayout(null);
+        this.rightOpPanel.add(div);
+        this.rightOpPanel.add(multi);
+        this.rightOpPanel.add(minus);
+        this.rightOpPanel.add(plus);
+        this.rightOpPanel.add(equal);
+
+
+        /**
+         * Major panels
+         */
         this.setLayout(null);
-        this.displayPanel.setBounds(
-                0,
-                0,
-                252,
-                72
-        );
-        this.topOpPanel.setBounds(
-                0,
-                72,
-                252,
-                60
-        );
-        this.handwritingPanel.setBounds(
-                0,
-                132,
-                180,
-                180);
-        this.bottomOpPanel.setBounds(
-                0,
-                312,
-                180,
-                60);
-        this.rightOpPanel.setBounds(
-                180,
-                132,
-                72,
-                240
-        );
+        this.displayPanel.setBounds(0, 0, 252, 72);
+        this.topOpPanel.setBounds(0, 72, 252, 60);
+        this.handwritingPanel.setBounds(0, 132, 180, 180);
+        this.bottomOpPanel.setBounds(0, 312, 180, 60);
+        this.rightOpPanel.setBounds(180, 132, 72, 240);
         this.add(rightOpPanel);
         this.add(topOpPanel);
         this.add(bottomOpPanel);
         this.add(handwritingPanel);
         this.add(displayPanel);
 
-        this.topOpPanel.setBackground(Color.pink);
-        this.bottomOpPanel.setBackground(Color.pink);
-        this.rightOpPanel.setBackground(Color.ORANGE);
+    }
+
+    private void initStyle() {
+        this.topOpPanel.setBackground(Constants.DK2_COLOR);
+        this.bottomOpPanel.setBackground(Constants.DK3_COLOR);
+        this.rightOpPanel.setBackground(Constants.ORANGE_L_COLOR);
+
+        this.mod.setColor(Constants.DK2_COLOR, Constants.DK3_COLOR, Constants.DK1_COLOR);
+        this.leftBracket.setColor(Constants.DK2_COLOR, Constants.DK3_COLOR, Constants.DK1_COLOR);
+        this.rightBracket.setColor(Constants.DK2_COLOR, Constants.DK3_COLOR, Constants.DK1_COLOR);
+        this.ac.setColor(Constants.DK2_COLOR, Constants.DK3_COLOR, Constants.DK1_COLOR);
+
+        this.clear.setColor(Constants.DK3_COLOR, Constants.DK4_COLOR, Constants.DK2_COLOR);
+        this.recognize.setColor(Constants.DK3_COLOR, Constants.DK4_COLOR, Constants.DK2_COLOR);
+        this.dot.setColor(Constants.DK3_COLOR, Constants.DK4_COLOR, Constants.DK2_COLOR);
+
+        this.div.setColor(Constants.ORANGE_M_COLOR, Constants.ORANGE_L_COLOR, Constants.ORANGE_H_COLOR);
+        this.multi.setColor(Constants.ORANGE_M_COLOR, Constants.ORANGE_L_COLOR, Constants.ORANGE_H_COLOR);
+        this.plus.setColor(Constants.ORANGE_M_COLOR, Constants.ORANGE_L_COLOR, Constants.ORANGE_H_COLOR);
+        this.minus.setColor(Constants.ORANGE_M_COLOR, Constants.ORANGE_L_COLOR, Constants.ORANGE_H_COLOR);
+        this.equal.setColor(Constants.ORANGE_M_COLOR, Constants.ORANGE_L_COLOR, Constants.ORANGE_H_COLOR);
+
 
     }
 
@@ -114,6 +164,6 @@ public class Calculator extends JFrame implements ActionListener, Observer {
 
     public static void main(String[] args) {
         Calculator c = new Calculator();
-
+        c.setVisible(true);
     }
 }
