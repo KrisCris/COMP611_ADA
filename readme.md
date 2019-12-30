@@ -1,16 +1,15 @@
 # AUT-COMP611-Algorithm Design and Analysis
 
 ## Assignment 1 - Chatroom
-
 ![3](src/assignment_1/image:pdf/3.png)
 
 
 
 ## Assignment 2 - Find the shortest path in a terrain
 
-<img src="src/assignment_2/start.png" alt="start"  />![fullAuto](src/assignment_2/fullAuto.png)
-
-![Screen Shot 2019-12-30 at 10.39.57 PM](src/assignment_2/Screen Shot 2019-12-30 at 10.39.57 PM.png)
+<img src="src/assignment_2/start.png" alt="start"/>
+![fullAuto](src/assignment_2/fullAuto.png)
+<img src="src/assignment_2/Screen Shot 2019-12-30 at 10.39.57 PM.png" />
 
 
 
@@ -27,5 +26,4 @@
 ## Assignment 4 - Independent studied algorithm
 
 #### A calculator utilizing KNN Handwriting Digits recognition.
-
-![Screen Shot 2019-12-30 at 5.23.33 PM](src/assignment_4/files for assignment submission/Screen Shot 2019-12-30 at 5.23.33 PM.png)
+<img src="src/assignment_4/files for assignment submission/Screen Shot 2019-12-30 at 5.23.33 PM.png" />
