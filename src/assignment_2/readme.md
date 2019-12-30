@@ -34,19 +34,19 @@
 
 ### Label Colors
 
-<img src="/Users/kriscris/Documents/Coding/COMP611_ADA/src/assignment_2/fullManual.png" alt="fullManual" style="zoom:33%;" />
+<img src="fullManual.png" alt="fullManual" style="zoom:33%;" />
 
 ##### Purple
 
 - Manual decisions are marked as purple.
 
-<img src="/Users/kriscris/Documents/Coding/COMP611_ADA/src/assignment_2/fullAuto.png" alt="fullAuto" style="zoom:33%;" />
+<img src="fullAuto.png" alt="fullAuto" style="zoom:33%;" />
 
 ##### Blue
 
 - Automatic decisions are marked as Blue and Orange.
 
-<img src="/Users/kriscris/Documents/Coding/COMP611_ADA/src/assignment_2/mixed.png" alt="mixed" style="zoom:33%;" />
+<img src="mixed.png" alt="mixed" style="zoom:33%;" />
 
 ##### Orange
 

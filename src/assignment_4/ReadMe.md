@@ -19,7 +19,7 @@
   - assignment_4
     - Controller
       - **CalculatorController.java**
-      - ~~SampleController.java~~
+      - SampleController.java
     - Model
       - **Calculation.java**
       - Constants.java
@@ -32,7 +32,7 @@
         - SketchpadPanel.java
       - Windows
         - **Calculator.java**
-        - ~~SampleView.java~~
+        - SampleView.java
     - Util
       - GraphicsUtil.java
       - IOUtil.java
@@ -70,13 +70,13 @@
 
 7. Once the formular is completed, press **= button** to calculate result, or you can press **Enter or =** on the keyboard. And the result will be printed.
 
-   <img src="Screen Shot 2019-12-30 at 5.20.14 PM.png" alt="Screen Shot 2019-12-30 at 5.20.14 PM" style="zoom: 33%;" /><img src="Screen Shot 2019-12-30 at 5.23.33 PM.png" alt="Screen Shot 2019-12-30 at 5.23.33 PM" style="zoom: 33%;" /><img src="Screen Shot 2019-12-30 at 5.22.44 PM.png" alt="Screen Shot 2019-12-30 at 5.22.44 PM" style="zoom: 33%;" />
+   <img src="files for assignment submission/Screen Shot 2019-12-30 at 5.20.14 PM.png" alt="Screen Shot 2019-12-30 at 5.20.14 PM" style="zoom: 33%;" /><img src="files for assignment submission/Screen Shot 2019-12-30 at 5.23.33 PM.png" alt="Screen Shot 2019-12-30 at 5.23.33 PM" style="zoom: 33%;" /><img src="files for assignment submission/Screen Shot 2019-12-30 at 5.22.44 PM.png" alt="Screen Shot 2019-12-30 at 5.22.44 PM" style="zoom: 33%;" />
 
 8. If you input something wrong, the display will turn red and warn you. 
 
 9. if you attempt to divid by zero or anything unable to calculate, an **Infinity or NaN** will be printed. You have to press **AC** to restart.
 
-   <img src="Screen Shot 2019-12-30 at 5.44.43 PM.png" alt="Screen Shot 2019-12-30 at 5.44.43 PM" style="zoom:33%;" /><img src="Screen Shot 2019-12-30 at 5.50.41 PM.png" alt="Screen Shot 2019-12-30 at 5.50.41 PM" style="zoom:33%;" /><img src="Screen Shot 2019-12-30 at 5.45.04 PM.png" alt="Screen Shot 2019-12-30 at 5.45.04 PM" style="zoom:33%;" />
+   <img src="files for assignment submission/Screen Shot 2019-12-30 at 5.44.43 PM.png" alt="Screen Shot 2019-12-30 at 5.44.43 PM" style="zoom:33%;" /><img src="files for assignment submission/Screen Shot 2019-12-30 at 5.50.41 PM.png" alt="Screen Shot 2019-12-30 at 5.50.41 PM" style="zoom:33%;" /><img src="files for assignment submission/Screen Shot 2019-12-30 at 5.45.04 PM.png" alt="Screen Shot 2019-12-30 at 5.45.04 PM" style="zoom:33%;" />
 
 ## Algorithm Explanation 
 
@@ -90,7 +90,7 @@
 
 - Find the major class among the K elements.
 
-  ![Untitled Diagram](Untitled Diagram.png)
+  ![Untitled Diagram](files for assignment submission/Untitled Diagram.png)
 
 #### 	pseudocode
 
@@ -146,7 +146,7 @@
   - There is a significant accuracy drop when K > 10.
   - When K = 6 result in a better average accuracy as well as the highest recognized rate of Digit 8.
 
-![Screen Shot 2019-12-28 at 12.52.01 AM](Screen Shot 2019-12-28 at 12.52.01 AM.png)
+![Screen Shot 2019-12-28 at 12.52.01 AM](files for assignment submission/Screen Shot 2019-12-28 at 12.52.01 AM.png)
 
 - Graph 2
   - Later I found that even though the cloest element is in the right class, the mojor class voted was another. And the two has nearly the same weight. So I figure out a simple way to improve accuracy little bit:
@@ -158,13 +158,13 @@
   - When applied the 'avg method', the accuracy slightly increased except when k = 4. But when K = 4 without AVG, the accuracy of 8 is significantly low, so we won't consider that.
   - In consideration of the accuracy of the lowest two, the 8 and 2, I chose K = 4 with AVG/DIST;
 
-![Screen Shot 2019-12-30 at 8.40.01 PM](Screen Shot 2019-12-30 at 8.40.01 PM.png)
+![Screen Shot 2019-12-30 at 8.40.01 PM](files for assignment submission/Screen Shot 2019-12-30 at 8.40.01 PM.png)
 
 - A relatively high accuracy, if draw digits gently. 
 
 - Hint: To avoid writing 8 too fat, or it is likely to result in a 3.
 
-  <img src="Screen Shot 2019-12-30 at 9.01.39 PM.png" alt="Screen Shot 2019-12-30 at 9.01.39 PM" style="zoom:50%;" />
+  <img src="files for assignment submission/Screen Shot 2019-12-30 at 9.01.39 PM.png" alt="Screen Shot 2019-12-30 at 9.01.39 PM" style="zoom:50%;" />
 
 ## UMLs
 
@@ -172,17 +172,17 @@
 
 - These are the major classes, some tiny one are not in this diagram.
 
-#### ![A4 Class diagram](A4 Class diagram.png)
+#### ![A4 Class diagram](files for assignment submission/A4 Class diagram.png)
 
 
 
 #### Activity Diagram 1 - KNN Handwriting Digit Recognition
 
-![Untitled Diagram (1)](Untitled Diagram (1).png)
+![Untitled Diagram (1)](files for assignment submission/Untitled Diagram (1).png)
 
 #### Activity Diagram 2 - Calculator
 
 - Since most events are handled by Observer pattern, I believe there is no need to explain, like how the calculator works.
 - The calculation part is supported by ScriptEngine, since we have already implemented a Calculator 2 years ago, and its time consuming.
 
-![Untitled Diagram (2)](Untitled Diagram (2).png)
+![Untitled Diagram (2)](files for assignment submission/Untitled Diagram (2).png)

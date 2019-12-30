@@ -42,11 +42,11 @@
 
 - Step.1 Update information after the insertion
 
-![截屏2019-12-10下午7.05.17](/Users/pingchuan.huang/Desktop/截屏2019-12-10下午7.05.17.png)
+![截屏2019-12-10下午7.05.17](截屏2019-12-10下午7.05.17.png)
 
 - Step.2 Update information between the Inserted Node and its parent after rotation.
 
-![截屏2019-12-10下午7.11.20](/Users/pingchuan.huang/Desktop/截屏2019-12-10下午7.11.20.png)
+![截屏2019-12-10下午7.11.20](截屏2019-12-10下午7.11.20.png)
 
 - Step.3 (Finally) You can get MinGap from the root node.
 

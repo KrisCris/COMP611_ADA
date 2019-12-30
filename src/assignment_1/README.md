@@ -84,7 +84,7 @@ And it implements the MVC pattern.
  - Sending notifications to clients, like the server shutdown warning.
  - Notifing every client if someone is online/offline.
  - Able to deal with different types of client request like switching between different modes.
- 
+
 ##### Client
  - Chat with each person that on the same mode (Typically Online) .
  - Easily switch chat among different person by clicking their name.
@@ -121,33 +121,33 @@ And it implements the MVC pattern.
 #### Using this app
 ##### Login
  - You can enter a random name for login. But there should be any blanks.
-![login image](https://github.com/KrisCris/COMP611_ADA/raw/master/src/assignment_1/image:pdf/1.png)
+![login image](image:pdf/1.png)
 ##### Chatroom
  - When you login, you can see the number of current online clients and the name of each of them.
-![Logged_in_1](https://github.com/KrisCris/COMP611_ADA/raw/master/src/assignment_1/image:pdf/2.png)
+![Logged_in_1](image:pdf/2.png)
  - You can click anyone available on the left side to start a chat.
  - And when clients you are not currently chat with sent you a message, their name will be highlighted with Italic and green. E.g. zsk sent me a message.
-![chat_notify_3](https://github.com/KrisCris/COMP611_ADA/raw/master/src/assignment_1/image:pdf/4.png)
+![chat_notify_3](image:pdf/4.png)
  - You can logout by closing the chat room or clicking your username on the top-right corner.
-![Logout](https://github.com/KrisCris/COMP611_ADA/raw/master/src/assignment_1/image:pdf/5.png)
+![Logout](image:pdf/5.png)
  - Or you can switch to the stealth mode.
-![stealth_1](https://github.com/KrisCris/COMP611_ADA/raw/master/src/assignment_1/image:pdf/6.png)
-![stealth_2](https://github.com/KrisCris/COMP611_ADA/raw/master/src/assignment_1/image:pdf/7.png)
+![stealth_1](image:pdf/6.png)
+![stealth_2](image:pdf/7.png)
  - When you are in stealth mode, the online number label will turn dark.
  - Only people using the same stealth code can see each other.
  - You can also switch to other stealth group if you want by choosing the stealth mode again. Or you can go online.
-![stealth_3](https://github.com/KrisCris/COMP611_ADA/raw/master/src/assignment_1/image:pdf/8.png)
+![stealth_3](image:pdf/8.png)
 
 ## UML diagrams
 ---
  - Class Diagram
-![class](https://github.com/KrisCris/COMP611_ADA/raw/master/src/assignment_1/image:pdf/classes.png)
+![class](image:pdf/classes.png)
  - The Dependency among all the classes
-![dependency_classes](https://github.com/KrisCris/COMP611_ADA/raw/master/src/assignment_1/image:pdf/dependency_class.png)
+![dependency_classes](image:pdf/dependency_class.png)
 - Client-Server communication
-![client-activity](https://github.com/KrisCris/COMP611_ADA/raw/master/src/assignment_1/image:pdf/client_activity.png)
+![client-activity](image:pdf/client_activity.png)
 - Server shutdown 
-- ![server-activity](https://github.com/KrisCris/COMP611_ADA/raw/master/src/assignment_1/image:pdf/Server.png)
+- ![server-activity](image:pdf/Server.png)
 
 
 
