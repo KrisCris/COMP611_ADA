@@ -1,4 +1,6 @@
-# AUT-COMP611-Algorithm Design and Analysis
+# AUT-COMP611-Algorithm Design and Analysis 2019
+
+### Please do not copy my work. Thanks.
 
 ## Assignment 1 - Chatroom
 ![3](src/assignment_1/image:pdf/3.png)
