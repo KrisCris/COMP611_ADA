@@ -286,14 +286,6 @@ public class IOUtil {
 
     }
 
-    public static void main(String[] args) {
-        IOUtil io = IOUtil.getInstance();
-//        String path = "src/assignment_4/mnist_data";
-//        io.JPGToTXT(path);
-        io.groupText();
-
-    }
-
     @Override
     protected Object clone() throws CloneNotSupportedException {
         throw new CloneNotSupportedException();

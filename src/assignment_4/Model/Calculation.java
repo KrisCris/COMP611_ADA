@@ -8,12 +8,22 @@ import java.util.Scanner;
 import java.util.Stack;
 import java.util.StringTokenizer;
 
+/**
+ * This class implements the Observer pattern and acts as a Model of Calculator, the view.
+ * There will be no further explanation for each method since their name are straightforward.
+ */
 public class Calculation extends Observable {
 
     private String formula;
     private ScriptEngine jse;
     private int errorIndex;
 
+    /**
+     * We have already written a calculator in our first year and I do not want to write that again,
+     * also algorithms of this assignment are not focusing on this part,
+     * so the real calculation is handled by ScriptEngine.
+     *
+     */
     public Calculation() {
         this.jse = new ScriptEngineManager().getEngineByName("JavaScript");
         clear();
@@ -27,7 +37,7 @@ public class Calculation extends Observable {
     }
 
     public void del() {
-        if (formula.equals("Infinity")){
+        if (formula.equals("Infinity") || formula.equals("NaN")){
             this.clear();
         }
         if (this.formula.length() > 0) {
@@ -43,14 +53,13 @@ public class Calculation extends Observable {
     }
 
     public void addOperators(String op) {
-        if (formula.equals("Infinity")){
+        if (formula.equals("Infinity") || formula.equals("NaN")){
             return;
         }
         this.errorIndex = -1;
 
         if (!this.formula.equals("0")) {
             if (Character.isDigit(formula.charAt(formula.length() - 1)) ||
-                    formula.charAt(formula.length() - 1) == '(' ||
                     formula.charAt(formula.length() - 1) == ')') {
                 this.formula += op;
                 this.setChanged();
@@ -62,7 +71,7 @@ public class Calculation extends Observable {
     }
 
     public void addDot() {
-        if (formula.equals("Infinity")){
+        if (formula.equals("Infinity") || formula.equals("NaN")){
             return;
         }
         StringTokenizer st = new StringTokenizer(formula,"+-×÷()%");
@@ -82,7 +91,7 @@ public class Calculation extends Observable {
     }
 
     public void addDigit(String digit) {
-        if (formula.equals("Infinity")){
+        if (formula.equals("Infinity") || formula.equals("NaN")){
             return;
         }
         this.errorIndex = -1;
@@ -97,7 +106,7 @@ public class Calculation extends Observable {
     }
 
     public void addBracket(String str) {
-        if (formula.equals("Infinity")){
+        if (formula.equals("Infinity") || formula.equals("NaN")){
             return;
         }
         if (formula.equals("0")) {
@@ -131,7 +140,7 @@ public class Calculation extends Observable {
 
     public void getResult() {
         this.errorIndex = -1;
-        if (formula.equals("Infinity")){
+        if (formula.equals("Infinity") || formula.equals("NaN")){
             return;
         }
         String str = formula + "";

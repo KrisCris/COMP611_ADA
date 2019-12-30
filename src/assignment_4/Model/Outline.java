@@ -1,5 +1,8 @@
 package assignment_4.Model;
 
+/**
+ * This class encapsulates outline information of a handwriting digit.
+ */
 public class Outline {
     private int x;
     private int y;

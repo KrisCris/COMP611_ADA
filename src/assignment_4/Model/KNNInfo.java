@@ -1,5 +1,8 @@
 package assignment_4.Model;
 
+/**
+ * This class contains information for each node when calculating the KNN.
+ */
 public class KNNInfo implements Comparable<KNNInfo> {
 
     private double distance;

@@ -10,10 +10,10 @@ import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import java.util.LinkedList;
 
-
+/**
+ * The handwriting digit input panel.
+ */
 public class SketchpadPanel extends JPanel implements MouseMotionListener, MouseListener {
-//    public final int HEIGHT = 320;
-//    public final int WIDTH = 320;
 
     /**
      * By paint the pen stroke line by line,

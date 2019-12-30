@@ -8,6 +8,9 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 
+/**
+ * Works as buttons.
+ */
 public class OperatorLabel extends JLabel implements MouseListener, MouseMotionListener {
     private Color defaultColor;
     private Color enteredColor;

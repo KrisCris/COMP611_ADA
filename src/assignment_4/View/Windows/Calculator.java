@@ -11,6 +11,9 @@ import javax.swing.*;
 import java.util.Observable;
 import java.util.Observer;
 
+/**
+ * View of calculator.
+ */
 public class Calculator extends JFrame implements Observer {
 
     private CalculatorController cc;
@@ -148,10 +151,20 @@ public class Calculator extends JFrame implements Observer {
         this.minus.setColor(Constants.ORANGE_H_COLOR, Constants.ORANGE_L_COLOR, Constants.ORANGE_M_COLOR);
         this.equal.setColor(Constants.ORANGE_H_COLOR, Constants.ORANGE_L_COLOR, Constants.ORANGE_M_COLOR);
 
+        this.div.setFont(Constants.DISPLAY_SM3_FONT);
+        this.multi.setFont(Constants.DISPLAY_SM3_FONT);
+        this.plus.setFont(Constants.DISPLAY_SM3_FONT);
+        this.minus.setFont(Constants.DISPLAY_SM3_FONT);
+        this.equal.setFont(Constants.DISPLAY_SM3_FONT);
+
+        this.leftBracket.setFont(Constants.DISPLAY_SM4_FONT);
+        this.rightBracket.setFont(Constants.DISPLAY_SM4_FONT);
+        this.dot.setFont(Constants.DISPLAY_SM4_FONT);
+
 
     }
 
-    protected void bindListener(){
+    protected void bindListener() {
         this.addKeyListener(this.cc);
         /**
          * Bind buttons with mouse event listeners.
@@ -168,29 +181,22 @@ public class Calculator extends JFrame implements Observer {
         this.ac.addMouseListener(this.cc);
         this.recognize.addMouseListener(this.cc);
         this.clear.addMouseListener(this.cc);
-        this.plus.addMouseMotionListener(this.cc);
-        this.minus.addMouseMotionListener(this.cc);
-        this.multi.addMouseMotionListener(this.cc);
-        this.div.addMouseMotionListener(this.cc);
-        this.leftBracket.addMouseMotionListener(this.cc);
-        this.rightBracket.addMouseMotionListener(this.cc);
-        this.mod.addMouseMotionListener(this.cc);
-        this.dot.addMouseMotionListener(this.cc);
-        this.equal.addMouseMotionListener(this.cc);
-        this.ac.addMouseMotionListener(this.cc);
-        this.recognize.addMouseMotionListener(this.cc);
-        this.clear.addMouseMotionListener(this.cc);
 
         this.displayPanel.getTextField().addKeyListener(cc);
     }
 
-    public void registerController(CalculatorController controller){
+    /**
+     * Bind the controller as well as listeners to target components.
+     *
+     * @param controller
+     */
+    public void registerController(CalculatorController controller) {
         this.cc = controller;
         this.bindListener();
     }
 
 
-    public void clearSketchPad(){
+    public void clearSketchPad() {
         this.handwritingPanel.clear();
     }
 
@@ -200,11 +206,11 @@ public class Calculator extends JFrame implements Observer {
 
     @Override
     public void update(Observable o, Object arg) {
-        if (o instanceof Calculation){
+        if (o instanceof Calculation) {
             Calculation c = (Calculation) o;
             JTextField txt = this.displayPanel.getTextField();
 
-            if (c.getErrorIndex() < 0){
+            if (c.getErrorIndex() < 0) {
                 txt.setForeground(Constants.FORE_COLOR);
                 String str = c.getFormula();
                 txt.setText(str);
@@ -214,23 +220,32 @@ public class Calculator extends JFrame implements Observer {
             }
 
             int len = c.getFormula().length();
-            if (len>11 && len<13){
-                txt.setFont(Constants.DISPLAY_SM1_FONT);
-            } else if (len >= 13 && len<16){
-                txt.setFont(Constants.DISPLAY_SM2_FONT);
-            } else if (len >= 16 && len<19){
-                txt.setFont(Constants.DISPLAY_SM3_FONT);
-            }else if (len >= 19 && len<22){
-                txt.setFont(Constants.DISPLAY_SM4_FONT);
-            }else if (len >= 22){
-                SwingUtilities.invokeLater(() -> {
-                    JScrollBar bar = displayPanel.getHorizontalScrollBar();
-                    bar.setValue(bar.getMaximum());
-                });
-            }else{
-                txt.setFont(Constants.DISPLAY_DEFAULT_FONT);
-            }
+            fitDisplaySize(txt, len);
 
+        }
+    }
+
+    /**
+     * To adjust the font size so that the display will be able to fit all the characters.
+     * @param txt
+     * @param len
+     */
+    public void fitDisplaySize(JTextField txt, int len) {
+        if (len > 11 && len < 13) {
+            txt.setFont(Constants.DISPLAY_SM1_FONT);
+        } else if (len >= 13 && len < 16) {
+            txt.setFont(Constants.DISPLAY_SM2_FONT);
+        } else if (len >= 16 && len < 19) {
+            txt.setFont(Constants.DISPLAY_SM3_FONT);
+        } else if (len >= 19 && len < 22) {
+            txt.setFont(Constants.DISPLAY_SM4_FONT);
+        } else if (len >= 22) {
+            SwingUtilities.invokeLater(() -> {
+                JScrollBar bar = displayPanel.getHorizontalScrollBar();
+                bar.setValue(bar.getMaximum());
+            });
+        } else {
+            txt.setFont(Constants.DISPLAY_DEFAULT_FONT);
         }
     }
 

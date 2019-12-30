@@ -76,6 +76,7 @@ public class GraphicsUtil {
         return binaryMatrix;
     }
 
+    
     public Outline getOutline(int[] binaryMatrix) {
         int edgeLen = (int) Math.sqrt(binaryMatrix.length);
         /**
@@ -116,28 +117,7 @@ public class GraphicsUtil {
             }
         }
 
-//        /**
-//         * To get the side length of the square outline.
-//         */
-//        double figureLen = Math.max(maxX - minX, maxY - minY)*1.4;
-//
-//        /**
-//         * To find the relatively centre point in this image,
-//         * then put the outline in centre of figure.
-//         */
-//        double cx = minX+(maxX-minX)/2.0;
-//        double cy = minY+(maxY-minY)/2.0;
-//
-//        int baseX = (int)(cx - figureLen/2);
-//        int baseY = (int)(cy - figureLen/2);
-//
-//
-//        System.out.println("outline: "+baseX+"\t"+baseY+"\t"+(int)figureLen);
-//        return new Outline(baseX, baseY, (int)figureLen);
-
         int figureLen = Math.max(maxX - minX, maxY - minY);
-
-//        System.out.println("outline: "+minX+"\t"+minY+"\t"+figureLen);
 
         System.out.println(minX +"\t" + minY +"\t"+figureLen);
         return new Outline(minX, minY, figureLen);
@@ -199,6 +179,12 @@ public class GraphicsUtil {
         return scaledImage;
     }
 
+    /**
+     * An all in one method.
+     * Supported by methods above.
+     * @param panel
+     * @return
+     */
     public int[] panelToBinaryFigureMatrix(SketchpadPanel panel) {
         BufferedImage panelImage = this.panelToImage(panel);
 

@@ -9,10 +9,13 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * This controller handles event from SampleView which used for sampling handwriting digit inputs.
+ */
 public class SampleController implements ActionListener {
     private SampleView view;
 
-    public SampleController(SampleView view){
+    public SampleController(SampleView view) {
         this.view = view;
         this.view.registerController(this);
     }
@@ -37,17 +40,17 @@ public class SampleController implements ActionListener {
 
                     int[] binaryFigure = GU.panelToBinaryFigureMatrix(sv.getSketchpadPanel());
 
-                    IOU.matrixToFile(binaryFigure, number);
+                    IOU.appendNewSample(number, binaryFigure);
 
                 } else if (btn.getText().equals("Clear")) {
                     sv.getSketchpadPanel().clear();
 
                 } else if (btn.getText().equals("Recognize")) {
                     int[] targetMatrix = GU.panelToBinaryFigureMatrix(sv.getSketchpadPanel());
-                    
+
                     KNN knnCore = KNN.getKnnCore();
-                    int result = knnCore.getResult(targetMatrix, 6);
-                    JOptionPane.showMessageDialog(null,"Estimated: "+result,"result",JOptionPane.INFORMATION_MESSAGE);
+                    int result = knnCore.getResult(targetMatrix, 4);
+                    JOptionPane.showMessageDialog(null, "Estimated: " + result, "result", JOptionPane.INFORMATION_MESSAGE);
                 }
             }
         }

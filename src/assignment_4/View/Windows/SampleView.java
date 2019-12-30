@@ -5,7 +5,11 @@ import assignment_4.View.Components.SketchpadPanel;
 
 import javax.swing.*;
 
-
+/**
+ * Dev usage.
+ * Input handwriting digit samples.
+ * Please do not use unless necessary.
+ */
 public class SampleView extends JFrame{
     public final int HEIGHT = 480;
     public final int WIDTH = 400;

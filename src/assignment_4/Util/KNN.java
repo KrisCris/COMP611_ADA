@@ -18,6 +18,9 @@ public class KNN {
         }
     }
 
+    /**
+     * Singleton approach.
+     */
     public static KNN getKnnCore() {
         if (knnCore == null) {
             knnCore = new KNN();
@@ -25,6 +28,12 @@ public class KNN {
         return knnCore;
     }
 
+    /**
+     * Calculate the euclidean distance between input and training samples.
+     * @param input
+     * @param sample
+     * @return
+     */
     public double euclideanDistance(int[] input, int[] sample) {
         int e = 0;
         for (int i = 0; i < input.length; i++) {
@@ -34,6 +43,11 @@ public class KNN {
     }
 
 
+    /**
+     * @param target
+     * @param k
+     * @return The knn result.
+     */
     public int getResult(int[] target, int k) {
         return getResult(DefaultTrainingSet, target, k);
     }
@@ -43,43 +57,8 @@ public class KNN {
          * KNN steps
          */
         ArrayList<KNNInfo> knnSet = knn(trainingSet, target, k);
-
-//        System.out.println("#######");
-//        System.out.println("#1 = " + knnSet.get(0).getType());
-
         double[] distribution = getKDistribution(knnSet);
-
-//        for (int i = 0; i < distribution.length; i++) {
-//            System.out.println(i + "\t" + distribution[i]);
-//        }
-//        for (int i = 0;i< knnSet.size();i++){
-//            System.out.println("#"+i+"\t"+knnSet.get(i).getType());
-//        }
-
         int major = getMajorClass(distribution);
-
-
-
-
-//        for (int i = 0; i < knnSet.size(); i++) {
-//            KNNInfo knnInfo = knnSet.get(i);
-//            int type = knnInfo.getType();
-//            int index = knnInfo.getIndex();
-//
-//            ArrayList<KNNInfo> set = knn(trainingSet, DefaultTrainingSet.get(type).get(index), 10);
-//            int[] DSTB = getKDistribution(set);
-//            int MJ = getMajorClass(DSTB);
-//            if (MJ != knnInfo.getType()) {
-//                knnSet.remove(knnInfo);
-//            }
-//        }
-//
-//        System.out.println("#2 = " + knnSet.get(0).getType());
-//        for (int i = 0; i < distribution.length; i++) {
-//            System.out.println(i + "\t" + distribution[i]);
-//        }
-//        distribution = getKDistribution(knnSet);
-//        major = getMajorClass(distribution);
         return major;
 
     }
@@ -112,7 +91,11 @@ public class KNN {
 
     }
 
-
+    /**
+     * get the distribution of K-NN object.
+     * @param knnSet
+     * @return
+     */
     private double[] getKDistribution(ArrayList<KNNInfo> knnSet) {
         double avg = 0;
         for (KNNInfo info : knnSet){
@@ -130,6 +113,11 @@ public class KNN {
         return votePool;
     }
 
+    /**
+     * Classification.
+     * @param distribution
+     * @return
+     */
     public int getMajorClass(double[] distribution) {
         int mostVoted = 0;
         for (int i = 0; i < distribution.length; i++) {
@@ -140,6 +128,10 @@ public class KNN {
         return mostVoted;
     }
 
+    /**
+     * For dev use, measuring the KNN accuracy.
+     * @return
+     */
     public double accuracy() {
 
         ArrayList<ArrayList<int[]>> sample = new ArrayList<>();
@@ -184,8 +176,4 @@ public class KNN {
         throw new CloneNotSupportedException();
     }
 
-    public static void main(String[] args) {
-        KNN knn = KNN.getKnnCore();
-        knn.accuracy();
-    }
 }
