@@ -3,7 +3,7 @@
 ### Please do not copy my work. Thanks.
 
 ## Assignment 1 - Chatroom
-![3](src/assignment_1/image:pdf/3.png)
+![3](src/assignment_1/files for assignment submission/3.png)
 
 
 
