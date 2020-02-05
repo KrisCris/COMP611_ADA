@@ -5,13 +5,16 @@ import assignment_4.Model.Outline;
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.*;
+import java.net.URL;
 import java.util.*;
 
 public class IOUtil {
     private static IOUtil IO_UTIL;
-    public static final String PATH = "src/assignment_4/TrainingSet";
+    public static String PATH = "";
 
     private IOUtil() {
+        String path = getClass().getClassLoader().getResource("").getPath();
+        PATH = path + "assignment_4/TrainingSet";
     }
 
     /**

@@ -20,4 +20,5 @@ public final class Constants {
     public static final Font DISPLAY_SM2_FONT = new Font(Font.SANS_SERIF, Font.BOLD,22);
     public static final Font DISPLAY_SM3_FONT = new Font(Font.SANS_SERIF, Font.BOLD,18);
     public static final Font DISPLAY_SM4_FONT = new Font(Font.SANS_SERIF, Font.BOLD,14);
+
 }
