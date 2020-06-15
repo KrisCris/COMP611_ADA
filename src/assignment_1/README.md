@@ -1,14 +1,14 @@
 # A Java chat room application
----
+
 
 ## Introdution
----
+
 This is an application of a client/server chat system with GUI, which is based on 100% Venalla Java.
 As it is named, it provides functionalities for chatting with people using this app in real-time.
 And it implements the MVC pattern.
 
 ## Components
----
+
 #### Directory structure
 - assignment_1
     - Model
@@ -73,7 +73,7 @@ And it implements the MVC pattern.
 - Any other details about codes should be mentioned in these **.java* files as code comments.
 
 ## Features
----
+
 #### Client/Server protocol
   - It uses the TCP protocol.
 #### Design Pattern
@@ -94,7 +94,7 @@ And it implements the MVC pattern.
  - It will automatically receive notifications from the server.
 
 ## User documentation
----
+
 >***This application is developed on [JDK 1.8](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)***
 
 #### How to run this project
@@ -121,33 +121,33 @@ And it implements the MVC pattern.
 #### Using this app
 ##### Login
  - You can enter a random name for login. But there should be any blanks.
-![login image](files for assignment submission/1.png)
+<img src="files for assignment submission/1.png" alt="login"/>
 ##### Chatroom
  - When you login, you can see the number of current online clients and the name of each of them.
-![Logged_in_1](files for assignment submission/2.png)
+<img src="files for assignment submission/2.png" alt="logged in 1"/>
  - You can click anyone available on the left side to start a chat.
  - And when clients you are not currently chat with sent you a message, their name will be highlighted with Italic and green. E.g. zsk sent me a message.
-![chat_notify_3](files for assignment submission/4.png)
+<img src="files for assignment submission/4.png" alt="chat_notification"/>
  - You can logout by closing the chat room or clicking your username on the top-right corner.
-![Logout](files for assignment submission/5.png)
+<img src="files for assignment submission/5.png" alt="logout"/>
  - Or you can switch to the stealth mode.
-![stealth_1](files for assignment submission/6.png)
-![stealth_2](files for assignment submission/7.png)
+<img src="files for assignment submission/6.png" alt="stealth mode 1"/>
+<img src="files for assignment submission/7.png" alt="stealth mode 2"/>
  - When you are in stealth mode, the online number label will turn dark.
  - Only people using the same stealth code can see each other.
  - You can also switch to other stealth group if you want by choosing the stealth mode again. Or you can go online.
-![stealth_3](files for assignment submission/8.png)
+<img src="files for assignment submission/8.png" alt="stealth mode 3"/>
 
 ## UML diagrams
----
+
  - Class Diagram
-![class](files for assignment submission/classes.png)
+<img src="files for assignment submission/classes.png" alt="class diagram"/>
  - The Dependency among all the classes
-![dependency_classes](files for assignment submission/dependency_class.png)
+<img src="files for assignment submission/dependency_class.png" alt="dependency"/>
 - Client-Server communication
-![client-activity](files for assignment submission/client_activity.png)
+<img src="files for assignment submission/client_activity.png" alt="client"/>
 - Server shutdown 
-- ![server-activity](files for assignment submission/Server.png)
+- <img src="files for assignment submission/Server.png" alt="server"/>
 
 
 

@@ -1,16 +1,16 @@
 # AUT-COMP611-Algorithm Design and Analysis 2019
 
-### Please do not copy my work. Thanks.
+***This is an academic assignment repo for the algorithm class. Please do not copy my work.***
 
 ## Assignment 1 - Chatroom
-![3](src/assignment_1/files for assignment submission/3.png)
+<img src="src/assignment_1/files for assignment submission/3.png" alt="a1"/>
 
 
 
 ## Assignment 2 - Find the shortest path in a terrain
 
-<img src="src/assignment_2/start.png" alt="start"/>
-![fullAuto](src/assignment_2/fullAuto.png)
+<img src="src/assignment_2/start.png" alt="a2_1"/>
+<img src="src/assignment_2/fullAuto.png" alt="a2_2"/>
 <img src="src/assignment_2/Screen Shot 2019-12-30 at 10.39.57 PM.png" />
 
 
@@ -18,10 +18,8 @@
 ## Assignment 3 - Graph, Tree & Augmented DS
 
 #### **MinGap**
-
-![截屏2019-12-10下午7.05.17](src/assignment_3/截屏2019-12-10下午7.05.17.png)
-
-![截屏2019-12-10下午7.11.20](src/assignment_3/截屏2019-12-10下午7.11.20.png)
+<img src="src/assignment_3/截屏2019-12-10下午7.05.17.png" alt="a3_1"/>
+<img src="src/assignment_3/截屏2019-12-10下午7.11.20.png" alt="a3_2"/>
 
 
 

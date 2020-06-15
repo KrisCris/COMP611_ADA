@@ -90,7 +90,7 @@
 
 - Find the major class among the K elements.
 
-  ![Untitled Diagram](files for assignment submission/Untitled Diagram.png)
+<img src="files for assignment submission/Untitled Diagram.png"/>
 
 #### 	pseudocode
 
