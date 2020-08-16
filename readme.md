@@ -1,6 +1,5 @@
-# AUT-COMP611-Algorithm Design and Analysis 2019
+# COMP611
 
-***This is an academic assignment repo for the algorithm class. Please do not copy my work.***
 
 ## Assignment 1 - Chatroom
 <img src="src/assignment_1/files for assignment submission/3.png" alt="a1"/>
