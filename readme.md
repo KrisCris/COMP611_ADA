@@ -1,5 +1,10 @@
-# COMP611
+# AUT COMP611 - Algorithm Design and Analysis
 
+4 assignments touching the topics of 
+1. socket communication / multi-thread
+2. Dynamic programming
+3. Augmented Data Structure
+4. Implimentation of whatever algorithms you know
 
 ## Assignment 1 - Chatroom
 <img src="src/assignment_1/files for assignment submission/3.png" alt="a1"/>
